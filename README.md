@@ -1,2 +1,2 @@
-# AxEThrill_QENETiX_GPT_Actions_Chat_Log-visibility-public
+# AxEThrill_QENETiX_GPT_Actions_Chat_Log
 ChatGBT Chat Logs
