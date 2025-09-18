@@ -29,17 +29,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
 
       - name: Install deps
         working-directory: site
         run: npm ci
 
-      - name: Build and export static site
+      - name: Prebuild indices (learn, logs, rag, memory)
+        working-directory: site
+        env:
+          GITHUB_ACTIONS: "true"
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: npm run prebuild
+
+      - name: Build Next.js
         working-directory: site
         env:
           GITHUB_ACTIONS: "true"
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: npm run build
+
+      - name: Export static site
+        working-directory: site
+        env:
+          GITHUB_ACTIONS: "true"
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: npm run export
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

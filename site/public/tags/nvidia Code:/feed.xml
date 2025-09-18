@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>#nvidia Code: - Chat Logs</title>
+    <link>http://localhost:3000/tags/nvidia%20Code%3A/</link>
+    <description>Items tagged nvidia Code:</description>
+    
+    <item>
+      <title>Chat Transcript</title>
+      <link>http://localhost:3000/logs/inbox/test.txt.answer/</link>
+      <guid>http://localhost:3000/logs/inbox/test.txt.answer/</guid>
+      <pubDate>Invalid Date</pubDate>
+      <description>logs/inbox/test.txt.answer.md</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,6 @@
+:root{color-scheme:light dark}
+body{font-family:system-ui,Arial,sans-serif;margin:0;padding:0}
+main{max-width:720px;margin:0 auto;padding:24px}
+input{padding:10px;border-radius:8px;border:1px solid #cbd5e1;margin-right:8px;min-width:260px}
+button{padding:10px 16px;border-radius:8px;border:1px solid #0ea5e9;background:#0ea5e9;color:#fff;cursor:pointer}
+pre{background:#0b0b0c;color:#e5e7eb;padding:12px;border-radius:8px;overflow:auto}

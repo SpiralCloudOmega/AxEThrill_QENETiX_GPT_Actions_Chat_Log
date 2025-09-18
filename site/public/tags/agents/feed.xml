@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>#agents - Chat Logs</title>
+    <link>http://localhost:3000/tags/agents/</link>
+    <description>Items tagged agents</description>
+    
+    <item>
+      <title>Multi-agent: Sanity check orchestrator</title>
+      <link>http://localhost:3000/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</link>
+      <guid>http://localhost:3000/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</guid>
+      <pubDate>Thu, 18 Sep 2025 02:37:58 GMT</pubDate>
+      <description>logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator.md</description>
+    </item>
+    <item>
+      <title>Multi-agent: Hello</title>
+      <link>http://localhost:3000/logs/2025/09/18/multi-agent-hello/</link>
+      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-hello/</guid>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+      <description>logs/2025/09/18/multi-agent-hello.md</description>
+    </item>
+    <item>
+      <title>Multi-agent: Create a tiny UI to browse logs by tag/date and outline JSON endpoints for stats</title>
+      <link>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</link>
+      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</guid>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+      <description>logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl.md</description>
+    </item>
+    <item>
+      <title>Multi-agent: Create a small UI to browse logs by tag and date and propose a tiny JSON API for</title>
+      <link>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</link>
+      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</guid>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+      <description>logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and.md</description>
+    </item>
+    <item>
+      <title>Multi-agent: Build a minimal UI for logs browse by tag and date; propose local JSON API; no e</title>
+      <link>http://localhost:3000/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</link>
+      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</guid>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+      <description>logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p.md</description>
+    </item>
+  </channel>
+</rss>

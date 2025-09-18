@@ -1,0 +1,18 @@
+{
+  "related": {
+    "tagWeight": 0.15,
+    "k": 5
+  },
+  "nextOptions": {
+    "max": 8,
+    "fallbackTop": 6
+  },
+  "search": {
+    "maxResults": 50,
+    "maxTagChips": 12
+  },
+  "tagAliases": {
+    "nvidia code:": "nvidia",
+    "nvidia code": "nvidia"
+  }
+}

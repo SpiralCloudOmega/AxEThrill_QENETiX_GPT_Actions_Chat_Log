@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2025-09-18T22:50:44.202Z",
+  "topTags": [
+    {
+      "tag": "ai",
+      "count": 9
+    },
+    {
+      "tag": "agents",
+      "count": 5
+    },
+    {
+      "tag": "rag",
+      "count": 3
+    },
+    {
+      "tag": "ue5",
+      "count": 2
+    },
+    {
+      "tag": "vulkan",
+      "count": 2
+    },
+    {
+      "tag": "actions",
+      "count": 1
+    },
+    {
+      "tag": "nvidia",
+      "count": 1
+    },
+    {
+      "tag": "nvidia code",
+      "count": 1
+    }
+  ],
+  "tagNext": {
+    "ue5": [
+      {
+        "tag": "vulkan",
+        "count": 2
+      },
+      {
+        "tag": "nvidia",
+        "count": 1
+      },
+      {
+        "tag": "nvidia code",
+        "count": 1
+      }
+    ],
+    "vulkan": [
+      {
+        "tag": "ue5",
+        "count": 2
+      },
+      {
+        "tag": "nvidia",
+        "count": 1
+      },
+      {
+        "tag": "nvidia code",
+        "count": 1
+      }
+    ],
+    "nvidia code": [
+      {
+        "tag": "ue5",
+        "count": 1
+      },
+      {
+        "tag": "vulkan",
+        "count": 1
+      }
+    ],
+    "agents": [
+      {
+        "tag": "ai",
+        "count": 5
+      }
+    ],
+    "ai": [
+      {
+        "tag": "agents",
+        "count": 5
+      },
+      {
+        "tag": "rag",
+        "count": 3
+      },
+      {
+        "tag": "actions",
+        "count": 1
+      }
+    ],
+    "actions": [
+      {
+        "tag": "ai",
+        "count": 1
+      }
+    ],
+    "nvidia": [
+      {
+        "tag": "ue5",
+        "count": 1
+      },
+      {
+        "tag": "vulkan",
+        "count": 1
+      }
+    ],
+    "rag": [
+      {
+        "tag": "ai",
+        "count": 3
+      }
+    ]
+  },
+  "pairCounts": {
+    "ue5|vulkan": 2,
+    "nvidia code|vulkan": 1,
+    "nvidia code|ue5": 1,
+    "agents|ai": 5,
+    "actions|ai": 1,
+    "nvidia|vulkan": 1,
+    "nvidia|ue5": 1,
+    "ai|rag": 3
+  }
+}
