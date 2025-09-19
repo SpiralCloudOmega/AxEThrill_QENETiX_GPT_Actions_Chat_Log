@@ -245,3 +245,78 @@ Transcripts are saved under `logs/incoming` and can be routed into dated folders
 - Scraper: POST `/tool` with `{ action: "scrape:url"|"scrape:file", ... }` (supports `save` to memory)
 - Streaming demo: GET `/stream` to see chunked JSON events of an answer
 
+### MCP (Model Context Protocol) Server (Experimental)
+
+A minimal MCP-style JSON-RPC 2.0 endpoint is available to expose repository knowledge to external agent clients. It now supports controlled write methods, lightweight summarization, request logging, and simple daily rate limiting.
+
+Start the server:
+
+```bash
+(cd site && npm run -s mcp:serve -- --port 12812)
+```
+
+Optional auth:
+```bash
+export MCP_API_KEY="mysecret"
+(cd site && MCP_API_KEY=$MCP_API_KEY npm run -s mcp:serve)
+```
+
+JSON-RPC request format:
+```jsonc
+{ "jsonrpc": "2.0", "id": 1, "method": "logs.list", "params": { "limit": 5 } }
+```
+
+Implemented methods:
+Read:
+- `logs.list { tag?, limit? }`
+- `logs.get { href | path }`
+- `memory.list { tag?, limit? }`
+- `memory.get { id }`
+- `rag.search { query, k? }`
+- `health.snapshot`
+- `token.ledger`
+- `agent.summarize { query?, limit? }` (local RAG summarization; returns `{ summary, items[], model, degraded }`)
+
+Write (API key required):
+- `ingest.add { title?, content, tags?[] }` -> writes markdown to `logs/incoming/`
+- `memory.add { title, content, tags?[], source?, summary? }` -> creates JSON capsule in `logs/memory/`
+
+Logging & Rate Limits:
+- Each request (success or error) is logged to `logs/memory/mcp/<YYYY-MM-DD>/<timestamp>-<id>.json` with a rolling `index.json` (last 500 entries) containing: `{ id, ts, method, ok, ms, paramBytes, resultBytes, error? }`.
+- Daily request counter (per process) stored in `logs/memory/mcp/rate-limits.json`. Set `MCP_DAILY_REQ_LIMIT` (default 500). When exceeded, server returns JSON-RPC error `{ code: "RATE_LIMIT" }`.
+
+Planned (future enhancement): provider-backed richer summarization (Gemini/OpenAI) using existing AI CLI logic with token ledger integration.
+
+Example (curl):
+```bash
+curl -s -X POST localhost:12812/mcp \
+	-H 'content-type: application/json' \
+	-d '{"jsonrpc":"2.0","id":1,"method":"rag.search","params":{"query":"memory index"}}'
+```
+
+If `MCP_API_KEY` is set, include header:
+```bash
+	-H "x-api-key: $MCP_API_KEY"
+```
+
+Environment variables (MCP):
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `MCP_API_KEY` | Enables auth; required for write methods | (unset) |
+| `MCP_PORT` | Port to listen on | 12812 |
+| `MCP_DAILY_REQ_LIMIT` | Daily request cap (read + write) | 500 |
+
+JSON-RPC Errors (codes): `INVALID_REQUEST`, `METHOD_NOT_FOUND`, `INVALID_INPUT`, `NOT_FOUND`, `UNAUTHORIZED`, `RATE_LIMIT`, `INTERNAL`.
+
+`agent.summarize` result shape:
+```jsonc
+{
+	"summary": "Summary for \"recent activity\": ...",
+	"items": [ { "href": "logs/2025/09/18/example", "title": "Example", "snippet": "...", "score": 0.42 } ],
+	"model": "local-rag",
+	"degraded": true
+}
+```
+
+`degraded: true` indicates the summarization used only local TF-IDF context (no external model). A future provider-enabled path will set `degraded: false`.
+
