@@ -46,21 +46,76 @@ jobs:
         id: detect
         run: |
           set -e
+          if [ -n "$AI_PROVIDER_FORCE" ]; then
+            echo "Forced provider via AI_PROVIDER_FORCE=$AI_PROVIDER_FORCE"
+            echo "provider=$AI_PROVIDER_FORCE" >> $GITHUB_OUTPUT
+            exit 0
+          fi
           prov="rag"
           if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
           if [ "$prov" = "rag" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
           echo "provider=$prov" >> $GITHUB_OUTPUT
           echo "Using provider: $prov"
 
+      - name: Determine changed logs & estimate tokens
+        id: changes
+        run: |
+          set -e
+          # Last processed commit state file
+          STATE_FILE=logs/memory/agent-state/continuous-state.json
+          mkdir -p logs/memory/agent-state
+          LAST=""
+          if [ -f "$STATE_FILE" ]; then LAST=$(jq -r '.lastCommit // ""' "$STATE_FILE" 2>/dev/null || echo ""); fi
+          echo "Last commit: $LAST"
+          # Changed markdown logs since last commit (if available)
+          if [ -n "$LAST" ]; then
+            CHANGED=$(git diff --name-only $LAST..HEAD -- 'logs/**/*.md' | wc -l | tr -d ' ')
+            LIST=$(git diff --name-only $LAST..HEAD -- 'logs/**/*.md')
+          else
+            CHANGED=$(git ls-files 'logs/**/*.md' | wc -l | tr -d ' ')
+            LIST=$(git ls-files 'logs/**/*.md')
+          fi
+          echo "Changed markdown logs: $CHANGED"
+          TOTAL_CHARS=0
+          for f in $LIST; do
+            if [ -f "$f" ]; then
+              SIZE=$(wc -c < "$f")
+              TOTAL_CHARS=$((TOTAL_CHARS + SIZE))
+            fi
+          done
+          # Approx token ~ chars/4 (rough heuristic)
+            TOKENS=$((TOTAL_CHARS / 4))
+          echo "Approx characters: $TOTAL_CHARS (~$TOKENS tokens)"
+          echo "changedCount=$CHANGED" >> $GITHUB_OUTPUT
+          echo "approxTokens=$TOKENS" >> $GITHUB_OUTPUT
+          echo '{"lastCommit":"'$(git rev-parse HEAD)'","approxTokens":'$TOKENS',"changed":'$CHANGED'}' > $STATE_FILE
+          echo "State written to $STATE_FILE"
+
+      - name: Batch guard
+        id: guard
+        run: |
+          LIMIT=${BATCH_GUARD_LIMIT:-150}
+          echo "Batch guard limit: $LIMIT"
+          if [ "${{ steps.changes.outputs.changedCount }}" -gt "$LIMIT" ]; then
+            echo "Too many changed logs (${ { steps.changes.outputs.changedCount }} > $LIMIT). Skipping agent run." || true
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run agent summary
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_PROVIDER: ${{ steps.detect.outputs.provider }}
+          APPROX_TOKENS: ${{ steps.changes.outputs.approxTokens }}
         run: |
+          if [ "${{ steps.guard.outputs.skip }}" = "true" ]; then
+            echo "Agent skipped due to batch guard"; exit 0; fi
           set -e
           cd site
           echo "AI_PROVIDER=$AI_PROVIDER"
+          echo "Approx tokens (char/4 heuristic): $APPROX_TOKENS"
           # Short focused prompt to keep runtime / tokens low
           node scripts/agents/agent-zero.mjs -- "Continuous summary: identify newly added logs (since last run if possible) and propose at most 3 tiny actionable improvements. Keep it concise." --route || echo "Agent soft-failed"
 

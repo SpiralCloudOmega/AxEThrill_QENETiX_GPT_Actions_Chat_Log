@@ -50,6 +50,64 @@ Safety guards you may add later:
 
 No manual approval is required for these workflows if repo Actions permissions allow direct pushes and secrets are configured.
 
+#### Continuous Agent Safeguards
+
+The `continuous-agents.yml` workflow now includes:
+- Batch guard heuristic: estimates token usage (`approxTokens ≈ changedChars / 4`). If it exceeds `BATCH_GUARD_LIMIT * 1000`, the run is auto-skipped to avoid runaway spend (default limit 150k tokens equivalent).
+- State checkpoint: `logs/memory/agent-state/continuous-state.json` tracks the last processed commit & stats.
+- Provider override: set `AI_PROVIDER_FORCE=gemini|openai|rag` in workflow secrets to force a provider even if others are present.
+
+Environment variables (workflows side):
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `AI_PROVIDER_FORCE` | Force provider precedence | auto-detect |
+| `BATCH_GUARD_LIMIT` | Upper (k-token) heuristic threshold | 150 |
+
+CLI still uses `AI_PROVIDER` (runtime override) while automation can hard-force with `AI_PROVIDER_FORCE`.
+
+#### Ingestion Helper
+
+Bulk import external markdown using the ingestion script:
+```bash
+node site/scripts/ingest.mjs ./some-folder
+node site/scripts/ingest.mjs docs/**/*.md --tags research,planning
+node site/scripts/ingest.mjs notes/today.md --tags quick
+```
+Features:
+- Accepts file, directory, or glob.
+- Ensures a title (first heading or derives from filename).
+- Optional `--tags tag1,tag2` adds frontmatter.
+- Writes to `logs/incoming/` (preserves date if parseable in path/name).
+
+Follow-up: run `npm run --prefix site route:logs` (or the watcher) so they move into dated folders; the continuous workflow will pick up changes automatically on push.
+
+#### Docker & Compose
+
+Included multi‑stage `Dockerfile` targets:
+- `build` (installs + exports site)
+- `web` (nginx serving static `out/`)
+- `agent` (Node runtime for orchestrated agent scripts)
+
+`docker-compose.yml` services:
+- `web` (port 3000 → nginx 80)
+- `agent` (runs orchestrator; mount `./logs` & `./public`)
+
+Quick start:
+```bash
+docker compose build
+OPENAI_API_KEY=... GEMINI_API_KEY=... docker compose up -d
+docker compose logs -f agent
+```
+
+Rebuild static export locally (without compose):
+```bash
+cd site
+node scripts/prebuild.mjs
+npm run build
+```
+
+See `docs/automation.md` for a deeper architecture & extension guide.
+
 ## Local development
 From the `site/` folder:
 

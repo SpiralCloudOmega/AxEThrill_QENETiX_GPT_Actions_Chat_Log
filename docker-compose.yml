@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+      target: web
+    image: chatlog-web:latest
+    container_name: chatlog-web
+    ports:
+      - "3000:80"
+    depends_on:
+      - build
+    restart: unless-stopped
+  build:
+    build:
+      context: .
+      target: build
+    image: chatlog-build:latest
+    container_name: chatlog-build
+    command: ["sh", "-c", "sleep infinity"]
+    volumes:
+      - ./logs:/app/logs
+      - ./public:/app/public
+  agent:
+    build:
+      context: .
+      target: agent
+    image: chatlog-agent:latest
+    container_name: chatlog-agent
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - AI_PROVIDER_FORCE=${AI_PROVIDER_FORCE}
+      - BATCH_GUARD_LIMIT=${BATCH_GUARD_LIMIT:-150}
+    volumes:
+      - ./logs:/agent/logs
+      - ./public:/agent/public
+    command: ["node", "scripts/agents/orchestrate.mjs"]
+    restart: unless-stopped
+volumes:
+  logs:
+  public:
