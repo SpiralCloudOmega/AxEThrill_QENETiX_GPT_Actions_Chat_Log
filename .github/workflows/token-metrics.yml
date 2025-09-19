@@ -1,0 +1,46 @@
+name: Token Metrics
+
+on:
+  schedule:
+    - cron: '5 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate token metrics
+        run: |
+          LEDGER=logs/memory/agent-state/token-ledger.json
+          mkdir -p site/public
+          OUT=site/public/token-metrics.json
+          if [ ! -f "$LEDGER" ]; then echo '{"days":{},"totals":{"total":0}}' > $OUT; else
+            node - <<'EOF'
+const fs=require('fs');
+const path='logs/memory/agent-state/token-ledger.json';
+const out='site/public/token-metrics.json';
+let data={days:{}}; try{data=JSON.parse(fs.readFileSync(path,'utf8'));}catch{}
+const days=data.days||{}; const entries=Object.entries(days).sort();
+const total=entries.reduce((a,[,v])=>a+Number(v||0),0);
+// 7-day & 30-day windows
+function windowSum(n){const cutoff=Date.now()-n*86400e3;return entries.filter(([d])=>{const t=Date.parse(d);return !isNaN(t)&&t>=cutoff;}).reduce((a,[,v])=>a+Number(v||0),0);} 
+const seven=windowSum(7); const thirty=windowSum(30);
+fs.writeFileSync(out, JSON.stringify({ generatedAt:new Date().toISOString(), total, lastDay: entries.at(-1)?.[1]||0, days, rolling:{seven, thirty}}, null, 2));
+EOF
+          fi
+          echo 'Generated token metrics:'
+          cat $OUT
+
+      - name: Commit metrics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/public/token-metrics.json || true
+          git diff --cached --quiet && echo 'No changes' || git commit -m 'chore(metrics): update token metrics' || true
+          git push || true

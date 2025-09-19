@@ -245,3 +245,47 @@ Transcripts are saved under `logs/incoming` and can be routed into dated folders
 - Scraper: POST `/tool` with `{ action: "scrape:url"|"scrape:file", ... }` (supports `save` to memory)
 - Streaming demo: GET `/stream` to see chunked JSON events of an answer
 
+### MCP (Model Context Protocol) Read-Only Server (Experimental)
+
+A minimal MCP-style JSON-RPC 2.0 endpoint is available to expose repository knowledge to external agent clients.
+
+Start the server:
+
+```bash
+(cd site && npm run -s mcp:serve -- --port 12812)
+```
+
+Optional auth:
+```bash
+export MCP_API_KEY="mysecret"
+(cd site && MCP_API_KEY=$MCP_API_KEY npm run -s mcp:serve)
+```
+
+JSON-RPC request format:
+```jsonc
+{ "jsonrpc": "2.0", "id": 1, "method": "logs.list", "params": { "limit": 5 } }
+```
+
+Implemented methods:
+- `logs.list { tag?, limit? }`
+- `logs.get { href | path }`
+- `memory.list { tag?, limit? }`
+- `memory.get { id }`
+- `rag.search { query, k? }`
+- `health.snapshot`
+- `token.ledger`
+
+Example (curl):
+```bash
+curl -s -X POST localhost:12812/mcp \
+	-H 'content-type: application/json' \
+	-d '{"jsonrpc":"2.0","id":1,"method":"rag.search","params":{"query":"memory index"}}'
+```
+
+If `MCP_API_KEY` is set, include header:
+```bash
+	-H "x-api-key: $MCP_API_KEY"
+```
+
+Future phases will add controlled write actions (ingest, memory.add, summarize) with quota + ledger enforcement.
+

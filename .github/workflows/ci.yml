@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install deps
+        run: |
+          cd site
+          npm ci || npm i
+
+      - name: Typecheck
+        run: |
+          cd site
+          npm run typecheck
+
+      - name: Lint
+        run: |
+          cd site
+          npm run lint || true
+
+      - name: Build
+        run: |
+          cd site
+          npm run build
+
+      - name: Ingest Edge Tests
+        run: |
+          cd site
+          npm run test:ingest-edge
+
+      - name: Ledger Unit Test
+        run: |
+          cd site
+          npm run test:ledger
+
+      - name: Tools Test
+        run: |
+          cd site
+          npm run tools:test || echo "Tools test soft-failed"
+
+      - name: Bundle report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-report
+          path: site/public/bundle-report.json

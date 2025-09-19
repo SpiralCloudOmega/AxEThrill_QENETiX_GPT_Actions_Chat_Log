@@ -29,6 +29,9 @@
   "ai:agents:file": "node scripts/agents/orchestrate.mjs --file",
   "ai:agent-zero": "node scripts/agents/agent-zero.mjs --spec",
   "ai:agent-zero:file": "node scripts/agents/agent-zero.mjs --file"
+  ,"mcp:serve": "node scripts/mcp-server.mjs"
+  ,"lint": "eslint . --ext .js,.mjs,.ts,.tsx"
+  ,"test:ledger": "node scripts/tests/ledger.test.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
@@ -45,6 +48,9 @@
     "@types/node": "^24.5.1",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0"
   }
 }
