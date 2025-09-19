@@ -62,8 +62,11 @@ Environment variables (workflows side):
 |----------|---------|---------|
 | `AI_PROVIDER_FORCE` | Force provider precedence | auto-detect |
 | `BATCH_GUARD_LIMIT` | Upper (k-token) heuristic threshold | 150 |
+| `TOKEN_DAILY_LIMIT` | Approx daily token cap before rag fallback | 500000 |
 
 CLI still uses `AI_PROVIDER` (runtime override) while automation can hard-force with `AI_PROVIDER_FORCE`.
+
+Token ledger: a JSON file at `logs/memory/agent-state/token-ledger.json` tracks approximate daily usage (heuristic chars/4). If adding the new run would exceed `TOKEN_DAILY_LIMIT`, the workflow forces `rag` provider for that run while still updating memory/index artifacts.
 
 #### Ingestion Helper
 

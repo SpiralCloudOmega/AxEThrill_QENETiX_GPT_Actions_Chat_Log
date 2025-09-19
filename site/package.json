@@ -10,6 +10,7 @@
   "postbuild": "node scripts/bundle-report.mjs",
     "preexport": "node scripts/prebuild.mjs",
     "export": "next export",
+    "typecheck": "tsc --noEmit",
     "learn": "node scripts/learn.mjs",
     "start": "next start",
     "save:chat": "node scripts/save-chat.mjs",
@@ -29,6 +30,7 @@
   "ai:agents:file": "node scripts/agents/orchestrate.mjs --file",
   "ai:agent-zero": "node scripts/agents/agent-zero.mjs --spec",
   "ai:agent-zero:file": "node scripts/agents/agent-zero.mjs --file"
+    ,"test:ingest-edge": "node scripts/tests/ingest-edge.test.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

@@ -14,6 +14,7 @@ permissions:
 concurrency:
   group: monthly-agents-${{ github.ref }}
   cancel-in-progress: false
+  # Ensures only one monthly planning run per ref executes concurrently.
 
 jobs:
   run-agent-zero-and-memory:
@@ -56,15 +57,16 @@ jobs:
         id: detect
         run: |
           set -e
+          if [ -n "$AI_PROVIDER_FORCE" ]; then
+            echo "Forced provider via AI_PROVIDER_FORCE=$AI_PROVIDER_FORCE"
+            echo "provider=$AI_PROVIDER_FORCE" >> $GITHUB_OUTPUT
+            exit 0
+          fi
           prov="rag"
           if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
-          if [ -z "$prov" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
-          # Prefer OpenAI if both present? Keep Gemini priority unless overridden.
-          if [ -n "${{ secrets.OPENAI_API_KEY }}" ] && [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then
-            prov="openai"
-          fi
+          if [ "$prov" = "rag" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
           echo "provider=$prov" >> $GITHUB_OUTPUT
-          echo "Using provider: $prov"
+          echo "Using provider: $prov (Gemini preferred, fallback to OpenAI, else rag)"
 
       - name: Agent Zero (monthly plan)
         env:
@@ -75,6 +77,35 @@ jobs:
           cd site
           echo "Selected AI_PROVIDER=$AI_PROVIDER"
           node scripts/agents/agent-zero.mjs -- "Monthly status + roadmap check-in: summarize key changes from logs-index.json and propose next small improvements." --route || echo "Agent step soft-failed"
+
+      - name: Token ledger & quota (post-run record)
+        if: always()
+        run: |
+          set -e
+          LEDGER_FILE=logs/memory/agent-state/token-ledger.json
+          mkdir -p logs/memory/agent-state
+          TODAY=$(date -u +%Y-%m-%d)
+          SIZE=0
+          if [ -f site/public/logs-index.json ]; then SIZE=$(wc -c < site/public/logs-index.json); fi
+          TOKENS=$((SIZE / 4))
+          LIMIT=${TOKEN_DAILY_LIMIT:-500000}
+          echo "Monthly run approx tokens: $TOKENS (limit $LIMIT)"
+          USED=0
+          if [ -f "$LEDGER_FILE" ]; then
+            USED=$(jq -r --arg d "$TODAY" '.days[$d] // 0' "$LEDGER_FILE" 2>/dev/null || echo 0)
+          fi
+          if [ $((USED + TOKENS)) -le $LIMIT ]; then
+            if [ -f "$LEDGER_FILE" ]; then
+              TMP=$(mktemp)
+              jq --arg d "$TODAY" --argjson add $TOKENS '(.days[$d] |= ( . // 0 ) + $add) | .updatedAt=now' "$LEDGER_FILE" > $TMP || echo '{"days":{}}' > $TMP
+              mv $TMP $LEDGER_FILE
+            else
+              echo '{"days":{"'$TODAY'":'$TOKENS'},"updatedAt":'$(date +%s)'}' > $LEDGER_FILE
+            fi
+            echo "Ledger updated with monthly usage." 
+          else
+            echo "Monthly run would exceed limit; not recording usage (informational only)."
+          fi
 
       - name: Build memory index
         run: |
