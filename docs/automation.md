@@ -66,6 +66,7 @@ Post-ingestion: Let continuous agents pick up the new files (or trigger workflow
 | `GEMINI_API_KEY` | Gemini provider key | (unset) |
 | `AI_PROVIDER_FORCE` | Force provider: `gemini`, `openai`, or `rag` | (auto detect) |
 | `BATCH_GUARD_LIMIT` | Upper token (k) heuristic threshold before skipping | 150 |
+| `TOKEN_DAILY_LIMIT` | Approx token cap per UTC day before forcing rag fallback | 500000 |
 
 Heuristic: The workflow computes `approxTokens` ~ `chars / 4`; if `approxTokens > BATCH_GUARD_LIMIT * 1000`, the run is skipped to avoid runaway usage.
 
@@ -74,6 +75,24 @@ Heuristic: The workflow computes `approxTokens` ~ `chars / 4`; if `approxTokens 
 - State JSON stores last processed commit: prevents redundant full reprocessing.
 - Batch guard prevents unexpectedly large commits (e.g., bulk import) from triggering huge token spend in a single run. After manual review, you can re-run with a higher limit: `BATCH_GUARD_LIMIT=500` in workflow_dispatch.
 - Provider fallback ensures functionality even with missing external keys.
+- Token ledger: `logs/memory/agent-state/token-ledger.json` tracks per-day approximate usage. If adding the new run would exceed `TOKEN_DAILY_LIMIT`, the workflow forces `rag` provider (skips external API) for that run but still proceeds with memory updates.
+
+## Token Ledger & Quota
+
+The ledger is a lightweight JSON file updated by workflows:
+
+```
+{
+	"days": { "2025-09-19": 123456 },
+	"updatedAt": 1695081600
+}
+```
+
+- Approx tokens come from a coarse heuristic (`chars / 4`).
+- Continuous workflow updates ledger before provider call; monthly workflow records usage after run.
+- When projected usage exceeds `TOKEN_DAILY_LIMIT` (default 500k), the run downgrades to `rag` provider automatically (`skipProvider=true`).
+- You can raise limit ad-hoc via workflow_dispatch: `TOKEN_DAILY_LIMIT=800000`.
+- Rationale: prevents silent spend spikes while still allowing offline summarization and memory maintenance.
 
 ## Docker Architecture
 

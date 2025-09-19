@@ -1,0 +1,24 @@
+name: PR Size Labels
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Size Label
+        uses: pascalgn/size-label-action@v0.5.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          sizes: >
+            {
+              "XS": 0,
+              "S": 20,
+              "M": 100,
+              "L": 300,
+              "XL": 600,
+              "XXL": 1000
+            }

@@ -5,7 +5,7 @@ on:
     paths:
       - 'logs/**/*.md'
   schedule:
-    - cron: '0 */6 * * *' # every 6 hours
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,20 +22,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-            node-version: '20.x'
-            cache: 'npm'
-            cache-dependency-path: 'site/package-lock.json'
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Cache node_modules (fallback)
+        id: node-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            site/node_modules
+          key: node-mod-${{ runner.os }}-${{ hashFiles('site/package-lock.json') }}
+          restore-keys: |
+            node-mod-${{ runner.os }}-
 
       - name: Install deps (if no cache)
+        if: steps.node-cache.outputs.cache-hit != 'true'
         run: |
           cd site
-          if [ ! -d node_modules ]; then npm ci || npm i; fi
+          npm ci || npm i
 
       - name: Prebuild
         run: |
@@ -51,7 +60,7 @@ jobs:
             echo "provider=$AI_PROVIDER_FORCE" >> $GITHUB_OUTPUT
             exit 0
           fi
-          prov="rag"
+            prov="rag"
           if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
           if [ "$prov" = "rag" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
           echo "provider=$prov" >> $GITHUB_OUTPUT
@@ -61,44 +70,68 @@ jobs:
         id: changes
         run: |
           set -e
-          # Last processed commit state file
           STATE_FILE=logs/memory/agent-state/continuous-state.json
           mkdir -p logs/memory/agent-state
           LAST=""
           if [ -f "$STATE_FILE" ]; then LAST=$(jq -r '.lastCommit // ""' "$STATE_FILE" 2>/dev/null || echo ""); fi
-          echo "Last commit: $LAST"
-          # Changed markdown logs since last commit (if available)
           if [ -n "$LAST" ]; then
-            CHANGED=$(git diff --name-only $LAST..HEAD -- 'logs/**/*.md' | wc -l | tr -d ' ')
             LIST=$(git diff --name-only $LAST..HEAD -- 'logs/**/*.md')
           else
-            CHANGED=$(git ls-files 'logs/**/*.md' | wc -l | tr -d ' ')
             LIST=$(git ls-files 'logs/**/*.md')
           fi
-          echo "Changed markdown logs: $CHANGED"
+          CHANGED=$(echo "$LIST" | grep -c ".md" || true)
           TOTAL_CHARS=0
           for f in $LIST; do
-            if [ -f "$f" ]; then
-              SIZE=$(wc -c < "$f")
-              TOTAL_CHARS=$((TOTAL_CHARS + SIZE))
-            fi
+            [ -f "$f" ] || continue
+            SIZE=$(wc -c < "$f")
+            TOTAL_CHARS=$((TOTAL_CHARS + SIZE))
           done
-          # Approx token ~ chars/4 (rough heuristic)
-            TOKENS=$((TOTAL_CHARS / 4))
-          echo "Approx characters: $TOTAL_CHARS (~$TOKENS tokens)"
+          TOKENS=$((TOTAL_CHARS / 4))
           echo "changedCount=$CHANGED" >> $GITHUB_OUTPUT
           echo "approxTokens=$TOKENS" >> $GITHUB_OUTPUT
           echo '{"lastCommit":"'$(git rev-parse HEAD)'","approxTokens":'$TOKENS',"changed":'$CHANGED'}' > $STATE_FILE
-          echo "State written to $STATE_FILE"
+          echo "State written: $STATE_FILE (changed=$CHANGED tokens~$TOKENS)"
+
+      - name: Token ledger & quota
+        id: ledger
+        run: |
+          set -e
+          LEDGER_FILE=logs/memory/agent-state/token-ledger.json
+          mkdir -p logs/memory/agent-state
+          TODAY=$(date -u +%Y-%m-%d)
+          LIMIT=${TOKEN_DAILY_LIMIT:-500000}
+          USED=0
+          if [ -f "$LEDGER_FILE" ]; then
+            USED=$(jq -r --arg d "$TODAY" '.days[$d] // 0' "$LEDGER_FILE" 2>/dev/null || echo 0)
+          fi
+          NEW=${{ steps.changes.outputs.approxTokens }}
+          SHOULD_SKIP="false"
+          if [ $((USED + NEW)) -gt $LIMIT ]; then
+            SHOULD_SKIP="true"
+            echo "Daily token limit exceeded (used=$USED new=$NEW limit=$LIMIT); will force rag provider."
+          else
+            if [ -f "$LEDGER_FILE" ]; then
+              TMP=$(mktemp)
+              jq --arg d "$TODAY" --argjson add $NEW '(.days[$d] |= ( . // 0 ) + $add) | .updatedAt=now' "$LEDGER_FILE" > $TMP || echo '{"days":{}}' > $TMP
+              mv $TMP $LEDGER_FILE
+            else
+              echo '{"days":{"'$TODAY'":'$NEW'},"updatedAt":'$(date +%s)'}' > $LEDGER_FILE
+            fi
+            echo "Ledger updated (used was $USED, added $NEW)"
+          fi
+          echo "skipProvider=$SHOULD_SKIP" >> $GITHUB_OUTPUT
+          echo "ledgerUsed=$USED" >> $GITHUB_OUTPUT
+          echo "ledgerLimit=$LIMIT" >> $GITHUB_OUTPUT
 
       - name: Batch guard
         id: guard
         run: |
           LIMIT=${BATCH_GUARD_LIMIT:-150}
-          echo "Batch guard limit: $LIMIT"
-          if [ "${{ steps.changes.outputs.changedCount }}" -gt "$LIMIT" ]; then
-            echo "Too many changed logs (${ { steps.changes.outputs.changedCount }} > $LIMIT). Skipping agent run." || true
+          CHANGED=${{ steps.changes.outputs.changedCount }}
+          echo "Batch guard limit: $LIMIT changed: $CHANGED"
+          if [ "$CHANGED" -gt "$LIMIT" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Too many changed logs ($CHANGED > $LIMIT); skipping run."
           else
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
@@ -110,14 +143,12 @@ jobs:
           AI_PROVIDER: ${{ steps.detect.outputs.provider }}
           APPROX_TOKENS: ${{ steps.changes.outputs.approxTokens }}
         run: |
-          if [ "${{ steps.guard.outputs.skip }}" = "true" ]; then
-            echo "Agent skipped due to batch guard"; exit 0; fi
+          if [ "${{ steps.guard.outputs.skip }}" = "true" ]; then echo "Skipped by batch guard"; exit 0; fi
+          if [ "${{ steps.ledger.outputs.skipProvider }}" = "true" ]; then export AI_PROVIDER=rag; fi
           set -e
           cd site
-          echo "AI_PROVIDER=$AI_PROVIDER"
-          echo "Approx tokens (char/4 heuristic): $APPROX_TOKENS"
-          # Short focused prompt to keep runtime / tokens low
-          node scripts/agents/agent-zero.mjs -- "Continuous summary: identify newly added logs (since last run if possible) and propose at most 3 tiny actionable improvements. Keep it concise." --route || echo "Agent soft-failed"
+          echo "AI_PROVIDER=$AI_PROVIDER approxTokens=$APPROX_TOKENS"
+          node scripts/agents/agent-zero.mjs -- "Continuous summary: identify newly added logs and propose up to 3 tiny actionable improvements." --route || echo "Agent soft-failed"
 
       - name: Rebuild memory index (light)
         run: |
