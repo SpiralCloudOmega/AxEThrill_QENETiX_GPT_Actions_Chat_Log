@@ -1,0 +1,51 @@
+name: Nightly Maintenance
+
+on:
+  schedule:
+    - cron: '17 4 * * *'  # daily at 04:17 UTC
+  workflow_dispatch:
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        run: |
+          cd site
+          npm ci || npm install
+      - name: Prebuild site metadata
+        run: |
+          cd site
+          npm run prebuild
+      - name: Build RAG index
+        run: |
+          cd site
+          npm run rag:build
+      - name: Nightly summarize capsule
+        run: |
+          cd site
+          node scripts/nightly-summarize.mjs || true
+      - name: Sanity tools test
+        run: |
+          cd site
+          npm run tools:test
+      - name: Upload public artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-artifacts
+          path: |
+            site/public/logs-index.json
+            site/public/feed.xml
+            site/public/commits.json
+            site/public/commit-files.json
+            site/public/repo-tree.json
+            site/public/rag-index.json
+            site/public/rag-capsule.png
+            site/public/memory-index.json
+            logs/memory/**/*

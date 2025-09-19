@@ -1,0 +1,13 @@
+{
+  "motherboard": "ASRock X570 Phantom Gaming 4 WiFi (RGB via OpenRGB)",
+  "cpu": "AMD Ryzen 9 5050 (16C/32T) 3.2GHz",
+  "gpu": "MSI GeForce RTX 3090 (NVIDIA)",
+  "ram": "G-Orion4x DDR5 RGB 4x16GB = 64GB",
+  "audio": "Creative Sound Blaster AE-9",
+  "storage": [
+    "Samsung 980 Pro 2TB NVMe",
+    "WD 6TB HDD"
+  ],
+  "display": "4K HDR 60–240 Hz",
+  "notes": "Linux rig with OpenRGB, UE/Vulkan/NVIDIA workflows"
+}

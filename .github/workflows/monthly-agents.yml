@@ -1,0 +1,98 @@
+name: Monthly Agents & Memory
+
+on:
+  schedule:
+    # Run monthly on the 1st at 02:15 UTC
+    - cron: '15 2 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  checks: read
+
+concurrency:
+  group: monthly-agents-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run-agent-zero-and-memory:
+    name: Agent Zero + Memory Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: 'site/package-lock.json'
+
+      - name: Cache node_modules (fallback)
+        id: node-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            site/node_modules
+          key: node-mod-${{ runner.os }}-${{ hashFiles('site/package-lock.json') }}
+          restore-keys: |
+            node-mod-${{ runner.os }}-
+
+      - name: Install deps
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: |
+          cd site
+          npm ci || npm i
+
+      - name: Prebuild (indexes)
+        run: |
+          cd site
+          node scripts/prebuild.mjs
+
+      - name: Detect provider
+        id: detect
+        run: |
+          set -e
+          prov="rag"
+          if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
+          if [ -z "$prov" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
+          # Prefer OpenAI if both present? Keep Gemini priority unless overridden.
+          if [ -n "${{ secrets.OPENAI_API_KEY }}" ] && [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then
+            prov="openai"
+          fi
+          echo "provider=$prov" >> $GITHUB_OUTPUT
+          echo "Using provider: $prov"
+
+      - name: Agent Zero (monthly plan)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_PROVIDER: ${{ steps.detect.outputs.provider }}
+        run: |
+          cd site
+          echo "Selected AI_PROVIDER=$AI_PROVIDER"
+          node scripts/agents/agent-zero.mjs -- "Monthly status + roadmap check-in: summarize key changes from logs-index.json and propose next small improvements." --route || echo "Agent step soft-failed"
+
+      - name: Build memory index
+        run: |
+          node site/scripts/ai-cli.mjs tool memory build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: memory-and-agents
+          path: |
+            logs/incoming/**
+            logs/memory/**
+            site/public/memory-index.json
+
+      - name: Auto-commit memory index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/public/memory-index.json logs/memory || true
+          git commit -m "chore(memory): monthly memory index update" || echo "No changes"
+          git push || true

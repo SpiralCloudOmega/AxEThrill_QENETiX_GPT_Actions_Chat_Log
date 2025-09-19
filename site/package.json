@@ -1,0 +1,56 @@
+{
+  "name": "chatlog-ui",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "predev": "node scripts/learn.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "next build",
+  "postbuild": "node scripts/bundle-report.mjs",
+    "preexport": "node scripts/prebuild.mjs",
+    "export": "next export",
+    "learn": "node scripts/learn.mjs",
+    "start": "next start",
+    "save:chat": "node scripts/save-chat.mjs",
+    "route:logs": "node scripts/route-logs.mjs",
+  "watch:incoming": "node -e \"const fs=require('fs');const p=require('path');const root=p.join(process.cwd(),'..');const dir=p.join(root,'logs','incoming');fs.mkdirSync(dir,{recursive:true});console.log('Watching',p.relative(root,dir));setInterval(()=>{require('child_process').execSync('node site/scripts/route-logs.mjs',{stdio:'inherit',cwd:process.cwd()});},3000);\"",
+  "probe": "node scripts/probe-system.mjs",
+  "rag:build": "node scripts/build-rag.mjs",
+  "rag:extract": "node scripts/extract-rag.mjs",
+  "tools:test": "node scripts/tools/test.mjs",
+  "ai:ask": "node scripts/ai-cli.mjs ask",
+  "ai:chat": "node scripts/ai-cli.mjs chat",
+  "ai:rag": "node scripts/ai-cli.mjs rag",
+  "ai:serve": "node scripts/ai-cli.mjs serve",
+  "ai:inbox": "node scripts/ai-inbox.mjs",
+  "ai:inbox:once": "node scripts/ai-inbox.mjs --once",
+  "ai:agents": "node scripts/agents/orchestrate.mjs --spec",
+  "ai:agents:file": "node scripts/agents/orchestrate.mjs --file",
+  "ai:agent-zero": "node scripts/agents/agent-zero.mjs --spec",
+  "ai:agent-zero:file": "node scripts/agents/agent-zero.mjs --file"
+  ,"mcp:serve": "node scripts/mcp-server.mjs"
+  ,"lint": "eslint . --ext .js,.mjs,.ts,.tsx"
+  ,"test:ledger": "node scripts/tests/ledger.test.mjs"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "fast-glob": "^3.3.2",
+    "highlight.js": "^11.10.0",
+    "marked-highlight": "^2.2.1",
+    "marked": "^9.1.6",
+    "next": "^14.2.6",
+    "openai": "^4.62.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.1",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "typescript": "^5.9.2",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0"
+  }
+}

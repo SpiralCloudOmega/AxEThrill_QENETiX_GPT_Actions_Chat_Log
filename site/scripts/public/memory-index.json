@@ -1,0 +1,93 @@
+[
+  {
+    "id": "2025-09-18-185502-test-capsule",
+    "ts": "2025-09-18T18:55:02.719Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-185502-test-capsule.json"
+  },
+  {
+    "id": "2025-09-18-184720-test-capsule",
+    "ts": "2025-09-18T18:47:20.471Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-184720-test-capsule.json"
+  },
+  {
+    "id": "2025-09-18-184706-nightly-sample-chat",
+    "ts": "2025-09-18T18:47:06.362Z",
+    "title": "Nightly: Sample Chat",
+    "tags": [
+      "nightly",
+      "summary"
+    ],
+    "source": "logs/2025/09/17/sample.md",
+    "summary": "Auto summary of logs/2025/09/17/sample.md",
+    "snippet": "Tags: ai, actions\n# Sample Chat\nConversation ID: 12345\nReceived At: 2025-09-17T12:00:00Z\nHello world",
+    "file": "logs/memory/2025/09/18/2025-09-18-184706-nightly-sample-chat.json"
+  },
+  {
+    "id": "2025-09-18-184556-test-capsule",
+    "ts": "2025-09-18T18:45:56.305Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-184556-test-capsule.json"
+  },
+  {
+    "id": "2025-09-18-184546-test-capsule",
+    "ts": "2025-09-18T18:45:46.989Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-184546-test-capsule.json"
+  },
+  {
+    "id": "2025-09-18-171126-test-capsule",
+    "ts": "2025-09-18T17:11:26.663Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-171126-test-capsule.json"
+  },
+  {
+    "id": "2025-09-18-170336-test-capsule",
+    "ts": "2025-09-18T17:03:36.550Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/18/2025-09-18-170336-test-capsule.json"
+  }
+]

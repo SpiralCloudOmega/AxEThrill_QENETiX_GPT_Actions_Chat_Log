@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2025-09-18T22:50:37.470Z",
+  "totalBytes": 770266,
+  "totalHuman": "752.21 KB",
+  "count": 27,
+  "top": [
+    {
+      "file": "chunks/fd9d1056-dcba7f094ce3d609.js",
+      "bytes": 172834,
+      "human": "168.78 KB"
+    },
+    {
+      "file": "chunks/framework-f66176bb897dc684.js",
+      "bytes": 139978,
+      "human": "136.70 KB"
+    },
+    {
+      "file": "chunks/117-05743242130e5321.js",
+      "bytes": 123799,
+      "human": "120.90 KB"
+    },
+    {
+      "file": "chunks/main-2f9ff067c991cce6.js",
+      "bytes": 116989,
+      "human": "114.25 KB"
+    },
+    {
+      "file": "chunks/polyfills-42372ed130431b0a.js",
+      "bytes": 112594,
+      "human": "109.96 KB"
+    },
+    {
+      "file": "chunks/972-7af0c34a87d95b83.js",
+      "bytes": 26066,
+      "human": "25.46 KB"
+    },
+    {
+      "file": "chunks/app/page-da20337b150072d5.js",
+      "bytes": 20618,
+      "human": "20.13 KB"
+    },
+    {
+      "file": "chunks/app/logs/[...slug]/page-41c9a6e65b9e35fc.js",
+      "bytes": 13695,
+      "human": "13.37 KB"
+    },
+    {
+      "file": "chunks/app/search/page-f9f84604b5cae9c8.js",
+      "bytes": 10102,
+      "human": "9.87 KB"
+    },
+    {
+      "file": "chunks/app/tags/page-1dd09a372c710e46.js",
+      "bytes": 7730,
+      "human": "7.55 KB"
+    },
+    {
+      "file": "chunks/app/tags/[tag]/page-09d9d169e85f2f6b.js",
+      "bytes": 5524,
+      "human": "5.39 KB"
+    },
+    {
+      "file": "chunks/app/memory/page-59284d0c3bf78ff4.js",
+      "bytes": 4240,
+      "human": "4.14 KB"
+    },
+    {
+      "file": "chunks/app/new/page-61d6a737011dd92a.js",
+      "bytes": 3889,
+      "human": "3.80 KB"
+    },
+    {
+      "file": "chunks/webpack-c81f7fd28659d64f.js",
+      "bytes": 3557,
+      "human": "3.47 KB"
+    },
+    {
+      "file": "chunks/app/layout-68f486bd79220a76.js",
+      "bytes": 3523,
+      "human": "3.44 KB"
+    },
+    {
+      "file": "chunks/app/agents/page-f2053aa6f55e0238.js",
+      "bytes": 2628,
+      "human": "2.57 KB"
+    },
+    {
+      "file": "chunks/main-app-98ad1d777c0f0556.js",
+      "bytes": 461,
+      "human": "461 B"
+    },
+    {
+      "file": "chunks/pages/_app-72b849fbd24ac258.js",
+      "bytes": 280,
+      "human": "280 B"
+    },
+    {
+      "file": "chunks/pages/_error-7ba65e1336b92748.js",
+      "bytes": 247,
+      "human": "247 B"
+    },
+    {
+      "file": "chunks/app/not-found-79c06d7659c1f2bd.js",
+      "bytes": 216,
+      "human": "216 B"
+    },
+    {
+      "file": "chunks/app/logs/[year]/[month]/[day]/page-f539c7a520d95c0e.js",
+      "bytes": 216,
+      "human": "216 B"
+    },
+    {
+      "file": "chunks/app/rig/page-c1ab14d9da7d8ba1.js",
+      "bytes": 180,
+      "human": "180 B"
+    },
+    {
+      "file": "chunks/app/help/page-20fba0742fa0ab56.js",
+      "bytes": 180,
+      "human": "180 B"
+    },
+    {
+      "file": "chunks/app/health/page-61a968f8fb1cec0b.js",
+      "bytes": 180,
+      "human": "180 B"
+    },
+    {
+      "file": "chunks/app/graph/page-645fe929054db2b4.js",
+      "bytes": 180,
+      "human": "180 B"
+    },
+    {
+      "file": "chunks/app/ai/page-72d7b221fef18f63.js",
+      "bytes": 180,
+      "human": "180 B"
+    },
+    {
+      "file": "chunks/app/_not-found/page-2207abc5606f8227.js",
+      "bytes": 180,
+      "human": "180 B"
+    }
+  ]
+}

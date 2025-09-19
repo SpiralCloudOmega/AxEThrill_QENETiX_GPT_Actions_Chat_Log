@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-09-17T23:38:27.698Z",
+  "kernel": "6.8.0-1030-azure",
+  "distro": "Ubuntu 24.04.2 LTS",
+  "nvidia": "",
+  "cpu": "AMD EPYC 7763 64-Core Processor (2 threads)",
+  "memory": "7.8Gi total",
+  "gpu": "",
+  "audio": "",
+  "storage": [
+    "loop0 63.8M loop ",
+    "loop1 50.9M loop ",
+    "loop2 89.4M loop ",
+    "loop3 257G loop ",
+    "loop4 32G loop /workspaces/.codespaces/.persistedshare",
+    "loop5 500M loop ",
+    "loop6 50.8M loop ",
+    "sda 30G disk ",
+    "sda1 29.9G part /workspaces/.codespaces/shared",
+    "sda14 4M part ",
+    "sda15 106M part ",
+    "sdb 45G disk ",
+    "sdb1 45G part /tmp",
+    "sdc 512G disk ",
+    "sdc1 512G part ",
+    "sr0 628K rom"
+  ],
+  "openrgb": "",
+  "display": ""
+}

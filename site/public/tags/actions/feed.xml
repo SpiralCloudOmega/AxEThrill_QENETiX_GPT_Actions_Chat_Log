@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>#actions - Chat Logs</title>
+    <link>http://localhost:3000/tags/actions/</link>
+    <description>Items tagged actions</description>
+    
+    <item>
+      <title>Sample Chat</title>
+      <link>http://localhost:3000/logs/2025/09/17/sample/</link>
+      <guid>http://localhost:3000/logs/2025/09/17/sample/</guid>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
+      <description>logs/2025/09/17/sample.md</description>
+    </item>
+  </channel>
+</rss>
