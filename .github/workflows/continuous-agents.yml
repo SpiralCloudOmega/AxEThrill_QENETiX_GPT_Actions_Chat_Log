@@ -1,0 +1,82 @@
+name: Continuous Agents
+
+on:
+  push:
+    paths:
+      - 'logs/**/*.md'
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: continuous-agents-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fast-agent:
+    name: Fast RAG / Provider Agent
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+            node-version: '20.x'
+            cache: 'npm'
+            cache-dependency-path: 'site/package-lock.json'
+
+      - name: Install deps (if no cache)
+        run: |
+          cd site
+          if [ ! -d node_modules ]; then npm ci || npm i; fi
+
+      - name: Prebuild
+        run: |
+          cd site
+          node scripts/prebuild.mjs
+
+      - name: Detect provider (prefer gemini)
+        id: detect
+        run: |
+          set -e
+          prov="rag"
+          if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
+          if [ "$prov" = "rag" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
+          echo "provider=$prov" >> $GITHUB_OUTPUT
+          echo "Using provider: $prov"
+
+      - name: Run agent summary
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_PROVIDER: ${{ steps.detect.outputs.provider }}
+        run: |
+          set -e
+          cd site
+          echo "AI_PROVIDER=$AI_PROVIDER"
+          # Short focused prompt to keep runtime / tokens low
+          node scripts/agents/agent-zero.mjs -- "Continuous summary: identify newly added logs (since last run if possible) and propose at most 3 tiny actionable improvements. Keep it concise." --route || echo "Agent soft-failed"
+
+      - name: Rebuild memory index (light)
+        run: |
+          node site/scripts/ai-cli.mjs tool memory build || true
+
+      - name: Auto-commit updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/public/memory-index.json logs/memory logs/incoming || true
+          git diff --cached --quiet && echo "No changes" || git commit -m "chore(agent): continuous memory/index update" || true
+          git push || true
+
+      - name: Health snapshot info
+        run: |
+          if [ -f site/public/health.json ]; then echo '--- health.json'; cat site/public/health.json; fi
+

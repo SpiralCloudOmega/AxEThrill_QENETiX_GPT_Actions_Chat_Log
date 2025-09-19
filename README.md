@@ -25,6 +25,31 @@ A static Next.js 14 UI + local-first AI toolkit to browse and analyze Markdown c
 - Health snapshot page (`/health`) + raw `health.json` and lightweight `ping.json`
 - Bundle size report emitted as `bundle-report.json` after build
 
+### Autonomous Mode & Continuous Agents
+This repo can operate in a hands‑free mode:
+
+- `continuous-agents.yml` runs every 6 hours and on pushes that modify `logs/**/*.md`.
+- It prebuilds indexes, picks an AI provider (prefers Gemini → then OpenAI → else offline `rag`), runs a concise Agent Zero summary prompt, updates memory index, and auto-commits changes.
+- Monthly deeper analysis lives in `monthly-agents.yml`.
+
+Provider precedence (workflows):
+1. `GEMINI_API_KEY` present → `gemini`
+2. else `OPENAI_API_KEY` present → `openai`
+3. else → `rag` (offline only)
+
+Override locally:
+```bash
+AI_PROVIDER=gemini (cd site && npm run -s ai:ask -- "Summarize new logs")
+AI_PROVIDER=rag (cd site && npm run -s ai:chat)
+```
+
+Safety guards you may add later:
+- Large batch guard (skip if > N new logs).
+- Token usage caps (count RAG snippet chars before requesting provider).
+- Agent state checkpointing in `logs/memory/agent-state/`.
+
+No manual approval is required for these workflows if repo Actions permissions allow direct pushes and secrets are configured.
+
 ## Local development
 From the `site/` folder:
 
