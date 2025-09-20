@@ -44,10 +44,25 @@ jobs:
           cd site
           npm run build
 
+      - name: Ledger Unit Test
+        run: |
+          cd site
+          npm run test:ledger
+
+      - name: Ingest Edge Tests
+        run: |
+          cd site
+          npm run test:ingest-edge
+
       - name: MCP Integration Test
         run: |
           cd site
           npm run test:mcp
+
+      - name: Run All Tests
+        run: |
+          cd site
+          npm run test:all
 
       - name: Tools Test
         run: |
