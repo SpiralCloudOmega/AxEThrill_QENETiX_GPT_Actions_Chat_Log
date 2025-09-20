@@ -1,5 +1,18 @@
 [
   {
+    "id": "2025-09-20-171414-test-capsule",
+    "ts": "2025-09-20T17:14:14.981Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171414-test-capsule.json"
+  },
+  {
     "id": "2025-09-18-185502-test-capsule",
     "ts": "2025-09-18T18:55:02.719Z",
     "title": "Test Capsule",
