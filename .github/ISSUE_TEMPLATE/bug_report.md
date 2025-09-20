@@ -1,8 +1,10 @@
 ---
 name: Bug report
+about: 'Bug report '
 title: "[Bug]: <short description>"
-labels: [bug]
-assignees: []
+labels: bug
+assignees: SpiralCloudOmega
+
 ---
 
 ## Describe the bug

@@ -1,8 +1,10 @@
 ---
 name: Feature request
+about: 'Feature request '
 title: "[Feature]: <short description>"
-labels: [enhancement]
-assignees: []
+labels: enhancement
+assignees: SpiralCloudOmega
+
 ---
 
 ## Summary
