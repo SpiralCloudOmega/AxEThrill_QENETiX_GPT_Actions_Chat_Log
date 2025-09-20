@@ -8,7 +8,7 @@ const publicDir = path.join(siteDir, 'public');
 
 function readChunks(buf) {
   // PNG: 8-byte signature, then chunks [len(4)][type(4)][data(len)][crc(4)]
-  const sig = buf.slice(0, 8);
+  const _sig = buf.slice(0, 8); // signature unused beyond validation scope
   const chunks = [];
   let off = 8;
   while (off + 12 <= buf.length) {
@@ -31,7 +31,6 @@ async function run() {
   const buf = fs.readFileSync(pngPath);
   const chunks = readChunks(buf);
   const parts = [];
-  let meta = null;
   for (const ch of chunks) {
     if (ch.type !== 'zTXt') continue;
     // zTXt: keyword (latin1) + 0x00 + compression method (0) + compressed text
@@ -43,7 +42,7 @@ async function run() {
     if (method !== 0) continue;
     const text = zlib.inflateSync(comp).toString('utf8');
     if (keyword === 'rag-capsule') {
-      meta = JSON.parse(text);
+      // capsule metadata (parts count) ignored here
     } else if (/^rag-\d{3}$/.test(keyword)) {
       parts.push(text);
     }

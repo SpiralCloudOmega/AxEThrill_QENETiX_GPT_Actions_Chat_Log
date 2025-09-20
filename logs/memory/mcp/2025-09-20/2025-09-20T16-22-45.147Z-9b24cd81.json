@@ -1,0 +1,13 @@
+{
+  "id": "2025-09-20_2025-09-20T16-22-45.147Z_9b24cd81",
+  "ts": "2025-09-20T16:22:45.147Z",
+  "method": "agent.summarize",
+  "ok": true,
+  "ms": 3,
+  "paramBytes": 26,
+  "resultBytes": 930,
+  "params": {
+    "query": "test",
+    "limit": 3
+  }
+}

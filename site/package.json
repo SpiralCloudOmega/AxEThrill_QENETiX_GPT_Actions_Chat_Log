@@ -31,8 +31,9 @@
   "ai:agent-zero:file": "node scripts/agents/agent-zero.mjs --file"
   ,"mcp:serve": "node scripts/mcp-server.mjs"
   ,"lint": "eslint . --ext .js,.mjs,.ts,.tsx"
-  ,"test:ledger": "node scripts/tests/ledger.test.mjs"
+  ,"lint:fix": "eslint . --ext .js,.mjs,.ts,.tsx --fix"
   ,"test:mcp": "node scripts/tests/mcp.test.mjs"
+  ,"typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

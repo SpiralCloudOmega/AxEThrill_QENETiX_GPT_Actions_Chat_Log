@@ -14,7 +14,7 @@ function logsRoot() {
 
 function parseHeader(md: string) {
   const lines = md.split('\n');
-  let fm: Record<string, string> = {};
+  const fm: Record<string, string> = {};
   if (lines[0]?.trim() === '---') {
     for (let i = 1; i < Math.min(lines.length, 50); i++) {
       const line = lines[i];

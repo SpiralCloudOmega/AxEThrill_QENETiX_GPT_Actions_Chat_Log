@@ -28,9 +28,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-            node-version: '20.x'
-            cache: 'npm'
-            cache-dependency-path: 'site/package-lock.json'
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: 'site/package-lock.json'
 
       - name: Install deps (if no cache)
         run: |
@@ -95,9 +95,11 @@ jobs:
         id: guard
         run: |
           LIMIT=${BATCH_GUARD_LIMIT:-150}
+          CHANGED_COUNT="${{ steps.changes.outputs.changedCount }}"
           echo "Batch guard limit: $LIMIT"
-          if [ "${{ steps.changes.outputs.changedCount }}" -gt "$LIMIT" ]; then
-            echo "Too many changed logs (${ { steps.changes.outputs.changedCount }} > $LIMIT). Skipping agent run." || true
+          echo "Changed count: $CHANGED_COUNT"
+          if [ "$CHANGED_COUNT" -gt "$LIMIT" ]; then
+            echo "Too many changed logs ($CHANGED_COUNT > $LIMIT). Skipping agent run." || true
             echo "skip=true" >> $GITHUB_OUTPUT
           else
             echo "skip=false" >> $GITHUB_OUTPUT

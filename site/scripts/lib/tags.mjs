@@ -12,7 +12,7 @@ export function normalizeTag(tag) {
     .replace(/\s+/g, ' ')
     .trim();
   // Strip a single trailing punctuation token (common noise), but not hashes inside words.
-  s = s.replace(/[\s]*[:;,\.]$/,'');
+  s = s.replace(/[\s]*[:;,.]$/,'');
   return s;
 }
 

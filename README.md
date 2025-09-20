@@ -24,6 +24,7 @@ A static Next.js 14 UI + local-first AI toolkit to browse and analyze Markdown c
 - SSE streaming endpoint `/stream` (chunked JSON events)
 - Health snapshot page (`/health`) + raw `health.json` and lightweight `ping.json`
 - Bundle size report emitted as `bundle-report.json` after build
+ - Minimal MCP JSON-RPC server (see `docs/mcp.md`) plus REST helpers `/mcp/health` & `/mcp/recent`
 
 ### Autonomous Mode & Continuous Agents
 This repo can operate in a hands‑free mode:
@@ -247,7 +248,7 @@ Transcripts are saved under `logs/incoming` and can be routed into dated folders
 
 ### MCP (Model Context Protocol) Server (Experimental)
 
-A minimal MCP-style JSON-RPC 2.0 endpoint is available to expose repository knowledge to external agent clients. It now supports controlled write methods, lightweight summarization, request logging, and simple daily rate limiting.
+A minimal MCP-style JSON-RPC 2.0 endpoint exposes repository knowledge (logs, memory, RAG) with controlled write methods, summarization, request logging, and simple daily rate limiting. See `docs/mcp.md` for an authoritative, continually updated method reference. Two convenience REST mirrors exist for quick inspection: `GET /mcp/health` and `GET /mcp/recent` (query params: `limit`, `method`, `ok=true|false`).
 
 Start the server:
 
@@ -266,26 +267,19 @@ JSON-RPC request format:
 { "jsonrpc": "2.0", "id": 1, "method": "logs.list", "params": { "limit": 5 } }
 ```
 
-Implemented methods:
-Read:
-- `logs.list { tag?, limit? }`
-- `logs.get { href | path }`
-- `memory.list { tag?, limit? }`
-- `memory.get { id }`
-- `rag.search { query, k? }`
-- `health.snapshot`
-- `token.ledger`
-- `agent.summarize { query?, limit? }` (local RAG summarization; returns `{ summary, items[], model, degraded }`)
-
-Write (API key required):
-- `ingest.add { title?, content, tags?[] }` -> writes markdown to `logs/incoming/`
-- `memory.add { title, content, tags?[], source?, summary? }` -> creates JSON capsule in `logs/memory/`
+Implemented (JSON-RPC) methods (abridged): logs.list/get, memory.list/get, rag.search, health.snapshot, token.ledger, agent.summarize, mcp.logs.recent, ingest.add*, memory.add* (*=auth required).
 
 Logging & Rate Limits:
-- Each request (success or error) is logged to `logs/memory/mcp/<YYYY-MM-DD>/<timestamp>-<id>.json` with a rolling `index.json` (last 500 entries) containing: `{ id, ts, method, ok, ms, paramBytes, resultBytes, error? }`.
-- Daily request counter (per process) stored in `logs/memory/mcp/rate-limits.json`. Set `MCP_DAILY_REQ_LIMIT` (default 500). When exceeded, server returns JSON-RPC error `{ code: "RATE_LIMIT" }`.
+- Per-request JSON log: `logs/memory/mcp/<YYYY-MM-DD>/<timestamp>-<id>.json`
+- Rolling index (last 500): `logs/memory/mcp/index.json`
+- Daily counter: `logs/memory/mcp/rate-limits.json` (`{ date, counts, limit }`)
+Set `MCP_DAILY_REQ_LIMIT` (default 500). On exceed: `{ code: "RATE_LIMIT" }`.
 
-Planned (future enhancement): provider-backed richer summarization (Gemini/OpenAI) using existing AI CLI logic with token ledger integration.
+Summarization (`agent.summarize`):
+1. Ranks with local TF‑IDF
+2. Attempts OpenAI (preferred) or Gemini if keys exist
+3. Falls back to deterministic local bullet list
+Response includes `{ degraded: true }` when only the local fallback was used.
 
 Example (curl):
 ```bash
@@ -305,6 +299,8 @@ Environment variables (MCP):
 | `MCP_API_KEY` | Enables auth; required for write methods | (unset) |
 | `MCP_PORT` | Port to listen on | 12812 |
 | `MCP_DAILY_REQ_LIMIT` | Daily request cap (read + write) | 500 |
+| `OPENAI_API_KEY` | Enables OpenAI summarization | (unset) |
+| `GEMINI_API_KEY` | Enables Gemini summarization | (unset) |
 
 JSON-RPC Errors (codes): `INVALID_REQUEST`, `METHOD_NOT_FOUND`, `INVALID_INPUT`, `NOT_FOUND`, `UNAUTHORIZED`, `RATE_LIMIT`, `INTERNAL`.
 
@@ -318,5 +314,5 @@ JSON-RPC Errors (codes): `INVALID_REQUEST`, `METHOD_NOT_FOUND`, `INVALID_INPUT`,
 }
 ```
 
-`degraded: true` indicates the summarization used only local TF-IDF context (no external model). A future provider-enabled path will set `degraded: false`.
+`degraded: true` indicates summarization used only local TF-IDF context (no external model). When a provider succeeds, `degraded: false` and `model` reflects the provider.
 

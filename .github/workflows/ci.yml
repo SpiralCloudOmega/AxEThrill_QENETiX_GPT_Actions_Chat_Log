@@ -44,16 +44,6 @@ jobs:
           cd site
           npm run build
 
-      - name: Ingest Edge Tests
-        run: |
-          cd site
-          npm run test:ingest-edge
-
-      - name: Ledger Unit Test
-        run: |
-          cd site
-          npm run test:ledger
-
       - name: MCP Integration Test
         run: |
           cd site

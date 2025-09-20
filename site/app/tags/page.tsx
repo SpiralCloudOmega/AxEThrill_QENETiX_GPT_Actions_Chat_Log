@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import fg from 'fast-glob';
-import Link from 'next/link';
+// import Link from 'next/link'; // (unused)
 import dynamic from 'next/dynamic';
-const CopyLink = dynamic(() => import('../../components/CopyLink'), { ssr: false });
+// const CopyLink = dynamic(() => import('../../components/CopyLink'), { ssr: false }); // (unused)
 const TagsFilter = dynamic(() => import('./tags-filter'), { ssr: false });
 const TopTags = dynamic(() => import('../../components/TopTags'), { ssr: false });
 import { normalizeTags } from '../../scripts/lib/tags.mjs';
@@ -14,7 +14,7 @@ function logsRoot() {
 
 function parseTags(md: string): string[] {
   const lines = md.split('\n');
-  let fm: Record<string, string> = {};
+  const fm: Record<string, string> = {};
   if (lines[0]?.trim() === '---') {
     for (let i = 1; i < Math.min(lines.length, 50); i++) {
       const line = lines[i];

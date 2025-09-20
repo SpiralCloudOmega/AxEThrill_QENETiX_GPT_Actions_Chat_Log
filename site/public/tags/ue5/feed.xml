@@ -2,20 +2,20 @@
 <rss version="2.0">
   <channel>
     <title>#ue5 - Chat Logs</title>
-    <link>http://localhost:3000/tags/ue5/</link>
+    <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/tags/ue5/</link>
     <description>Items tagged ue5</description>
     
     <item>
       <title>Chat Transcript</title>
-      <link>http://localhost:3000/logs/inbox/test.txt.answer/</link>
-      <guid>http://localhost:3000/logs/inbox/test.txt.answer/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/inbox/test.txt.answer/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/inbox/test.txt.answer/</guid>
       <pubDate>Invalid Date</pubDate>
       <description>logs/inbox/test.txt.answer.md</description>
     </item>
     <item>
       <title>Vulkan Test</title>
-      <link>http://localhost:3000/logs/2025/09/17/vulkan-test/</link>
-      <guid>http://localhost:3000/logs/2025/09/17/vulkan-test/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/vulkan-test/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/vulkan-test/</guid>
       <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/17/vulkan-test.md</description>
     </item>

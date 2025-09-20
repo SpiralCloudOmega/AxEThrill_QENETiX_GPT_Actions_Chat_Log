@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2025-09-18T22:50:37.470Z",
-  "totalBytes": 770266,
-  "totalHuman": "752.21 KB",
-  "count": 27,
+  "generatedAt": "2025-09-20T16:22:29.774Z",
+  "totalBytes": 770970,
+  "totalHuman": "752.90 KB",
+  "count": 28,
   "top": [
     {
       "file": "chunks/fd9d1056-dcba7f094ce3d609.js",
@@ -15,14 +15,14 @@
       "human": "136.70 KB"
     },
     {
-      "file": "chunks/117-05743242130e5321.js",
-      "bytes": 123799,
-      "human": "120.90 KB"
+      "file": "chunks/117-75ea3e5cd8eede2f.js",
+      "bytes": 123988,
+      "human": "121.08 KB"
     },
     {
-      "file": "chunks/main-2f9ff067c991cce6.js",
-      "bytes": 116989,
-      "human": "114.25 KB"
+      "file": "chunks/main-cda27f7ce431b84a.js",
+      "bytes": 117294,
+      "human": "114.54 KB"
     },
     {
       "file": "chunks/polyfills-42372ed130431b0a.js",
@@ -30,62 +30,62 @@
       "human": "109.96 KB"
     },
     {
-      "file": "chunks/972-7af0c34a87d95b83.js",
+      "file": "chunks/972-f09d54107ee155bb.js",
       "bytes": 26066,
       "human": "25.46 KB"
     },
     {
-      "file": "chunks/app/page-da20337b150072d5.js",
+      "file": "chunks/app/page-db264ca4f0a261bd.js",
       "bytes": 20618,
       "human": "20.13 KB"
     },
     {
-      "file": "chunks/app/logs/[...slug]/page-41c9a6e65b9e35fc.js",
+      "file": "chunks/app/logs/[...slug]/page-c0af6cb33c8ffde3.js",
       "bytes": 13695,
       "human": "13.37 KB"
     },
     {
-      "file": "chunks/app/search/page-f9f84604b5cae9c8.js",
+      "file": "chunks/app/search/page-9395ba255be46a69.js",
       "bytes": 10102,
       "human": "9.87 KB"
     },
     {
-      "file": "chunks/app/tags/page-1dd09a372c710e46.js",
-      "bytes": 7730,
-      "human": "7.55 KB"
+      "file": "chunks/app/tags/page-411209378db2fda7.js",
+      "bytes": 7691,
+      "human": "7.51 KB"
     },
     {
-      "file": "chunks/app/tags/[tag]/page-09d9d169e85f2f6b.js",
+      "file": "chunks/app/tags/[tag]/page-aea35f461ecffa4f.js",
       "bytes": 5524,
       "human": "5.39 KB"
     },
     {
-      "file": "chunks/app/memory/page-59284d0c3bf78ff4.js",
-      "bytes": 4240,
+      "file": "chunks/app/memory/page-e31d529231b0b078.js",
+      "bytes": 4242,
       "human": "4.14 KB"
     },
     {
-      "file": "chunks/app/new/page-61d6a737011dd92a.js",
+      "file": "chunks/app/new/page-d14991a1d53fa28b.js",
       "bytes": 3889,
       "human": "3.80 KB"
     },
     {
-      "file": "chunks/webpack-c81f7fd28659d64f.js",
-      "bytes": 3557,
-      "human": "3.47 KB"
+      "file": "chunks/webpack-377522503589cacd.js",
+      "bytes": 3596,
+      "human": "3.51 KB"
     },
     {
-      "file": "chunks/app/layout-68f486bd79220a76.js",
+      "file": "chunks/app/layout-c26309da6bf06d94.js",
       "bytes": 3523,
       "human": "3.44 KB"
     },
     {
-      "file": "chunks/app/agents/page-f2053aa6f55e0238.js",
+      "file": "chunks/app/agents/page-fe8a791ae3078572.js",
       "bytes": 2628,
       "human": "2.57 KB"
     },
     {
-      "file": "chunks/main-app-98ad1d777c0f0556.js",
+      "file": "chunks/main-app-b475441c9a0705b3.js",
       "bytes": 461,
       "human": "461 B"
     },
@@ -100,44 +100,49 @@
       "human": "247 B"
     },
     {
-      "file": "chunks/app/not-found-79c06d7659c1f2bd.js",
+      "file": "chunks/app/not-found-2db1ac0f8e58146d.js",
       "bytes": 216,
       "human": "216 B"
     },
     {
-      "file": "chunks/app/logs/[year]/[month]/[day]/page-f539c7a520d95c0e.js",
+      "file": "chunks/app/logs/[year]/[month]/[day]/page-f4cc6df762a29c8c.js",
       "bytes": 216,
       "human": "216 B"
     },
     {
-      "file": "chunks/app/rig/page-c1ab14d9da7d8ba1.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/rig/page-1ee02c944f67f17e.js",
+      "bytes": 184,
+      "human": "184 B"
     },
     {
-      "file": "chunks/app/help/page-20fba0742fa0ab56.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/metrics/page-fd4a4abb82527adf.js",
+      "bytes": 184,
+      "human": "184 B"
     },
     {
-      "file": "chunks/app/health/page-61a968f8fb1cec0b.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/help/page-5df04270de72a565.js",
+      "bytes": 184,
+      "human": "184 B"
     },
     {
-      "file": "chunks/app/graph/page-645fe929054db2b4.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/health/page-b8e32f2d52bc914c.js",
+      "bytes": 184,
+      "human": "184 B"
     },
     {
-      "file": "chunks/app/ai/page-72d7b221fef18f63.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/graph/page-c4d3129888969a12.js",
+      "bytes": 184,
+      "human": "184 B"
     },
     {
-      "file": "chunks/app/_not-found/page-2207abc5606f8227.js",
-      "bytes": 180,
-      "human": "180 B"
+      "file": "chunks/app/ai/page-9a27e4826b237285.js",
+      "bytes": 184,
+      "human": "184 B"
+    },
+    {
+      "file": "chunks/app/_not-found/page-2c7a874980eb5d56.js",
+      "bytes": 184,
+      "human": "184 B"
     }
   ]
 }

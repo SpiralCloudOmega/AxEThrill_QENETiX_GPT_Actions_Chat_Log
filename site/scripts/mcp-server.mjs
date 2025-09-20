@@ -73,17 +73,66 @@ function cosineRank(rag, query, topK=6) {
 
 // ---- Method Implementations ----
 const methods = {
-  'agent.summarize': ({ query='', limit=8, provider }) => {
-    // Lightweight summarization: gather top log titles/snippets via TF-IDF (rag) and produce a simple bullet list.
-    // If a provider env (GEMINI_API_KEY/OpenAI) is present and provider param requested, we could in future call out; for now local summary.
+  'mcp.logs.recent': ({ limit=50, method, ok }) => {
+    // Read rolling index and filter
+    const indexFile = path.join(mcpRootDir, 'index.json');
+    const idx = readJSON(indexFile, []);
+    let out = idx;
+    if (method) out = out.filter(e => e.method === method);
+    if (ok === true) out = out.filter(e => e.ok === true);
+    if (ok === false) out = out.filter(e => e.ok === false);
+    return out.slice(0, Number(limit));
+  },
+  'agent.summarize': async ({ query='', limit=8, provider }={}) => {
+    // Summarization pipeline:
+    // 1. Rank with local TF-IDF (always) to pick top items.
+    // 2. If external provider available & not explicitly disabled, build a concise prompt and call model.
+    // 3. Fall back to deterministic local bullet list if provider fails.
     const rag = loadRagIndex();
-    if (!rag) return { summary: '(rag index unavailable)', items: [] };
+    if (!rag) return { summary: '(rag index unavailable)', items: [], model: 'local-rag', degraded: true };
     const q = query || 'recent activity';
     const k = Number(limit)||8;
     const ranked = cosineRank(rag, q, k);
     const items = ranked.map(r => ({ href: r.href, title: r.title, snippet: r.snippet, score: r.score }));
-    const summary = 'Summary for ' + JSON.stringify(q) + ':\n' + items.map(i=>`- ${i.title} (${i.href})`).join('\n');
-    return { summary, items, model: 'local-rag', degraded: true };
+    const baseSummary = 'Summary for ' + JSON.stringify(q) + ':\n' + items.map(i=>`- ${i.title} (${i.href})`).join('\n');
+    // External provider attempt
+    const useProvider = provider !== 'local' && (process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY);
+    if (!useProvider) return { summary: baseSummary, items, model: 'local-rag', degraded: true };
+    try {
+      let modelUsed = 'local-rag';
+      let finalText = baseSummary;
+      const context = items.map(i=>`Title: ${i.title}\nPath: ${i.href}\nSnippet: ${i.snippet}` ).join('\n\n');
+      const prompt = `You are an assistant summarizing repository log context. Query: ${q}\nProvide a concise, high-signal paragraph (<=120 words) then 3-6 bullet insights.\n\nContext:\n${context}`;
+      if (process.env.OPENAI_API_KEY) {
+        // Dynamic import to avoid hard dependency if unused
+        const openaiMod = await import('openai').catch(()=>null);
+        if (openaiMod?.default) {
+          const client = new openaiMod.default({ apiKey: process.env.OPENAI_API_KEY });
+          const resp = await client.chat.completions.create({
+            model: 'gpt-4o-mini',
+            messages: [ { role:'system', content:'Summarize repository activity.' }, { role:'user', content: prompt } ],
+            max_tokens: 300,
+            temperature: 0.4
+          });
+            finalText = resp.choices?.[0]?.message?.content?.trim() || baseSummary;
+            modelUsed = 'openai:gpt-4o-mini';
+            return { summary: finalText, items, model: modelUsed, degraded: false };
+        }
+      }
+      if (process.env.GEMINI_API_KEY) {
+        const gemMod = await import('@google/generative-ai').catch(()=>null);
+        if (gemMod?.GoogleGenerativeAI) {
+          const genAI = new gemMod.GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+          const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+          const resp = await model.generateContent(prompt);
+          const text = resp?.response?.text?.() || baseSummary;
+          return { summary: text.trim(), items, model: 'gemini:1.5-flash', degraded: false };
+        }
+      }
+      return { summary: baseSummary, items, model: 'local-rag', degraded: true };
+    } catch {
+      return { summary: baseSummary, items, model: 'local-rag', degraded: true };
+    }
   },
   'logs.list': ({ tag, limit=100 }={}) => {
     const items = loadLogsIndex();
@@ -106,9 +155,9 @@ const methods = {
   },
   'memory.list': ({ tag, limit=100 }={}) => {
     const items = loadMemoryIndex();
-    let out = items;
-    if (tag) out = out.filter(m => (m.tags||[]).includes(tag));
-    return out.slice(0, Number(limit));
+    let arr = Array.isArray(items) ? items : (items?.items || []);
+    if (tag) arr = arr.filter(m => (m.tags||[]).includes(tag));
+    return arr.slice(0, Number(limit));
   },
   'memory.get': ({ id }) => {
     if (!id) throw rpcError('INVALID_INPUT', 'Provide id');
@@ -202,6 +251,30 @@ const server = http.createServer((req,res) => {
     return res.end(JSON.stringify({ ok:true, ts: Date.now() }));
   }
 
+  // Lightweight REST mirrors
+  if (req.method === 'GET' && req.url === '/mcp/health') {
+    const snap = methods['health.snapshot']();
+    res.writeHead(200, { 'content-type':'application/json' });
+    return res.end(JSON.stringify(snap || {}));
+  }
+  if (req.method === 'GET' && req.url && req.url.startsWith('/mcp/recent')) {
+    // Parse query (?limit=..., &method=..., &ok=true|false)
+    try {
+      const u = new URL(req.url, 'http://localhost');
+      const limit = u.searchParams.get('limit') || undefined;
+      const method = u.searchParams.get('method') || undefined;
+      const okParam = u.searchParams.get('ok');
+      let ok;
+      if (okParam === 'true') ok = true; else if (okParam === 'false') ok = false;
+      const recent = methods['mcp.logs.recent']({ limit, method, ok });
+      res.writeHead(200, { 'content-type': 'application/json' });
+      return res.end(JSON.stringify(recent));
+    } catch (e) {
+      res.writeHead(400, { 'content-type':'application/json' });
+      return res.end(JSON.stringify({ error: 'Bad query', message: e?.message || String(e) }));
+    }
+  }
+
   if (req.method !== 'POST' || req.url !== '/mcp') { res.writeHead(404); return res.end('Not found'); }
   if (apiKey) {
     const provided = req.headers['x-api-key'];
@@ -239,8 +312,10 @@ const server = http.createServer((req,res) => {
         ensureDir(mcpRootDir);
         const rateFile = path.join(mcpRootDir, 'rate-limits.json');
         const today = new Date().toISOString().slice(0,10);
-        let rate = readJSON(rateFile, { date: today, counts: {} });
+  let rate = readJSON(rateFile, { date: today, counts: {}, limit });
         if (rate.date !== today) rate = { date: today, counts: {} };
+  // Ensure limit field is present (persist configured limit for observability)
+  if (typeof rate.limit !== 'number' || rate.limit !== limit) rate.limit = limit;
         const bucket = apiKey ? 'auth' : 'anon';
         const used = rate.counts[bucket] || 0;
         if (used >= limit) {
@@ -260,28 +335,31 @@ const server = http.createServer((req,res) => {
     const paramBytes = Buffer.byteLength(JSON.stringify(payload.params||{}));
     let resultObj;
     let errorObj;
-    try {
-      const result = fn(payload.params || {});
-      resultObj = result;
-      res.writeHead(200, { 'content-type':'application/json' });
-      res.end(JSON.stringify({ jsonrpc:'2.0', result, id }));
-    } catch (e) {
-      errorObj = makeErrorObject(e);
-      res.writeHead(200, { 'content-type':'application/json' });
-      res.end(JSON.stringify({ jsonrpc:'2.0', error: errorObj, id }));
-    }
-    const ms = Date.now() - t0;
-    try {
-      logMcpRequest({
-        method: payload.method,
-        params: payload.params,
-        ok: !errorObj,
-        error: errorObj,
-        ms,
-        resultBytes: resultObj ? Buffer.byteLength(JSON.stringify(resultObj)) : 0,
-        paramBytes
-      });
-    } catch {}
+    (async () => {
+      try {
+        const maybe = fn(payload.params || {});
+        const result = (maybe && typeof maybe.then === 'function') ? await maybe : maybe;
+        resultObj = result;
+        res.writeHead(200, { 'content-type':'application/json' });
+        res.end(JSON.stringify({ jsonrpc:'2.0', result, id }));
+      } catch (e) {
+        errorObj = makeErrorObject(e);
+        res.writeHead(200, { 'content-type':'application/json' });
+        res.end(JSON.stringify({ jsonrpc:'2.0', error: errorObj, id }));
+      }
+      const ms = Date.now() - t0;
+      try {
+        logMcpRequest({
+          method: payload.method,
+          params: payload.params,
+          ok: !errorObj,
+          error: errorObj,
+          ms,
+          resultBytes: resultObj ? Buffer.byteLength(JSON.stringify(resultObj)) : 0,
+          paramBytes
+        });
+      } catch {}
+    })();
   });
 });
 

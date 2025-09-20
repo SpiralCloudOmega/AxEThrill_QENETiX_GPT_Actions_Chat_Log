@@ -1,0 +1,13 @@
+{
+  "id": "2025-09-20_2025-09-20T01-41-47.898Z_c8cab58c",
+  "ts": "2025-09-20T01:41:47.898Z",
+  "method": "agent.summarize",
+  "ok": true,
+  "ms": 2,
+  "paramBytes": 37,
+  "resultBytes": 1157,
+  "params": {
+    "query": "rate limit test",
+    "limit": 2
+  }
+}

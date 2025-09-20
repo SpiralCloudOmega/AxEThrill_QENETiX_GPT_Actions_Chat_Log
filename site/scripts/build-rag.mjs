@@ -15,7 +15,7 @@ const publicDir = path.join(siteDir, 'public');
 
 function parseHeader(md) {
   const lines = md.split('\n');
-  let fm = {};
+  const fm = {};
   if (lines[0]?.trim() === '---') {
     for (let i = 1; i < Math.min(lines.length, 50); i++) {
       const line = lines[i];

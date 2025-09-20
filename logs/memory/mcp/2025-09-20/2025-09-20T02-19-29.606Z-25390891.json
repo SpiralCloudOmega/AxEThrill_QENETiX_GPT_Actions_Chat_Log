@@ -1,0 +1,16 @@
+{
+  "id": "2025-09-20_2025-09-20T02-19-29.606Z_25390891",
+  "ts": "2025-09-20T02:19:29.606Z",
+  "method": "logs.list",
+  "ok": false,
+  "ms": 0,
+  "paramBytes": 0,
+  "resultBytes": 0,
+  "error": {
+    "code": "RATE_LIMIT",
+    "message": "Daily request limit reached"
+  },
+  "params": {
+    "limit": 2
+  }
+}
