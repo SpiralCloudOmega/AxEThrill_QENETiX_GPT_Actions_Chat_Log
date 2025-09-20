@@ -2,27 +2,27 @@
 <rss version="2.0">
   <channel>
     <title>#rag - Chat Logs</title>
-    <link>http://localhost:3000/tags/rag/</link>
+    <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/tags/rag/</link>
     <description>Items tagged rag</description>
     
     <item>
       <title>Summarize what content is in the repo logs and what tags exist</title>
-      <link>http://localhost:3000/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist.md</description>
     </item>
     <item>
       <title>How to print installed NVIDIA driver version on Linux?</title>
-      <link>http://localhost:3000/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux.md</description>
     </item>
     <item>
       <title>How to inspect Vulkan layers?</title>
-      <link>http://localhost:3000/logs/2025/09/18/how-to-inspect-vulkan-layers/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/how-to-inspect-vulkan-layers/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-inspect-vulkan-layers/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-inspect-vulkan-layers/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/how-to-inspect-vulkan-layers.md</description>
     </item>

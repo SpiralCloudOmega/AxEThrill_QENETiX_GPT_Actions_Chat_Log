@@ -26,6 +26,13 @@
         ]
       },
       {
+        "name": "copilot-instructions.md",
+        "type": "file",
+        "path": ".github/copilot-instructions.md",
+        "size": 5560,
+        "ext": "md"
+      },
+      {
         "name": "pull_request_template.md",
         "type": "file",
         "path": ".github/pull_request_template.md",
@@ -41,14 +48,14 @@
             "name": "ci.yml",
             "type": "file",
             "path": ".github/workflows/ci.yml",
-            "size": 1363,
+            "size": 1167,
             "ext": "yml"
           },
           {
             "name": "continuous-agents.yml",
             "type": "file",
             "path": ".github/workflows/continuous-agents.yml",
-            "size": 5063,
+            "size": 5117,
             "ext": "yml"
           },
           {
@@ -1241,6 +1248,20 @@
                             "ext": "json"
                           }
                         ]
+                      },
+                      {
+                        "name": "20",
+                        "type": "dir",
+                        "path": "site/logs/memory/2025/09/20",
+                        "children": [
+                          {
+                            "name": "2025-09-20-161919-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-161919-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1275,7 +1296,7 @@
         "name": "package.json",
         "type": "file",
         "path": "site/package.json",
-        "size": 2487,
+        "size": 2383,
         "ext": "json"
       },
       {
@@ -1301,28 +1322,28 @@
             "name": "commit-files.json",
             "type": "file",
             "path": "site/public/commit-files.json",
-            "size": 6727,
+            "size": 10019,
             "ext": "json"
           },
           {
             "name": "commits.json",
             "type": "file",
             "path": "site/public/commits.json",
-            "size": 3371,
+            "size": 788,
             "ext": "json"
           },
           {
             "name": "feed.xml",
             "type": "file",
             "path": "site/public/feed.xml",
-            "size": 6185,
+            "size": 7693,
             "ext": "xml"
           },
           {
             "name": "health.json",
             "type": "file",
             "path": "site/public/health.json",
-            "size": 237,
+            "size": 371,
             "ext": "json"
           },
           {
@@ -1350,21 +1371,21 @@
             "name": "rag-capsule.png",
             "type": "file",
             "path": "site/public/rag-capsule.png",
-            "size": 9350,
+            "size": 9389,
             "ext": "png"
           },
           {
             "name": "rag-index.json",
             "type": "file",
             "path": "site/public/rag-index.json",
-            "size": 116580,
+            "size": 118203,
             "ext": "json"
           },
           {
             "name": "repo-tree.json",
             "type": "file",
             "path": "site/public/repo-tree.json",
-            "size": 56071,
+            "size": 61826,
             "ext": "json"
           },
           {
@@ -1395,7 +1416,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/actions/feed.xml",
-                    "size": 540,
+                    "size": 696,
                     "ext": "xml"
                   }
                 ]
@@ -1409,7 +1430,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/agents/feed.xml",
-                    "size": 2713,
+                    "size": 3285,
                     "ext": "xml"
                   }
                 ]
@@ -1423,7 +1444,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ai/feed.xml",
-                    "size": 4388,
+                    "size": 5376,
                     "ext": "xml"
                   }
                 ]
@@ -1437,7 +1458,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia/feed.xml",
-                    "size": 552,
+                    "size": 708,
                     "ext": "xml"
                   }
                 ]
@@ -1465,7 +1486,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia code/feed.xml",
-                    "size": 553,
+                    "size": 709,
                     "ext": "xml"
                   }
                 ]
@@ -1493,7 +1514,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/rag/feed.xml",
-                    "size": 1615,
+                    "size": 1979,
                     "ext": "xml"
                   }
                 ]
@@ -1507,7 +1528,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/test/feed.xml",
-                    "size": 1401,
+                    "size": 1765,
                     "ext": "xml"
                   }
                 ]
@@ -1521,7 +1542,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ue5/feed.xml",
-                    "size": 842,
+                    "size": 1102,
                     "ext": "xml"
                   }
                 ]
@@ -1535,7 +1556,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/vulkan/feed.xml",
-                    "size": 851,
+                    "size": 1111,
                     "ext": "xml"
                   }
                 ]
@@ -1803,7 +1824,7 @@
                 "name": "memory-index.json",
                 "type": "file",
                 "path": "site/scripts/public/memory-index.json",
-                "size": 2753,
+                "size": 3129,
                 "ext": "json"
               }
             ]

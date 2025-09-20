@@ -2,104 +2,104 @@
 <rss version="2.0">
   <channel>
     <title>Chat Logs</title>
-    <link>http://localhost:3000/</link>
+    <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/</link>
     <description>Browse GPT chat transcripts from this repo</description>
     
     <item>
       <title>Test Ingest</title>
-      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T022120-test-ingest/</link>
-      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T022120-test-ingest/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T022120-test-ingest/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T022120-test-ingest/</guid>
       <pubDate>Sat, 20 Sep 2025 02:21:20 GMT</pubDate>
       <description>logs/incoming/2025-09-20-20250920T022120-test-ingest.md</description>
     </item>
     <item>
       <title>Test Ingest</title>
-      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T015343-test-ingest/</link>
-      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T015343-test-ingest/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T015343-test-ingest/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T015343-test-ingest/</guid>
       <pubDate>Sat, 20 Sep 2025 01:53:43 GMT</pubDate>
       <description>logs/incoming/2025-09-20-20250920T015343-test-ingest.md</description>
     </item>
     <item>
       <title>Test Ingest</title>
-      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T013945-test-ingest/</link>
-      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T013945-test-ingest/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T013945-test-ingest/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-20-20250920T013945-test-ingest/</guid>
       <pubDate>Sat, 20 Sep 2025 01:39:45 GMT</pubDate>
       <description>logs/incoming/2025-09-20-20250920T013945-test-ingest.md</description>
     </item>
     <item>
       <title>Multi-agent: Sanity check orchestrator</title>
-      <link>http://localhost:3000/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</link>
-      <guid>http://localhost:3000/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator/</guid>
       <pubDate>Thu, 18 Sep 2025 02:37:58 GMT</pubDate>
       <description>logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator.md</description>
     </item>
     <item>
       <title>Chat Transcript</title>
-      <link>http://localhost:3000/logs/inbox/test.txt.answer/</link>
-      <guid>http://localhost:3000/logs/inbox/test.txt.answer/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/inbox/test.txt.answer/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/inbox/test.txt.answer/</guid>
       <pubDate>Invalid Date</pubDate>
       <description>logs/inbox/test.txt.answer.md</description>
     </item>
     <item>
       <title>Summarize what content is in the repo logs and what tags exist</title>
-      <link>http://localhost:3000/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/summarize-what-content-is-in-the-repo-logs-and-what-tags-exist.md</description>
     </item>
     <item>
       <title>Multi-agent: Hello</title>
-      <link>http://localhost:3000/logs/2025/09/18/multi-agent-hello/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-hello/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-hello/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-hello/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/multi-agent-hello.md</description>
     </item>
     <item>
       <title>Multi-agent: Create a tiny UI to browse logs by tag/date and outline JSON endpoints for stats</title>
-      <link>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/multi-agent-create-a-tiny-ui-to-browse-logs-by-tag-date-and-outl.md</description>
     </item>
     <item>
       <title>Multi-agent: Create a small UI to browse logs by tag and date and propose a tiny JSON API for</title>
-      <link>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/multi-agent-create-a-small-ui-to-browse-logs-by-tag-and-date-and.md</description>
     </item>
     <item>
       <title>Multi-agent: Build a minimal UI for logs browse by tag and date; propose local JSON API; no e</title>
-      <link>http://localhost:3000/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/multi-agent-build-a-minimal-ui-for-logs-browse-by-tag-and-date-p.md</description>
     </item>
     <item>
       <title>How to print installed NVIDIA driver version on Linux?</title>
-      <link>http://localhost:3000/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/how-to-print-installed-nvidia-driver-version-on-linux.md</description>
     </item>
     <item>
       <title>How to inspect Vulkan layers?</title>
-      <link>http://localhost:3000/logs/2025/09/18/how-to-inspect-vulkan-layers/</link>
-      <guid>http://localhost:3000/logs/2025/09/18/how-to-inspect-vulkan-layers/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-inspect-vulkan-layers/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/18/how-to-inspect-vulkan-layers/</guid>
       <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/18/how-to-inspect-vulkan-layers.md</description>
     </item>
     <item>
       <title>Vulkan Test</title>
-      <link>http://localhost:3000/logs/2025/09/17/vulkan-test/</link>
-      <guid>http://localhost:3000/logs/2025/09/17/vulkan-test/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/vulkan-test/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/vulkan-test/</guid>
       <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/17/vulkan-test.md</description>
     </item>
     <item>
       <title>Sample Chat</title>
-      <link>http://localhost:3000/logs/2025/09/17/sample/</link>
-      <guid>http://localhost:3000/logs/2025/09/17/sample/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/sample/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/sample/</guid>
       <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/17/sample.md</description>
     </item>

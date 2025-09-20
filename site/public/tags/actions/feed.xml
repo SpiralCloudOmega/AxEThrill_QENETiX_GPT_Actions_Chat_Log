@@ -2,13 +2,13 @@
 <rss version="2.0">
   <channel>
     <title>#actions - Chat Logs</title>
-    <link>http://localhost:3000/tags/actions/</link>
+    <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/tags/actions/</link>
     <description>Items tagged actions</description>
     
     <item>
       <title>Sample Chat</title>
-      <link>http://localhost:3000/logs/2025/09/17/sample/</link>
-      <guid>http://localhost:3000/logs/2025/09/17/sample/</guid>
+      <link>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/sample/</link>
+      <guid>https://SpiralCloudOmega.github.io/AxEThrill_QENETiX_GPT_Actions_Chat_Log/logs/2025/09/17/sample/</guid>
       <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <description>logs/2025/09/17/sample.md</description>
     </item>
