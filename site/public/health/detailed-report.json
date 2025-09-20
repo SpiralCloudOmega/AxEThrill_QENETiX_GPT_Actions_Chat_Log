@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-20T17:21:15.066Z",
+  "timestamp": "2025-09-20T17:25:44.647Z",
   "overallHealth": "healthy",
   "summary": {
     "total": 8,
@@ -7,11 +7,11 @@
     "warnings": 0,
     "critical_failures": 0
   },
-  "duration_ms": 24,
+  "duration_ms": 29,
   "checks": {
     "node_version": {
       "success": true,
-      "duration": 1,
+      "duration": 0,
       "critical": true,
       "message": "Node.js v20.19.5",
       "details": {
@@ -40,18 +40,18 @@
     },
     "logs_content": {
       "success": true,
-      "duration": 3,
+      "duration": 4,
       "critical": false,
-      "message": "15 total logs found",
+      "message": "16 total logs found",
       "details": {
-        "total_logs": 15,
-        "incoming_logs": 5,
+        "total_logs": 16,
+        "incoming_logs": 6,
         "processed_logs": 10
       }
     },
     "generated_indexes": {
       "success": true,
-      "duration": 0,
+      "duration": 1,
       "critical": false,
       "message": "4/4 indexes present",
       "details": {
@@ -69,33 +69,33 @@
       "success": true,
       "duration": 1,
       "critical": false,
-      "message": "62 memory capsules",
+      "message": "75 memory capsules",
       "details": {
-        "memory_capsules": 62,
-        "mcp_requests": 58
+        "memory_capsules": 75,
+        "mcp_requests": 70
       }
     },
     "build_system": {
       "success": true,
-      "duration": 0,
+      "duration": 4,
       "critical": false,
-      "message": "No build artifacts found",
+      "message": "Build artifacts present",
       "details": {
-        "production_build": false,
-        "development_cache": false,
-        "build_size_bytes": 0,
-        "build_size_mb": 0
+        "production_build": true,
+        "development_cache": true,
+        "build_size_bytes": 2371013,
+        "build_size_mb": 2.26
       }
     },
     "git_repository": {
       "success": true,
-      "duration": 13,
+      "duration": 14,
       "critical": false,
       "message": "On branch copilot/vscode1758388359600",
       "details": {
         "current_branch": "copilot/vscode1758388359600",
-        "commit_hash": "6a71eed024b5",
-        "uncommitted_changes": 50,
+        "commit_hash": "f68a85351f86",
+        "uncommitted_changes": 28,
         "clean_working_tree": false
       }
     }

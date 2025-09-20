@@ -1272,13 +1272,6 @@
         ]
       },
       {
-        "name": "debug-scraper.mjs",
-        "type": "file",
-        "path": "site/debug-scraper.mjs",
-        "size": 852,
-        "ext": "mjs"
-      },
-      {
         "name": "logs",
         "type": "dir",
         "path": "site/logs",
@@ -1530,15 +1523,29 @@
             "name": "commit-files.json",
             "type": "file",
             "path": "site/public/commit-files.json",
-            "size": 10540,
+            "size": 13369,
             "ext": "json"
           },
           {
             "name": "commits.json",
             "type": "file",
             "path": "site/public/commits.json",
-            "size": 779,
+            "size": 1069,
             "ext": "json"
+          },
+          {
+            "name": "diagnostics",
+            "type": "dir",
+            "path": "site/public/diagnostics",
+            "children": [
+              {
+                "name": "error-report.json",
+                "type": "file",
+                "path": "site/public/diagnostics/error-report.json",
+                "size": 5591,
+                "ext": "json"
+              }
+            ]
           },
           {
             "name": "feed.xml",
@@ -1548,10 +1555,24 @@
             "ext": "xml"
           },
           {
+            "name": "health",
+            "type": "dir",
+            "path": "site/public/health",
+            "children": [
+              {
+                "name": "detailed-report.json",
+                "type": "file",
+                "path": "site/public/health/detailed-report.json",
+                "size": 2372,
+                "ext": "json"
+              }
+            ]
+          },
+          {
             "name": "health.json",
             "type": "file",
             "path": "site/public/health.json",
-            "size": 372,
+            "size": 371,
             "ext": "json"
           },
           {
@@ -1569,6 +1590,27 @@
             "ext": "json"
           },
           {
+            "name": "performance",
+            "type": "dir",
+            "path": "site/public/performance",
+            "children": [
+              {
+                "name": "benchmarks.jsonl",
+                "type": "file",
+                "path": "site/public/performance/benchmarks.jsonl",
+                "size": 2348,
+                "ext": "jsonl"
+              },
+              {
+                "name": "report.json",
+                "type": "file",
+                "path": "site/public/performance/report.json",
+                "size": 3750,
+                "ext": "json"
+              }
+            ]
+          },
+          {
             "name": "ping.json",
             "type": "file",
             "path": "site/public/ping.json",
@@ -1579,21 +1621,21 @@
             "name": "rag-capsule.png",
             "type": "file",
             "path": "site/public/rag-capsule.png",
-            "size": 9388,
+            "size": 9493,
             "ext": "png"
           },
           {
             "name": "rag-index.json",
             "type": "file",
             "path": "site/public/rag-index.json",
-            "size": 118203,
+            "size": 119567,
             "ext": "json"
           },
           {
             "name": "repo-tree.json",
             "type": "file",
             "path": "site/public/repo-tree.json",
-            "size": 61033,
+            "size": 72911,
             "ext": "json"
           },
           {
@@ -1957,7 +1999,7 @@
             "name": "error-diagnostics.mjs",
             "type": "file",
             "path": "site/scripts/error-diagnostics.mjs",
-            "size": 14115,
+            "size": 14117,
             "ext": "mjs"
           },
           {
@@ -2041,7 +2083,7 @@
             "name": "performance-monitor.mjs",
             "type": "file",
             "path": "site/scripts/performance-monitor.mjs",
-            "size": 10741,
+            "size": 10757,
             "ext": "mjs"
           },
           {
