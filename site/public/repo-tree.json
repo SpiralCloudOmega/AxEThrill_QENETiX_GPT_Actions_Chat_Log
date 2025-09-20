@@ -26,6 +26,13 @@
         ]
       },
       {
+        "name": "copilot-instructions.md",
+        "type": "file",
+        "path": ".github/copilot-instructions.md",
+        "size": 5560,
+        "ext": "md"
+      },
+      {
         "name": "pull_request_template.md",
         "type": "file",
         "path": ".github/pull_request_template.md",
@@ -41,14 +48,14 @@
             "name": "ci.yml",
             "type": "file",
             "path": ".github/workflows/ci.yml",
-            "size": 1363,
+            "size": 1452,
             "ext": "yml"
           },
           {
             "name": "continuous-agents.yml",
             "type": "file",
             "path": ".github/workflows/continuous-agents.yml",
-            "size": 5063,
+            "size": 5123,
             "ext": "yml"
           },
           {
@@ -152,10 +159,38 @@
         "ext": "md"
       },
       {
+        "name": "development.md",
+        "type": "file",
+        "path": "docs/development.md",
+        "size": 9323,
+        "ext": "md"
+      },
+      {
+        "name": "enhancement-summary.md",
+        "type": "file",
+        "path": "docs/enhancement-summary.md",
+        "size": 9189,
+        "ext": "md"
+      },
+      {
         "name": "mcp.md",
         "type": "file",
         "path": "docs/mcp.md",
         "size": 3013,
+        "ext": "md"
+      },
+      {
+        "name": "monitoring.md",
+        "type": "file",
+        "path": "docs/monitoring.md",
+        "size": 9902,
+        "ext": "md"
+      },
+      {
+        "name": "testing.md",
+        "type": "file",
+        "path": "docs/testing.md",
+        "size": 13028,
         "ext": "md"
       }
     ]
@@ -309,6 +344,13 @@
             "path": "logs/incoming/2025-09-20-20250920T022120-test-ingest.md",
             "size": 88,
             "ext": "md"
+          },
+          {
+            "name": "2025-09-20-20250920T172100-test-ingest.md",
+            "type": "file",
+            "path": "logs/incoming/2025-09-20-20250920T172100-test-ingest.md",
+            "size": 88,
+            "ext": "md"
           }
         ]
       },
@@ -335,6 +377,13 @@
             "name": "494aa70f5e867349.json",
             "type": "file",
             "path": "logs/memory/494aa70f5e867349.json",
+            "size": 252,
+            "ext": "json"
+          },
+          {
+            "name": "fbbb320c5a89f97c.json",
+            "type": "file",
+            "path": "logs/memory/fbbb320c5a89f97c.json",
             "size": 252,
             "ext": "json"
           },
@@ -669,6 +718,90 @@
                     "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.486Z-75eb5e82.json",
                     "size": 207,
                     "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.767Z-fcb55419.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.767Z-fcb55419.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.770Z-05ed9e96.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.770Z-05ed9e96.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.772Z-2768f586.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.772Z-2768f586.json",
+                    "size": 203,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.773Z-d3b37819.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.773Z-d3b37819.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.776Z-48649bbb.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.776Z-48649bbb.json",
+                    "size": 321,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.779Z-87e32530.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.779Z-87e32530.json",
+                    "size": 247,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.781Z-6d4b5e04.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.781Z-6d4b5e04.json",
+                    "size": 226,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.782Z-42cc5a6e.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.782Z-42cc5a6e.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.783Z-e1a52650.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.783Z-e1a52650.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.785Z-242b917d.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.785Z-242b917d.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.786Z-857767a1.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.786Z-857767a1.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T17-21-00.788Z-4a163c5b.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T17-21-00.788Z-4a163c5b.json",
+                    "size": 207,
+                    "ext": "json"
                   }
                 ]
               },
@@ -676,14 +809,14 @@
                 "name": "index.json",
                 "type": "file",
                 "path": "logs/memory/mcp/index.json",
-                "size": 9903,
+                "size": 12413,
                 "ext": "json"
               },
               {
                 "name": "rate-limits.json",
                 "type": "file",
                 "path": "logs/memory/mcp/rate-limits.json",
-                "size": 75,
+                "size": 77,
                 "ext": "json"
               }
             ]
@@ -1139,6 +1272,13 @@
         ]
       },
       {
+        "name": "debug-scraper.mjs",
+        "type": "file",
+        "path": "site/debug-scraper.mjs",
+        "size": 852,
+        "ext": "mjs"
+      },
+      {
         "name": "logs",
         "type": "dir",
         "path": "site/logs",
@@ -1170,6 +1310,12 @@
                 ]
               }
             ]
+          },
+          {
+            "name": "incoming",
+            "type": "dir",
+            "path": "site/logs/incoming",
+            "children": []
           },
           {
             "name": "memory",
@@ -1241,10 +1387,93 @@
                             "ext": "json"
                           }
                         ]
+                      },
+                      {
+                        "name": "20",
+                        "type": "dir",
+                        "path": "site/logs/memory/2025/09/20",
+                        "children": [
+                          {
+                            "name": "2025-09-20-171414-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171414-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-171611-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171611-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-171818-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171818-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-171833-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171833-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-171907-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171907-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-171915-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-171915-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          },
+                          {
+                            "name": "2025-09-20-172059-test-capsule.json",
+                            "type": "file",
+                            "path": "site/logs/memory/2025/09/20/2025-09-20-172059-test-capsule.json",
+                            "size": 308,
+                            "ext": "json"
+                          }
+                        ]
                       }
                     ]
                   }
                 ]
+              },
+              {
+                "name": "mcp",
+                "type": "dir",
+                "path": "site/logs/memory/mcp",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "test",
+            "type": "dir",
+            "path": "site/logs/test",
+            "children": [
+              {
+                "name": "code.html",
+                "type": "file",
+                "path": "site/logs/test/code.html",
+                "size": 197,
+                "ext": "html"
+              },
+              {
+                "name": "test.html",
+                "type": "file",
+                "path": "site/logs/test/test.html",
+                "size": 143,
+                "ext": "html"
               }
             ]
           }
@@ -1275,7 +1504,7 @@
         "name": "package.json",
         "type": "file",
         "path": "site/package.json",
-        "size": 2487,
+        "size": 3562,
         "ext": "json"
       },
       {
@@ -1301,28 +1530,28 @@
             "name": "commit-files.json",
             "type": "file",
             "path": "site/public/commit-files.json",
-            "size": 6727,
+            "size": 10540,
             "ext": "json"
           },
           {
             "name": "commits.json",
             "type": "file",
             "path": "site/public/commits.json",
-            "size": 3371,
+            "size": 779,
             "ext": "json"
           },
           {
             "name": "feed.xml",
             "type": "file",
             "path": "site/public/feed.xml",
-            "size": 6185,
+            "size": 8187,
             "ext": "xml"
           },
           {
             "name": "health.json",
             "type": "file",
             "path": "site/public/health.json",
-            "size": 237,
+            "size": 372,
             "ext": "json"
           },
           {
@@ -1336,7 +1565,7 @@
             "name": "logs-index.json",
             "type": "file",
             "path": "site/public/logs-index.json",
-            "size": 4177,
+            "size": 4430,
             "ext": "json"
           },
           {
@@ -1350,21 +1579,21 @@
             "name": "rag-capsule.png",
             "type": "file",
             "path": "site/public/rag-capsule.png",
-            "size": 9350,
+            "size": 9388,
             "ext": "png"
           },
           {
             "name": "rag-index.json",
             "type": "file",
             "path": "site/public/rag-index.json",
-            "size": 116580,
+            "size": 118203,
             "ext": "json"
           },
           {
             "name": "repo-tree.json",
             "type": "file",
             "path": "site/public/repo-tree.json",
-            "size": 56071,
+            "size": 61033,
             "ext": "json"
           },
           {
@@ -1395,7 +1624,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/actions/feed.xml",
-                    "size": 540,
+                    "size": 696,
                     "ext": "xml"
                   }
                 ]
@@ -1409,7 +1638,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/agents/feed.xml",
-                    "size": 2713,
+                    "size": 3285,
                     "ext": "xml"
                   }
                 ]
@@ -1423,7 +1652,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ai/feed.xml",
-                    "size": 4388,
+                    "size": 5376,
                     "ext": "xml"
                   }
                 ]
@@ -1437,7 +1666,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia/feed.xml",
-                    "size": 552,
+                    "size": 708,
                     "ext": "xml"
                   }
                 ]
@@ -1465,7 +1694,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia code/feed.xml",
-                    "size": 553,
+                    "size": 709,
                     "ext": "xml"
                   }
                 ]
@@ -1493,7 +1722,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/rag/feed.xml",
-                    "size": 1615,
+                    "size": 1979,
                     "ext": "xml"
                   }
                 ]
@@ -1507,7 +1736,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/test/feed.xml",
-                    "size": 1401,
+                    "size": 2259,
                     "ext": "xml"
                   }
                 ]
@@ -1521,7 +1750,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ue5/feed.xml",
-                    "size": 842,
+                    "size": 1102,
                     "ext": "xml"
                   }
                 ]
@@ -1535,12 +1764,19 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/vulkan/feed.xml",
-                    "size": 851,
+                    "size": 1111,
                     "ext": "xml"
                   }
                 ]
               }
             ]
+          },
+          {
+            "name": "test-code.html",
+            "type": "file",
+            "path": "site/public/test-code.html",
+            "size": 197,
+            "ext": "html"
           },
           {
             "name": "ui",
@@ -1711,10 +1947,31 @@
             "ext": "mjs"
           },
           {
+            "name": "dev-utils.mjs",
+            "type": "file",
+            "path": "site/scripts/dev-utils.mjs",
+            "size": 9282,
+            "ext": "mjs"
+          },
+          {
+            "name": "error-diagnostics.mjs",
+            "type": "file",
+            "path": "site/scripts/error-diagnostics.mjs",
+            "size": 14115,
+            "ext": "mjs"
+          },
+          {
             "name": "extract-rag.mjs",
             "type": "file",
             "path": "site/scripts/extract-rag.mjs",
             "size": 2213,
+            "ext": "mjs"
+          },
+          {
+            "name": "health-monitor.mjs",
+            "type": "file",
+            "path": "site/scripts/health-monitor.mjs",
+            "size": 11480,
             "ext": "mjs"
           },
           {
@@ -1737,6 +1994,27 @@
             "path": "site/scripts/lib",
             "children": [
               {
+                "name": "error-handling.mjs",
+                "type": "file",
+                "path": "site/scripts/lib/error-handling.mjs",
+                "size": 11738,
+                "ext": "mjs"
+              },
+              {
+                "name": "logging.mjs",
+                "type": "file",
+                "path": "site/scripts/lib/logging.mjs",
+                "size": 12096,
+                "ext": "mjs"
+              },
+              {
+                "name": "performance.mjs",
+                "type": "file",
+                "path": "site/scripts/lib/performance.mjs",
+                "size": 17728,
+                "ext": "mjs"
+              },
+              {
                 "name": "tags.mjs",
                 "type": "file",
                 "path": "site/scripts/lib/tags.mjs",
@@ -1757,6 +2035,20 @@
             "type": "file",
             "path": "site/scripts/nightly-summarize.mjs",
             "size": 1899,
+            "ext": "mjs"
+          },
+          {
+            "name": "performance-monitor.mjs",
+            "type": "file",
+            "path": "site/scripts/performance-monitor.mjs",
+            "size": 10741,
+            "ext": "mjs"
+          },
+          {
+            "name": "prebuild-optimized.mjs",
+            "type": "file",
+            "path": "site/scripts/prebuild-optimized.mjs",
+            "size": 16305,
             "ext": "mjs"
           },
           {
@@ -1800,11 +2092,25 @@
             "path": "site/scripts/public",
             "children": [
               {
+                "name": "code.html",
+                "type": "file",
+                "path": "site/scripts/public/code.html",
+                "size": 197,
+                "ext": "html"
+              },
+              {
                 "name": "memory-index.json",
                 "type": "file",
                 "path": "site/scripts/public/memory-index.json",
-                "size": 2753,
+                "size": 5385,
                 "ext": "json"
+              },
+              {
+                "name": "test.html",
+                "type": "file",
+                "path": "site/scripts/public/test.html",
+                "size": 143,
+                "ext": "html"
               }
             ]
           },
@@ -1827,6 +2133,20 @@
             "type": "dir",
             "path": "site/scripts/tests",
             "children": [
+              {
+                "name": "ingest-edge.test.mjs",
+                "type": "file",
+                "path": "site/scripts/tests/ingest-edge.test.mjs",
+                "size": 7204,
+                "ext": "mjs"
+              },
+              {
+                "name": "ledger.test.mjs",
+                "type": "file",
+                "path": "site/scripts/tests/ledger.test.mjs",
+                "size": 4914,
+                "ext": "mjs"
+              },
               {
                 "name": "mcp.test.mjs",
                 "type": "file",
@@ -1887,7 +2207,7 @@
                 "name": "test.mjs",
                 "type": "file",
                 "path": "site/scripts/tools/test.mjs",
-                "size": 4112,
+                "size": 4186,
                 "ext": "mjs"
               }
             ]
@@ -1904,6 +2224,13 @@
             "type": "dir",
             "path": "site/site/public",
             "children": [
+              {
+                "name": "test-code.html",
+                "type": "file",
+                "path": "site/site/public/test-code.html",
+                "size": 197,
+                "ext": "html"
+              },
               {
                 "name": "ui",
                 "type": "dir",

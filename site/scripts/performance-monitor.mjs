@@ -297,14 +297,15 @@ async function main() {
       await runFullBenchmarkSuite();
       break;
       
-    case 'quick':
+    case 'quick': {
       console.log('🏃 Quick Performance Check\n');
       const profiler = new PerformanceProfiler();
       await benchmarkFileOperations(profiler);
       profiler.generateReport();
       break;
+    }
       
-    case 'history':
+    case 'history': {
       const perfFile = path.join(siteDir, 'public', 'performance', 'benchmarks.jsonl');
       if (fs.existsSync(perfFile)) {
         const lines = fs.readFileSync(perfFile, 'utf8').trim().split('\n');
@@ -319,6 +320,7 @@ async function main() {
         console.log('No benchmark history found. Run benchmarks first.');
       }
       break;
+    }
       
     default:
       console.log('Usage: performance-monitor.mjs [benchmark|quick|history]');

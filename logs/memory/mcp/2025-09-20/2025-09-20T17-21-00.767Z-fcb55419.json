@@ -1,0 +1,12 @@
+{
+  "id": "2025-09-20_2025-09-20T17-21-00.767Z_fcb55419",
+  "ts": "2025-09-20T17:21:00.767Z",
+  "method": "logs.list",
+  "ok": true,
+  "ms": 1,
+  "paramBytes": 11,
+  "resultBytes": 411,
+  "params": {
+    "limit": 2
+  }
+}

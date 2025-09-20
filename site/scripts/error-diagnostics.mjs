@@ -161,7 +161,7 @@ class ErrorDiagnostics {
       
       // Basic YAML syntax check (simplified)
       const lines = content.split('\n');
-      let inTemplate = false;
+      const inTemplate = false;
       
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];

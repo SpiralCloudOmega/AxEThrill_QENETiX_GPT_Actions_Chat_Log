@@ -1,0 +1,12 @@
+{
+  "id": "2025-09-20_2025-09-20T17-21-00.781Z_6d4b5e04",
+  "ts": "2025-09-20T17:21:00.781Z",
+  "method": "mcp.logs.recent",
+  "ok": true,
+  "ms": 1,
+  "paramBytes": 11,
+  "resultBytes": 798,
+  "params": {
+    "limit": 5
+  }
+}

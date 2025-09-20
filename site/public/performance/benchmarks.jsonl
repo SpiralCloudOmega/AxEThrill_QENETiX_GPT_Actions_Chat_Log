@@ -1,0 +1,11 @@
+{"timestamp":"2025-09-20T17:21:22.832Z","label":"file_io_write","iterations":3,"results":[0.2654849999999982,0.18779100000000426,0.15868699999998626],"statistics":{"average":0.2,"minimum":0.16,"maximum":0.27,"stddev":0.05}}
+{"timestamp":"2025-09-20T17:21:23.597Z","label":"directory_listing","iterations":3,"results":[165.342358,147.96472599999993,149.723841],"statistics":{"average":154.34,"minimum":147.96,"maximum":165.34,"stddev":7.81}}
+{"timestamp":"2025-09-20T17:21:23.899Z","label":"json_parse","iterations":3,"results":[0.3998370000001614,0.38739399999985835,0.38701399999990826],"statistics":{"average":0.39,"minimum":0.39,"maximum":0.4,"stddev":0.01}}
+{"timestamp":"2025-09-20T17:21:24.000Z","label":"prebuild_simulation","iterations":1,"results":[0.18922399999996742],"statistics":{"average":0.19,"minimum":0.19,"maximum":0.19,"stddev":0}}
+{"timestamp":"2025-09-20T17:21:24.302Z","label":"read_logs-index.json","iterations":3,"results":[0.1130110000001423,0.12280899999996109,0.18635799999992742],"statistics":{"average":0.14,"minimum":0.11,"maximum":0.19,"stddev":0.03}}
+{"timestamp":"2025-09-20T17:21:24.606Z","label":"read_rag-index.json","iterations":3,"results":[0.8555289999999331,0.9054220000000441,0.9193569999999909],"statistics":{"average":0.89,"minimum":0.86,"maximum":0.92,"stddev":0.03}}
+{"timestamp":"2025-09-20T17:21:24.907Z","label":"read_health.json","iterations":3,"results":[0.07160400000020672,0.05119599999989077,0.06012200000031953],"statistics":{"average":0.06,"minimum":0.05,"maximum":0.07,"stddev":0.01}}
+{"timestamp":"2025-09-20T17:21:25.217Z","label":"memory_allocation","iterations":3,"results":[1.9231839999997646,3.192935999999918,3.1448159999999916],"statistics":{"average":2.75,"minimum":1.92,"maximum":3.19,"stddev":0.59}}
+{"timestamp":"2025-09-20T17:21:25.520Z","label":"string_manipulation","iterations":3,"results":[0.9897290000003522,0.45649299999968207,0.363589999999931],"statistics":{"average":0.6,"minimum":0.36,"maximum":0.99,"stddev":0.28}}
+{"timestamp":"2025-09-20T17:21:25.627Z","label":"git_status","iterations":1,"results":[7.092153000000053],"statistics":{"average":7.09,"minimum":7.09,"maximum":7.09,"stddev":0}}
+{"timestamp":"2025-09-20T17:21:25.732Z","label":"git_log","iterations":1,"results":[4.382515999999669],"statistics":{"average":4.38,"minimum":4.38,"maximum":4.38,"stddev":0}}

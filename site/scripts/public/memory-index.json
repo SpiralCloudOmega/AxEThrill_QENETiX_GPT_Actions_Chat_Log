@@ -1,5 +1,83 @@
 [
   {
+    "id": "2025-09-20-172059-test-capsule",
+    "ts": "2025-09-20T17:20:59.361Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-172059-test-capsule.json"
+  },
+  {
+    "id": "2025-09-20-171915-test-capsule",
+    "ts": "2025-09-20T17:19:15.271Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171915-test-capsule.json"
+  },
+  {
+    "id": "2025-09-20-171907-test-capsule",
+    "ts": "2025-09-20T17:19:07.710Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171907-test-capsule.json"
+  },
+  {
+    "id": "2025-09-20-171833-test-capsule",
+    "ts": "2025-09-20T17:18:33.075Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171833-test-capsule.json"
+  },
+  {
+    "id": "2025-09-20-171818-test-capsule",
+    "ts": "2025-09-20T17:18:18.802Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171818-test-capsule.json"
+  },
+  {
+    "id": "2025-09-20-171611-test-capsule",
+    "ts": "2025-09-20T17:16:11.085Z",
+    "title": "Test Capsule",
+    "tags": [
+      "test",
+      "ci"
+    ],
+    "source": "tools/test.mjs",
+    "summary": "A test capsule",
+    "snippet": "This is a test capsule with unique term foobarbazqux.",
+    "file": "logs/memory/2025/09/20/2025-09-20-171611-test-capsule.json"
+  },
+  {
     "id": "2025-09-20-171414-test-capsule",
     "ts": "2025-09-20T17:14:14.981Z",
     "title": "Test Capsule",

@@ -49,7 +49,7 @@ function extractTitleFromContent(content) {
     }
   }
   
-  return 'Untitled';
+  return null; // Return null when no title found, allowing fallback
 }
 
 function generateSlug(title) {
@@ -77,7 +77,7 @@ function ingestMarkdown(content, options = {}) {
   const { frontmatter, body } = parseMarkdownFrontmatter(content);
   
   // Extract title
-  const title = frontmatter.title || extractTitleFromContent(body) || options.title || 'Ingested Document';
+  const title = frontmatter.title || extractTitleFromContent(body) || options.title || 'Untitled';
   
   // Extract/add tags
   const existingTags = frontmatter.tags ? frontmatter.tags.split(',').map(t => t.trim()) : [];
@@ -143,11 +143,12 @@ Content goes here.`;
   assert.ok(result2.tags.includes('new'), 'Should add new tags');
   assert.equal(result2.tags.length, 4, 'Should have all tags combined');
   
-  // Test 3: Document without clear title
-  const noTitleMd = `Some content without a clear title.
+  // Test 3: Document without clear title (short lines won't be used as titles)
+  const noTitleMd = `
   
-Just paragraphs of text here.
-More text.`;
+No.
+OK.
+`;
   
   const result3 = ingestMarkdown(noTitleMd, { title: 'Fallback Title' });
   assert.equal(result3.title, 'Fallback Title', 'Should use provided fallback title');

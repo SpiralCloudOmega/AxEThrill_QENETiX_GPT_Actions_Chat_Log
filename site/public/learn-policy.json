@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-09-20T15:04:35.829Z",
+  "generatedAt": "2025-09-20T17:21:08.035Z",
   "topTags": [
     {
       "tag": "ai",
@@ -10,11 +10,11 @@
       "count": 5
     },
     {
-      "tag": "rag",
-      "count": 3
+      "tag": "test",
+      "count": 4
     },
     {
-      "tag": "test",
+      "tag": "rag",
       "count": 3
     },
     {

@@ -1,0 +1,148 @@
+{
+  "timestamp": "2025-09-20T17:21:32.783Z",
+  "summary": {
+    "errors": 1,
+    "warnings": 18,
+    "suggested_fixes": 0
+  },
+  "errors": [
+    {
+      "category": "script_reference",
+      "message": "Script \"watch:incoming\" references missing file: site/scripts/route-logs.mjs",
+      "file": "package.json",
+      "line": null,
+      "suggestion": "Remove the script or create the referenced file",
+      "timestamp": "2025-09-20T17:21:32.209Z"
+    }
+  ],
+  "warnings": [
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/ai-cli.mjs",
+      "file": "site/scripts/ai-cli.mjs",
+      "suggestion": "Run: chmod +x site/scripts/ai-cli.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/ai-inbox.mjs",
+      "file": "site/scripts/ai-inbox.mjs",
+      "suggestion": "Run: chmod +x site/scripts/ai-inbox.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/build-rag.mjs",
+      "file": "site/scripts/build-rag.mjs",
+      "suggestion": "Run: chmod +x site/scripts/build-rag.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/bundle-report.mjs",
+      "file": "site/scripts/bundle-report.mjs",
+      "suggestion": "Run: chmod +x site/scripts/bundle-report.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/dev-utils.mjs",
+      "file": "site/scripts/dev-utils.mjs",
+      "suggestion": "Run: chmod +x site/scripts/dev-utils.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/error-diagnostics.mjs",
+      "file": "site/scripts/error-diagnostics.mjs",
+      "suggestion": "Run: chmod +x site/scripts/error-diagnostics.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/extract-rag.mjs",
+      "file": "site/scripts/extract-rag.mjs",
+      "suggestion": "Run: chmod +x site/scripts/extract-rag.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/health-monitor.mjs",
+      "file": "site/scripts/health-monitor.mjs",
+      "suggestion": "Run: chmod +x site/scripts/health-monitor.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/ingest.mjs",
+      "file": "site/scripts/ingest.mjs",
+      "suggestion": "Run: chmod +x site/scripts/ingest.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/learn.mjs",
+      "file": "site/scripts/learn.mjs",
+      "suggestion": "Run: chmod +x site/scripts/learn.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/mcp-server.mjs",
+      "file": "site/scripts/mcp-server.mjs",
+      "suggestion": "Run: chmod +x site/scripts/mcp-server.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/nightly-summarize.mjs",
+      "file": "site/scripts/nightly-summarize.mjs",
+      "suggestion": "Run: chmod +x site/scripts/nightly-summarize.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/performance-monitor.mjs",
+      "file": "site/scripts/performance-monitor.mjs",
+      "suggestion": "Run: chmod +x site/scripts/performance-monitor.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/prebuild-optimized.mjs",
+      "file": "site/scripts/prebuild-optimized.mjs",
+      "suggestion": "Run: chmod +x site/scripts/prebuild-optimized.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/prebuild.mjs",
+      "file": "site/scripts/prebuild.mjs",
+      "suggestion": "Run: chmod +x site/scripts/prebuild.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/probe-system.mjs",
+      "file": "site/scripts/probe-system.mjs",
+      "suggestion": "Run: chmod +x site/scripts/probe-system.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/route-logs.mjs",
+      "file": "site/scripts/route-logs.mjs",
+      "suggestion": "Run: chmod +x site/scripts/route-logs.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    },
+    {
+      "category": "file_permissions",
+      "message": "Script not executable: site/scripts/save-chat.mjs",
+      "file": "site/scripts/save-chat.mjs",
+      "suggestion": "Run: chmod +x site/scripts/save-chat.mjs",
+      "timestamp": "2025-09-20T17:21:32.212Z"
+    }
+  ],
+  "suggested_fixes": [],
+  "context": {}
+}

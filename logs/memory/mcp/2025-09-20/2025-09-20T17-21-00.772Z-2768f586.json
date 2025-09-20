@@ -1,0 +1,10 @@
+{
+  "id": "2025-09-20_2025-09-20T17-21-00.772Z_2768f586",
+  "ts": "2025-09-20T17:21:00.772Z",
+  "method": "token.ledger",
+  "ok": true,
+  "ms": 1,
+  "paramBytes": 2,
+  "resultBytes": 71,
+  "params": {}
+}
