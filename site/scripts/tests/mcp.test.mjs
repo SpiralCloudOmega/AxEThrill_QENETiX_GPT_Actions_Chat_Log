@@ -3,10 +3,17 @@
 import { fork } from 'node:child_process';
 import path from 'node:path';
 import http from 'node:http';
+import fs from 'node:fs';
 
 const serverPath = path.join(process.cwd(), 'scripts', 'mcp-server.mjs');
 const PORT = 18222;
 process.env.MCP_API_KEY = 'testkey';
+process.env.MCP_DAILY_REQ_LIMIT = '5000'; // high limit to avoid interference across repeated runs
+// Reset rate-limits file to ensure clean test run
+try {
+  const rateFile = path.join(process.cwd(), '..', 'logs', 'memory', 'mcp', 'rate-limits.json');
+  fs.unlinkSync(rateFile);
+} catch {}
 
 function rpc(method, params) {
   return new Promise((resolve, reject) => {
@@ -41,6 +48,10 @@ async function run(){
   assert(!memAdd.error && memAdd.result.id, 'memory.add failed');
   const summarize = await rpc('agent.summarize', { query: 'test', limit: 3 });
   assert(!summarize.error && summarize.result && summarize.result.summary, 'agent.summarize failed');
+  const recent = await rpc('mcp.logs.recent', { limit: 5 });
+  assert(!recent.error && Array.isArray(recent.result) && recent.result.length > 0, 'mcp.logs.recent failed');
+  // Rate limit edge: hammer a small loop (should not exceed limit set above)
+  for (let i=0;i<5;i++) await rpc('health.snapshot');
   console.log('MCP integration tests passed');
 }
 

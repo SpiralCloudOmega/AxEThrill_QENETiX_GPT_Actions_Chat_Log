@@ -38,6 +38,20 @@
         "path": ".github/workflows",
         "children": [
           {
+            "name": "ci.yml",
+            "type": "file",
+            "path": ".github/workflows/ci.yml",
+            "size": 1363,
+            "ext": "yml"
+          },
+          {
+            "name": "continuous-agents.yml",
+            "type": "file",
+            "path": ".github/workflows/continuous-agents.yml",
+            "size": 5063,
+            "ext": "yml"
+          },
+          {
             "name": "deploy-pages.yml",
             "type": "file",
             "path": ".github/workflows/deploy-pages.yml",
@@ -48,7 +62,7 @@
             "name": "monthly-agents.yml",
             "type": "file",
             "path": ".github/workflows/monthly-agents.yml",
-            "size": 1759,
+            "size": 3042,
             "ext": "yml"
           },
           {
@@ -70,10 +84,45 @@
     ]
   },
   {
+    "name": ".vscode",
+    "type": "dir",
+    "path": ".vscode",
+    "children": [
+      {
+        "name": "extensions.json",
+        "type": "file",
+        "path": ".vscode/extensions.json",
+        "size": 267,
+        "ext": "json"
+      },
+      {
+        "name": "settings.json",
+        "type": "file",
+        "path": ".vscode/settings.json",
+        "size": 51,
+        "ext": "json"
+      }
+    ]
+  },
+  {
+    "name": "CONTRIBUTING.md",
+    "type": "file",
+    "path": "CONTRIBUTING.md",
+    "size": 2093,
+    "ext": "md"
+  },
+  {
+    "name": "Dockerfile",
+    "type": "file",
+    "path": "Dockerfile",
+    "size": 768,
+    "ext": ""
+  },
+  {
     "name": "README.md",
     "type": "file",
     "path": "README.md",
-    "size": 7077,
+    "size": 13215,
     "ext": "md"
   },
   {
@@ -82,6 +131,34 @@
     "path": "SECURITY.md",
     "size": 440,
     "ext": "md"
+  },
+  {
+    "name": "docker-compose.yml",
+    "type": "file",
+    "path": "docker-compose.yml",
+    "size": 964,
+    "ext": "yml"
+  },
+  {
+    "name": "docs",
+    "type": "dir",
+    "path": "docs",
+    "children": [
+      {
+        "name": "automation.md",
+        "type": "file",
+        "path": "docs/automation.md",
+        "size": 6069,
+        "ext": "md"
+      },
+      {
+        "name": "mcp.md",
+        "type": "file",
+        "path": "docs/mcp.md",
+        "size": 3013,
+        "ext": "md"
+      }
+    ]
   },
   {
     "name": "logs",
@@ -211,6 +288,405 @@
             "path": "logs/incoming/2025-09-18-023758-multi-agent-sanity-check-orchestrator.md",
             "size": 4546,
             "ext": "md"
+          },
+          {
+            "name": "2025-09-20-20250920T013945-test-ingest.md",
+            "type": "file",
+            "path": "logs/incoming/2025-09-20-20250920T013945-test-ingest.md",
+            "size": 88,
+            "ext": "md"
+          },
+          {
+            "name": "2025-09-20-20250920T015343-test-ingest.md",
+            "type": "file",
+            "path": "logs/incoming/2025-09-20-20250920T015343-test-ingest.md",
+            "size": 88,
+            "ext": "md"
+          },
+          {
+            "name": "2025-09-20-20250920T022120-test-ingest.md",
+            "type": "file",
+            "path": "logs/incoming/2025-09-20-20250920T022120-test-ingest.md",
+            "size": 88,
+            "ext": "md"
+          }
+        ]
+      },
+      {
+        "name": "memory",
+        "type": "dir",
+        "path": "logs/memory",
+        "children": [
+          {
+            "name": "1611c8563928c63e.json",
+            "type": "file",
+            "path": "logs/memory/1611c8563928c63e.json",
+            "size": 252,
+            "ext": "json"
+          },
+          {
+            "name": "24acba61cd287748.json",
+            "type": "file",
+            "path": "logs/memory/24acba61cd287748.json",
+            "size": 252,
+            "ext": "json"
+          },
+          {
+            "name": "494aa70f5e867349.json",
+            "type": "file",
+            "path": "logs/memory/494aa70f5e867349.json",
+            "size": 252,
+            "ext": "json"
+          },
+          {
+            "name": "mcp",
+            "type": "dir",
+            "path": "logs/memory/mcp",
+            "children": [
+              {
+                "name": "2025-09-20",
+                "type": "dir",
+                "path": "logs/memory/mcp/2025-09-20",
+                "children": [
+                  {
+                    "name": "2025-09-20T01-39-45.540Z-f02cfb91.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.540Z-f02cfb91.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.544Z-00ed81e3.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.544Z-00ed81e3.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.546Z-bb358620.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.546Z-bb358620.json",
+                    "size": 203,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.548Z-bac91f19.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.548Z-bac91f19.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.550Z-22457b95.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.550Z-22457b95.json",
+                    "size": 321,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.554Z-6b0b20e4.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.554Z-6b0b20e4.json",
+                    "size": 248,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.556Z-90d52fb9.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.556Z-90d52fb9.json",
+                    "size": 226,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.558Z-fb1b7222.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.558Z-fb1b7222.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.560Z-03dd4dc2.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.560Z-03dd4dc2.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.561Z-79cb3d2f.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.561Z-79cb3d2f.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.562Z-089f9b4a.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.562Z-089f9b4a.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-39-45.563Z-58928595.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-39-45.563Z-58928595.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-41-23.521Z-ce7ab7ce.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-41-23.521Z-ce7ab7ce.json",
+                    "size": 226,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-41-47.898Z-c8cab58c.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-41-47.898Z-c8cab58c.json",
+                    "size": 259,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-42-00.729Z-9daec077.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-42-00.729Z-9daec077.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-13.007Z-2c8ff277.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-13.007Z-2c8ff277.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-13.029Z-73ac0876.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-13.029Z-73ac0876.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-13.032Z-22f65e2d.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-13.032Z-22f65e2d.json",
+                    "size": 203,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.491Z-88f63d54.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.491Z-88f63d54.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.496Z-a6cc2b65.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.496Z-a6cc2b65.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.498Z-50f13de8.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.498Z-50f13de8.json",
+                    "size": 203,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.505Z-4fdf5f88.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.505Z-4fdf5f88.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.525Z-e844ee7a.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.525Z-e844ee7a.json",
+                    "size": 322,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.531Z-dc6934e3.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.531Z-dc6934e3.json",
+                    "size": 248,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.533Z-40c8a497.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.533Z-40c8a497.json",
+                    "size": 226,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.572Z-413aa4f8.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.572Z-413aa4f8.json",
+                    "size": 208,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.577Z-06893f78.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.577Z-06893f78.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.579Z-b528ddc5.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.579Z-b528ddc5.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.580Z-1153f5f5.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.580Z-1153f5f5.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T01-53-43.582Z-be3d175e.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T01-53-43.582Z-be3d175e.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-15-02.718Z-66bad27a.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-15-02.718Z-66bad27a.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-15-02.723Z-3029a43d.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-15-02.723Z-3029a43d.json",
+                    "size": 309,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-18-32.698Z-72a65dbe.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-18-32.698Z-72a65dbe.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-19-29.606Z-25390891.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-19-29.606Z-25390891.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.461Z-1ca12bb7.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.461Z-1ca12bb7.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.466Z-bf20cc0c.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.466Z-bf20cc0c.json",
+                    "size": 220,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.468Z-a86346fa.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.468Z-a86346fa.json",
+                    "size": 203,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.470Z-6994b2b1.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.470Z-6994b2b1.json",
+                    "size": 307,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.473Z-eb53fdb0.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.473Z-eb53fdb0.json",
+                    "size": 321,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.477Z-1cee5d8e.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.477Z-1cee5d8e.json",
+                    "size": 248,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.479Z-b8ae9bf1.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.479Z-b8ae9bf1.json",
+                    "size": 226,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.481Z-c8cac15a.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.481Z-c8cac15a.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.482Z-177cb7ed.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.482Z-177cb7ed.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.484Z-18fd3146.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.484Z-18fd3146.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.485Z-342b04b8.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.485Z-342b04b8.json",
+                    "size": 207,
+                    "ext": "json"
+                  },
+                  {
+                    "name": "2025-09-20T02-21-20.486Z-75eb5e82.json",
+                    "type": "file",
+                    "path": "logs/memory/mcp/2025-09-20/2025-09-20T02-21-20.486Z-75eb5e82.json",
+                    "size": 207,
+                    "ext": "json"
+                  }
+                ]
+              },
+              {
+                "name": "index.json",
+                "type": "file",
+                "path": "logs/memory/mcp/index.json",
+                "size": 9903,
+                "ext": "json"
+              },
+              {
+                "name": "rate-limits.json",
+                "type": "file",
+                "path": "logs/memory/mcp/rate-limits.json",
+                "size": 75,
+                "ext": "json"
+              }
+            ]
           }
         ]
       }
@@ -235,6 +711,13 @@
     "type": "dir",
     "path": "site",
     "children": [
+      {
+        "name": ".eslintrc.cjs",
+        "type": "file",
+        "path": "site/.eslintrc.cjs",
+        "size": 904,
+        "ext": "cjs"
+      },
       {
         "name": ".gitignore",
         "type": "file",
@@ -291,7 +774,7 @@
                 "name": "page.tsx",
                 "type": "file",
                 "path": "site/app/graph/page.tsx",
-                "size": 4747,
+                "size": 4748,
                 "ext": "tsx"
               }
             ]
@@ -402,6 +885,20 @@
             ]
           },
           {
+            "name": "metrics",
+            "type": "dir",
+            "path": "site/app/metrics",
+            "children": [
+              {
+                "name": "page.tsx",
+                "type": "file",
+                "path": "site/app/metrics/page.tsx",
+                "size": 4456,
+                "ext": "tsx"
+              }
+            ]
+          },
+          {
             "name": "new",
             "type": "dir",
             "path": "site/app/new",
@@ -426,7 +923,7 @@
             "name": "page.tsx",
             "type": "file",
             "path": "site/app/page.tsx",
-            "size": 5871,
+            "size": 5873,
             "ext": "tsx"
           },
           {
@@ -485,7 +982,7 @@
                     "name": "page.tsx",
                     "type": "file",
                     "path": "site/app/tags/[tag]/page.tsx",
-                    "size": 3620,
+                    "size": 3622,
                     "ext": "tsx"
                   }
                 ]
@@ -494,7 +991,7 @@
                 "name": "page.tsx",
                 "type": "file",
                 "path": "site/app/tags/page.tsx",
-                "size": 2142,
+                "size": 2174,
                 "ext": "tsx"
               },
               {
@@ -573,7 +1070,7 @@
             "name": "NextOptions.tsx",
             "type": "file",
             "path": "site/components/NextOptions.tsx",
-            "size": 2039,
+            "size": 2003,
             "ext": "tsx"
           },
           {
@@ -622,7 +1119,7 @@
             "name": "Toast.tsx",
             "type": "file",
             "path": "site/components/Toast.tsx",
-            "size": 1989,
+            "size": 1978,
             "ext": "tsx"
           },
           {
@@ -771,14 +1268,14 @@
         "name": "package-lock.json",
         "type": "file",
         "path": "site/package-lock.json",
-        "size": 40629,
+        "size": 90541,
         "ext": "json"
       },
       {
         "name": "package.json",
         "type": "file",
         "path": "site/package.json",
-        "size": 2035,
+        "size": 2487,
         "ext": "json"
       },
       {
@@ -797,49 +1294,49 @@
             "name": "bundle-report.json",
             "type": "file",
             "path": "site/public/bundle-report.json",
-            "size": 3266,
+            "size": 3383,
             "ext": "json"
           },
           {
             "name": "commit-files.json",
             "type": "file",
             "path": "site/public/commit-files.json",
-            "size": 762,
+            "size": 6727,
             "ext": "json"
           },
           {
             "name": "commits.json",
             "type": "file",
             "path": "site/public/commits.json",
-            "size": 2259,
+            "size": 3371,
             "ext": "json"
           },
           {
             "name": "feed.xml",
             "type": "file",
             "path": "site/public/feed.xml",
-            "size": 5015,
+            "size": 6185,
             "ext": "xml"
           },
           {
             "name": "health.json",
             "type": "file",
             "path": "site/public/health.json",
-            "size": 236,
+            "size": 237,
             "ext": "json"
           },
           {
             "name": "learn-policy.json",
             "type": "file",
             "path": "site/public/learn-policy.json",
-            "size": 1841,
+            "size": 1892,
             "ext": "json"
           },
           {
             "name": "logs-index.json",
             "type": "file",
             "path": "site/public/logs-index.json",
-            "size": 3418,
+            "size": 4177,
             "ext": "json"
           },
           {
@@ -853,21 +1350,21 @@
             "name": "rag-capsule.png",
             "type": "file",
             "path": "site/public/rag-capsule.png",
-            "size": 9117,
+            "size": 9350,
             "ext": "png"
           },
           {
             "name": "rag-index.json",
             "type": "file",
             "path": "site/public/rag-index.json",
-            "size": 113954,
+            "size": 116580,
             "ext": "json"
           },
           {
             "name": "repo-tree.json",
             "type": "file",
             "path": "site/public/repo-tree.json",
-            "size": 40767,
+            "size": 56071,
             "ext": "json"
           },
           {
@@ -1002,6 +1499,20 @@
                 ]
               },
               {
+                "name": "test",
+                "type": "dir",
+                "path": "site/public/tags/test",
+                "children": [
+                  {
+                    "name": "feed.xml",
+                    "type": "file",
+                    "path": "site/public/tags/test/feed.xml",
+                    "size": 1401,
+                    "ext": "xml"
+                  }
+                ]
+              },
+              {
                 "name": "ue5",
                 "type": "dir",
                 "path": "site/public/tags/ue5",
@@ -1117,7 +1628,7 @@
                 "name": "agent-zero.mjs",
                 "type": "file",
                 "path": "site/scripts/agents/agent-zero.mjs",
-                "size": 5706,
+                "size": 5708,
                 "ext": "mjs"
               },
               {
@@ -1189,7 +1700,7 @@
             "name": "build-rag.mjs",
             "type": "file",
             "path": "site/scripts/build-rag.mjs",
-            "size": 7788,
+            "size": 7790,
             "ext": "mjs"
           },
           {
@@ -1203,7 +1714,14 @@
             "name": "extract-rag.mjs",
             "type": "file",
             "path": "site/scripts/extract-rag.mjs",
-            "size": 2165,
+            "size": 2213,
+            "ext": "mjs"
+          },
+          {
+            "name": "ingest.mjs",
+            "type": "file",
+            "path": "site/scripts/ingest.mjs",
+            "size": 2698,
             "ext": "mjs"
           },
           {
@@ -1222,10 +1740,17 @@
                 "name": "tags.mjs",
                 "type": "file",
                 "path": "site/scripts/lib/tags.mjs",
-                "size": 1833,
+                "size": 1832,
                 "ext": "mjs"
               }
             ]
+          },
+          {
+            "name": "mcp-server.mjs",
+            "type": "file",
+            "path": "site/scripts/mcp-server.mjs",
+            "size": 19176,
+            "ext": "mjs"
           },
           {
             "name": "nightly-summarize.mjs",
@@ -1238,14 +1763,14 @@
             "name": "prebuild.mjs",
             "type": "file",
             "path": "site/scripts/prebuild.mjs",
-            "size": 10000,
+            "size": 10421,
             "ext": "mjs"
           },
           {
             "name": "probe-system.mjs",
             "type": "file",
             "path": "site/scripts/probe-system.mjs",
-            "size": 3379,
+            "size": 3377,
             "ext": "mjs"
           },
           {
@@ -1298,6 +1823,20 @@
             "ext": "mjs"
           },
           {
+            "name": "tests",
+            "type": "dir",
+            "path": "site/scripts/tests",
+            "children": [
+              {
+                "name": "mcp.test.mjs",
+                "type": "file",
+                "path": "site/scripts/tests/mcp.test.mjs",
+                "size": 2925,
+                "ext": "mjs"
+              }
+            ]
+          },
+          {
             "name": "tools",
             "type": "dir",
             "path": "site/scripts/tools",
@@ -1306,7 +1845,7 @@
                 "name": "analyze.mjs",
                 "type": "file",
                 "path": "site/scripts/tools/analyze.mjs",
-                "size": 4426,
+                "size": 4349,
                 "ext": "mjs"
               },
               {
@@ -1396,6 +1935,13 @@
         "path": "site/tsconfig.json",
         "size": 654,
         "ext": "json"
+      },
+      {
+        "name": "tsconfig.tsbuildinfo",
+        "type": "file",
+        "path": "site/tsconfig.tsbuildinfo",
+        "size": 90060,
+        "ext": "tsbuildinfo"
       }
     ]
   }

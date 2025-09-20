@@ -1,0 +1,428 @@
+[
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.486Z_75eb5e82",
+    "ts": "2025-09-20T02:21:20.486Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.485Z_342b04b8",
+    "ts": "2025-09-20T02:21:20.485Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.484Z_18fd3146",
+    "ts": "2025-09-20T02:21:20.484Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.482Z_177cb7ed",
+    "ts": "2025-09-20T02:21:20.482Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.481Z_c8cac15a",
+    "ts": "2025-09-20T02:21:20.481Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.479Z_b8ae9bf1",
+    "ts": "2025-09-20T02:21:20.479Z",
+    "method": "mcp.logs.recent",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 799
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.477Z_1cee5d8e",
+    "ts": "2025-09-20T02:21:20.477Z",
+    "method": "agent.summarize",
+    "ok": true,
+    "ms": 3,
+    "paramBytes": 26,
+    "resultBytes": 1077
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.473Z_eb53fdb0",
+    "ts": "2025-09-20T02:21:20.473Z",
+    "method": "memory.add",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 82,
+    "resultBytes": 35
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.470Z_6994b2b1",
+    "ts": "2025-09-20T02:21:20.470Z",
+    "method": "ingest.add",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 74,
+    "resultBytes": 76
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.468Z_a86346fa",
+    "ts": "2025-09-20T02:21:20.468Z",
+    "method": "token.ledger",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 71
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.466Z_bf20cc0c",
+    "ts": "2025-09-20T02:21:20.466Z",
+    "method": "memory.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 2
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-21-20.461Z_1ca12bb7",
+    "ts": "2025-09-20T02:21:20.461Z",
+    "method": "logs.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 411
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-19-29.606Z_25390891",
+    "ts": "2025-09-20T02:19:29.606Z",
+    "method": "logs.list",
+    "ok": false,
+    "ms": 0,
+    "paramBytes": 0,
+    "resultBytes": 0,
+    "error": {
+      "code": "RATE_LIMIT",
+      "message": "Daily request limit reached"
+    }
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-18-32.698Z_72a65dbe",
+    "ts": "2025-09-20T02:18:32.698Z",
+    "method": "logs.list",
+    "ok": false,
+    "ms": 0,
+    "paramBytes": 0,
+    "resultBytes": 0,
+    "error": {
+      "code": "RATE_LIMIT",
+      "message": "Daily request limit reached"
+    }
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-15-02.723Z_3029a43d",
+    "ts": "2025-09-20T02:15:02.723Z",
+    "method": "memory.list",
+    "ok": false,
+    "ms": 0,
+    "paramBytes": 0,
+    "resultBytes": 0,
+    "error": {
+      "code": "RATE_LIMIT",
+      "message": "Daily request limit reached"
+    }
+  },
+  {
+    "id": "2025-09-20_2025-09-20T02-15-02.718Z_66bad27a",
+    "ts": "2025-09-20T02:15:02.718Z",
+    "method": "logs.list",
+    "ok": true,
+    "ms": 2,
+    "paramBytes": 11,
+    "resultBytes": 411
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.582Z_be3d175e",
+    "ts": "2025-09-20T01:53:43.582Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.580Z_1153f5f5",
+    "ts": "2025-09-20T01:53:43.580Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.579Z_b528ddc5",
+    "ts": "2025-09-20T01:53:43.579Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.577Z_06893f78",
+    "ts": "2025-09-20T01:53:43.577Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 2,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.572Z_413aa4f8",
+    "ts": "2025-09-20T01:53:43.572Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 38,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.533Z_40c8a497",
+    "ts": "2025-09-20T01:53:43.533Z",
+    "method": "mcp.logs.recent",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 11,
+    "resultBytes": 800
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.531Z_dc6934e3",
+    "ts": "2025-09-20T01:53:43.531Z",
+    "method": "agent.summarize",
+    "ok": true,
+    "ms": 5,
+    "paramBytes": 26,
+    "resultBytes": 1429
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.525Z_e844ee7a",
+    "ts": "2025-09-20T01:53:43.525Z",
+    "method": "memory.add",
+    "ok": true,
+    "ms": 17,
+    "paramBytes": 82,
+    "resultBytes": 35
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.505Z_4fdf5f88",
+    "ts": "2025-09-20T01:53:43.505Z",
+    "method": "ingest.add",
+    "ok": true,
+    "ms": 6,
+    "paramBytes": 74,
+    "resultBytes": 76
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.498Z_50f13de8",
+    "ts": "2025-09-20T01:53:43.498Z",
+    "method": "token.ledger",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 71
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.496Z_a6cc2b65",
+    "ts": "2025-09-20T01:53:43.496Z",
+    "method": "memory.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 2
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-43.491Z_88f63d54",
+    "ts": "2025-09-20T01:53:43.491Z",
+    "method": "logs.list",
+    "ok": true,
+    "ms": 2,
+    "paramBytes": 11,
+    "resultBytes": 479
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-13.032Z_22f65e2d",
+    "ts": "2025-09-20T01:53:13.032Z",
+    "method": "token.ledger",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 71
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-13.029Z_73ac0876",
+    "ts": "2025-09-20T01:53:13.029Z",
+    "method": "memory.list",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 11,
+    "resultBytes": 2
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-53-13.007Z_2c8ff277",
+    "ts": "2025-09-20T01:53:13.007Z",
+    "method": "logs.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 479
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-42-00.729Z_9daec077",
+    "ts": "2025-09-20T01:42:00.729Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-41-47.898Z_c8cab58c",
+    "ts": "2025-09-20T01:41:47.898Z",
+    "method": "agent.summarize",
+    "ok": true,
+    "ms": 2,
+    "paramBytes": 37,
+    "resultBytes": 1157
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-41-23.521Z_ce7ab7ce",
+    "ts": "2025-09-20T01:41:23.521Z",
+    "method": "mcp.logs.recent",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 490
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.563Z_58928595",
+    "ts": "2025-09-20T01:39:45.563Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.562Z_089f9b4a",
+    "ts": "2025-09-20T01:39:45.562Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.561Z_79cb3d2f",
+    "ts": "2025-09-20T01:39:45.561Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.560Z_03dd4dc2",
+    "ts": "2025-09-20T01:39:45.560Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.558Z_fb1b7222",
+    "ts": "2025-09-20T01:39:45.558Z",
+    "method": "health.snapshot",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 193
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.556Z_90d52fb9",
+    "ts": "2025-09-20T01:39:45.556Z",
+    "method": "mcp.logs.recent",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 11,
+    "resultBytes": 799
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.554Z_6b0b20e4",
+    "ts": "2025-09-20T01:39:45.554Z",
+    "method": "agent.summarize",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 26,
+    "resultBytes": 1741
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.550Z_22457b95",
+    "ts": "2025-09-20T01:39:45.550Z",
+    "method": "memory.add",
+    "ok": true,
+    "ms": 0,
+    "paramBytes": 82,
+    "resultBytes": 35
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.548Z_bac91f19",
+    "ts": "2025-09-20T01:39:45.548Z",
+    "method": "ingest.add",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 74,
+    "resultBytes": 76
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.546Z_bb358620",
+    "ts": "2025-09-20T01:39:45.546Z",
+    "method": "token.ledger",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 2,
+    "resultBytes": 71
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.544Z_00ed81e3",
+    "ts": "2025-09-20T01:39:45.544Z",
+    "method": "memory.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 2
+  },
+  {
+    "id": "2025-09-20_2025-09-20T01-39-45.540Z_f02cfb91",
+    "ts": "2025-09-20T01:39:45.540Z",
+    "method": "logs.list",
+    "ok": true,
+    "ms": 1,
+    "paramBytes": 11,
+    "resultBytes": 559
+  }
+]

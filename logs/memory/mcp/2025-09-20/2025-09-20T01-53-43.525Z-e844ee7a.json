@@ -1,0 +1,17 @@
+{
+  "id": "2025-09-20_2025-09-20T01-53-43.525Z_e844ee7a",
+  "ts": "2025-09-20T01:53:43.525Z",
+  "method": "memory.add",
+  "ok": true,
+  "ms": 17,
+  "paramBytes": 82,
+  "resultBytes": 35,
+  "params": {
+    "title": "Test Capsule",
+    "content": "capsule body",
+    "tags": [
+      "caps"
+    ],
+    "summary": "test"
+  }
+}

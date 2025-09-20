@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 
 type ToastItem = { id: number; message: string; type?: 'info' | 'success' | 'error'; ttlMs?: number };
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>#test - Chat Logs</title>
+    <link>http://localhost:3000/tags/test/</link>
+    <description>Items tagged test</description>
+    
+    <item>
+      <title>Test Ingest</title>
+      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T022120-test-ingest/</link>
+      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T022120-test-ingest/</guid>
+      <pubDate>Sat, 20 Sep 2025 02:21:20 GMT</pubDate>
+      <description>logs/incoming/2025-09-20-20250920T022120-test-ingest.md</description>
+    </item>
+    <item>
+      <title>Test Ingest</title>
+      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T015343-test-ingest/</link>
+      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T015343-test-ingest/</guid>
+      <pubDate>Sat, 20 Sep 2025 01:53:43 GMT</pubDate>
+      <description>logs/incoming/2025-09-20-20250920T015343-test-ingest.md</description>
+    </item>
+    <item>
+      <title>Test Ingest</title>
+      <link>http://localhost:3000/logs/incoming/2025-09-20-20250920T013945-test-ingest/</link>
+      <guid>http://localhost:3000/logs/incoming/2025-09-20-20250920T013945-test-ingest/</guid>
+      <pubDate>Sat, 20 Sep 2025 01:39:45 GMT</pubDate>
+      <description>logs/incoming/2025-09-20-20250920T013945-test-ingest.md</description>
+    </item>
+  </channel>
+</rss>

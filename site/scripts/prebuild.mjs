@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,13 +15,13 @@ const publicDir = path.join(siteDir, 'public');
 
 function parseHeader(md) {
   const lines = md.split('\n');
-  let offset = 0;
-  let fm = {};
+  let _offset = 0; // retained for potential future slice usage
+  const fm = {};
   if (lines[0]?.trim() === '---') {
     // Simple YAML-like frontmatter: key: value per line until closing ---
     for (let i = 1; i < Math.min(lines.length, 50); i++) {
       const line = lines[i];
-      if (line.trim() === '---') { offset = i + 1; break; }
+  if (line.trim() === '---') { _offset = i + 1; break; }
       const m = /^(\w[\w-]*):\s*(.*)$/.exec(line);
       if (m) {
         const key = m[1].toLowerCase();
@@ -207,7 +208,9 @@ async function run() {
 
   // health.json meta summary
   try {
-    const health = {};
+  const health = {};
+  // Version marker (bump if structure changes materially)
+  health.version = 2;
     health.generatedAt = new Date().toISOString();
     // current commit
     try {
@@ -243,6 +246,12 @@ async function run() {
         health.commits = commits.length;
       }
     } catch {}
+    // Feature flags snapshot for quick capability introspection
+    health.featureFlags = {
+      providerSummarize: Boolean(process.env.OPENAI_API_KEY || process.env.GEMINI_API_KEY),
+      rateLimitPersistence: true,
+      mcpWriteMethods: true
+    };
     fs.writeFileSync(path.join(publicDir, 'health.json'), JSON.stringify(health, null, 2));
     // Also write a super-light ping.json for uptime checks
     const ping = {

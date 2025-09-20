@@ -6,10 +6,6 @@ function read(filePath) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-function isNumeric(x) {
-  const n = Number(x);
-  return Number.isFinite(n);
-}
 
 function stats(nums) {
   const n = nums.length;
@@ -59,7 +55,7 @@ function analyzeCSV(text) {
   const header = rows[0];
   const data = rows.slice(1);
   const cols = header.length;
-  const colSamples = header.map((h, idx) => data.slice(0, 5).map(r => r[idx]));
+  const _colSamples = header.map((h, idx) => data.slice(0, 5).map(r => r[idx]));
   const lines = [];
   lines.push(`CSV: ${data.length} rows, ${cols} columns`);
   header.forEach((h, idx) => {

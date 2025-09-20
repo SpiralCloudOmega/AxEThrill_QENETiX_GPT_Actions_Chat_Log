@@ -38,7 +38,7 @@ export default async function GraphPage() {
               </tr>
             </thead>
             <tbody>
-              {commits.map((c: any, i: number) => {
+              {commits.map((c: any, _i: number) => {
                 const lane = (c.parents?.length || 0) > 1 ? 2 : (c.parents?.length || 0);
                 const files = filesMap[c.hash] || [];
                 return (

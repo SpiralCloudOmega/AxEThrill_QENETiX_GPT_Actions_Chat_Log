@@ -69,7 +69,7 @@ Format your answer in clear markdown.`;
 
 async function run(){
   const args = parseArgs(process.argv);
-  let spec = args.spec || (args.file ? readSpecFromFile(args.file) : (args._.length ? args._.join(' ') : ''));
+  const spec = args.spec || (args.file ? readSpecFromFile(args.file) : (args._.length ? args._.join(' ') : ''));
   if(!spec){
     console.log('Usage: node site/scripts/agents/agent-zero.mjs --spec "Short goal" [--provider=gemini|openai|rag] [--graph JSON|file] [--route]');
     process.exit(0);

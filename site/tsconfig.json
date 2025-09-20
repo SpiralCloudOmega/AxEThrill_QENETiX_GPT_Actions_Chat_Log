@@ -3,7 +3,7 @@
     "target": "ES2020",
     "lib": [
       "dom",
-      "ES2020"
+      "ES2022"
     ],
     "jsx": "preserve",
     "module": "ESNext",

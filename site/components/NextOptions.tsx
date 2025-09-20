@@ -10,11 +10,11 @@ type Policy = {
   tagNext: Record<string, { tag: string; count: number }[]>;
 };
 
-function uniq<T>(arr: T[]): T[] { return Array.from(new Set(arr)); }
+// (removed unused uniq helper)
 
 export default function NextOptions({ contextTags = [] as string[] }: { contextTags?: string[] }){
   const [policy, setPolicy] = useState<Policy | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const cfg = useUiConfig();
 
   useEffect(() => {

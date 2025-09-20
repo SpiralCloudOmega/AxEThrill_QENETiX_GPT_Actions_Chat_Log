@@ -32,7 +32,7 @@ function openrgbStatus() {
 
 function distro() {
   const osr = sh('cat /etc/os-release');
-  const name = /PRETTY_NAME=\"?([^\n\"]+)/.exec(osr)?.[1] || '';
+  const name = /PRETTY_NAME="?([^\n"]+)/.exec(osr)?.[1] || '';
   return name;
 }
 
