@@ -1,0 +1,10 @@
+{
+  "id": "2025-09-20_2025-09-20T18-09-56.917Z_74ea9bef",
+  "ts": "2025-09-20T18:09:56.917Z",
+  "method": "health.snapshot",
+  "ok": true,
+  "ms": 0,
+  "paramBytes": 2,
+  "resultBytes": 299,
+  "params": {}
+}

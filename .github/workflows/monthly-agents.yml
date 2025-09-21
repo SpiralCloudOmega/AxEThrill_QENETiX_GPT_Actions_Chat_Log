@@ -52,29 +52,29 @@ jobs:
           cd site
           node scripts/prebuild.mjs
 
-      - name: Detect provider
-        id: detect
+      - name: GitHub CLI Status Check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          prov="rag"
-          if [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then prov="gemini"; fi
-          if [ -z "$prov" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then prov="openai"; fi
-          # Prefer OpenAI if both present? Keep Gemini priority unless overridden.
-          if [ -n "${{ secrets.OPENAI_API_KEY }}" ] && [ -n "${{ secrets.GEMINI_API_KEY }}" ]; then
-            prov="openai"
-          fi
-          echo "provider=$prov" >> $GITHUB_OUTPUT
-          echo "Using provider: $prov"
+          echo "Using GitHub CLI instead of AI providers"
+          gh repo view --json description,topics,url
+          gh issue list --limit 5
+          gh pr list --limit 5
+          echo "GitHub CLI provider selected for simplified operations"
+          echo "provider=github" >> $GITHUB_OUTPUT
 
-      - name: Agent Zero (monthly plan)
+      - name: Monthly GitHub Summary
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AI_PROVIDER: ${{ steps.detect.outputs.provider }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd site
-          echo "Selected AI_PROVIDER=$AI_PROVIDER"
-          node scripts/agents/agent-zero.mjs -- "Monthly status + roadmap check-in: summarize key changes from logs-index.json and propose next small improvements." --route || echo "Agent step soft-failed"
+          echo "Running monthly summary using GitHub CLI"
+          echo "Checking repository activity and logs"
+          # Simple log counting instead of AI processing
+          find logs -name "*.md" -type f | wc -l > /tmp/log_count.txt
+          echo "Total logs found: $(cat /tmp/log_count.txt)"
+          echo "Monthly summary completed using GitHub CLI"
 
       - name: Build memory index
         run: |

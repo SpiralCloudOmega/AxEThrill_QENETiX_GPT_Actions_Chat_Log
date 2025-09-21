@@ -2,9 +2,12 @@
 
 [![Deploy](https://github.com/SpiralCloudOmega/AxEThrill_QENETiX_GPT_Actions_Chat_Log/actions/workflows/deploy-pages.yml/badge.svg)](.github/workflows/deploy-pages.yml)
 
-A static Next.js 14 UI + local-first AI toolkit to browse and analyze Markdown chat logs in `logs/`, deployed to GitHub Pages. The client auto-detects the GitHub Pages `basePath` at runtime, so local (`/`) and Pages (`/REPO_NAME`) both work without extra config.
+A static Next.js 14 UI + local-first AI toolkit to browse and analyze Markdown chat logs in `logs/`, deployed to GitHub
+Pages. The client auto-detects the GitHub Pages `basePath` at runtime, so local (`/`) and Pages (`/REPO_NAME`) both
+work without extra config.
 
 ## Features
+
 - Auto-discovers `logs/**/*.md`
 - Static list & detail pages (Next.js App Router + `next export`)
 - Client-side TF‑IDF search with tag filtering & recent searches
@@ -24,9 +27,10 @@ A static Next.js 14 UI + local-first AI toolkit to browse and analyze Markdown c
 - SSE streaming endpoint `/stream` (chunked JSON events)
 - Health snapshot page (`/health`) + raw `health.json` and lightweight `ping.json`
 - Bundle size report emitted as `bundle-report.json` after build
- - Minimal MCP JSON-RPC server (see `docs/mcp.md`) plus REST helpers `/mcp/health` & `/mcp/recent`
+- Minimal MCP JSON-RPC server (see `docs/mcp.md`) plus REST helpers `/mcp/health` & `/mcp/recent`
 
-### Autonomous Mode & Continuous Agents
+## Autonomous Mode & Continuous Agents
+
 This repo can operate in a hands‑free mode:
 
 - `continuous-agents.yml` runs every 6 hours and on pushes that modify `logs/**/*.md`.
@@ -34,31 +38,36 @@ This repo can operate in a hands‑free mode:
 - Monthly deeper analysis lives in `monthly-agents.yml`.
 
 Provider precedence (workflows):
+
 1. `GEMINI_API_KEY` present → `gemini`
 2. else `OPENAI_API_KEY` present → `openai`
 3. else → `rag` (offline only)
 
 Override locally:
+
 ```bash
 AI_PROVIDER=gemini (cd site && npm run -s ai:ask -- "Summarize new logs")
 AI_PROVIDER=rag (cd site && npm run -s ai:chat)
 ```
 
 Safety guards you may add later:
+
 - Large batch guard (skip if > N new logs).
 - Token usage caps (count RAG snippet chars before requesting provider).
 - Agent state checkpointing in `logs/memory/agent-state/`.
 
 No manual approval is required for these workflows if repo Actions permissions allow direct pushes and secrets are configured.
 
-#### Continuous Agent Safeguards
+### Continuous Agent Safeguards
 
 The `continuous-agents.yml` workflow now includes:
+
 - Batch guard heuristic: estimates token usage (`approxTokens ≈ changedChars / 4`). If it exceeds `BATCH_GUARD_LIMIT * 1000`, the run is auto-skipped to avoid runaway spend (default limit 150k tokens equivalent).
 - State checkpoint: `logs/memory/agent-state/continuous-state.json` tracks the last processed commit & stats.
 - Provider override: set `AI_PROVIDER_FORCE=gemini|openai|rag` in workflow secrets to force a provider even if others are present.
 
 Environment variables (workflows side):
+
 | Variable | Purpose | Default |
 |----------|---------|---------|
 | `AI_PROVIDER_FORCE` | Force provider precedence | auto-detect |
@@ -69,12 +78,15 @@ CLI still uses `AI_PROVIDER` (runtime override) while automation can hard-force 
 #### Ingestion Helper
 
 Bulk import external markdown using the ingestion script:
+
 ```bash
 node site/scripts/ingest.mjs ./some-folder
 node site/scripts/ingest.mjs docs/**/*.md --tags research,planning
 node site/scripts/ingest.mjs notes/today.md --tags quick
 ```
+
 Features:
+
 - Accepts file, directory, or glob.
 - Ensures a title (first heading or derives from filename).
 - Optional `--tags tag1,tag2` adds frontmatter.
@@ -85,15 +97,18 @@ Follow-up: run `npm run --prefix site route:logs` (or the watcher) so they move 
 #### Docker & Compose
 
 Included multi‑stage `Dockerfile` targets:
+
 - `build` (installs + exports site)
 - `web` (nginx serving static `out/`)
 - `agent` (Node runtime for orchestrated agent scripts)
 
 `docker-compose.yml` services:
+
 - `web` (port 3000 → nginx 80)
 - `agent` (runs orchestrator; mount `./logs` & `./public`)
 
 Quick start:
+
 ```bash
 docker compose build
 OPENAI_API_KEY=... GEMINI_API_KEY=... docker compose up -d
@@ -101,6 +116,7 @@ docker compose logs -f agent
 ```
 
 Rebuild static export locally (without compose):
+
 ```bash
 cd site
 node scripts/prebuild.mjs
@@ -110,6 +126,7 @@ npm run build
 See `docs/automation.md` for a deeper architecture & extension guide.
 
 ## Local development
+
 From the `site/` folder:
 
 1. Install dependencies
@@ -118,9 +135,11 @@ From the `site/` folder:
 Put some markdown in `logs/2025/09/17/example.md` and refresh the index page.
 
 ## Deployment
+
 Pushing to `main` publishes the site to GitHub Pages via `.github/workflows/deploy-pages.yml`.
 
 ### GitHub Pages setup
+
 1. Repo Settings → Pages → Source: GitHub Actions.
 2. Merge/push to `main`.
 3. Workflow steps: install deps → prebuild indices → `next build` → `next export` → deploy `site/out`.
@@ -129,56 +148,67 @@ Pushing to `main` publishes the site to GitHub Pages via `.github/workflows/depl
 Runtime fetches compute a base path by inspecting any loaded `/_next/` script URL, so no extra env is required for Pages.
 
 ### Tag normalization & aliases
+
 Tags are:
+
 1. Lowercased
 2. Internal whitespace collapsed
 3. Single trailing `: ; , .` stripped
 4. Mapped through `tagAliases` (from `site/public/ui/config.json`)
 
 Example alias config:
+
 ```json
 {
-	"tagAliases": { "nvidia code:": "nvidia", "nvidia code": "nvidia" }
+    "tagAliases": { "nvidia code:": "nvidia", "nvidia code": "nvidia" }
 }
 ```
+
 Run `npm run prebuild` (or push) to propagate to logs index, RAG, and learning policy.
 
 ### Build health metadata
-The prebuild emits `health.json` containing a lightweight snapshot:
+
+Pre-build generates a health snapshot in `site/public/health.json`:
+
 ```jsonc
 {
-	"generatedAt": "2025-09-18T12:34:56.789Z",
-	"commit": "<full sha>",
-	"shortCommit": "<12 chars>",
-	"logs": 42,
-	"uniqueTags": 17,
-	"rag": { "chunks": 180, "terms": 640 },
-	"memory": { "items": 7 },
-	"commits": 120
+    "generatedAt": "2025-09-18T12:34:56.789Z",
+    "commit": "<full sha>",
+    "shortCommit": "<12 chars>",
+    "logs": 42,
+    "uniqueTags": 17,
+    "rag": { "chunks": 180, "terms": 640 },
+    "memory": { "items": 7 },
+    "commits": 120
 }
 ```
+
 Useful for uptime/status widgets or CI comparisons.
 
 ### Theme override toggle
-UI includes a theme selector (System / Light / Dark) that sets `data-theme` on `<html>`; dark mode no longer relies solely on the OS preference.
+
+By default, the site follows the OS/browser color scheme preference (light/dark). Set `ui.theme: "light"` or `"dark"` in `site/public/ui/config.json` to override.
 
 ### Monitoring & bundle report
+
 - Quick uptime: fetch `/ping.json` → `{ ok, shortCommit, generatedAt }`
 - Detailed snapshot: `/health.json` or visit `/health`
 - Bundle sizing: after `next build`, `bundle-report.json` lists largest JS chunks (top 30) and total bytes.
 
 Example `bundle-report.json` (truncated):
+
 ```json
 {
-	"generatedAt": "2025-09-18T12:34:56.789Z",
-	"totalBytes": 123456,
-	"totalHuman": "120.56 KB",
-	"count": 17,
-	"top": [ { "file": "chunks/app/page-abc123.js", "bytes": 34567, "human": "33.77 KB" } ]
+    "generatedAt": "2025-09-18T12:34:56.789Z",
+    "totalBytes": 123456,
+    "totalHuman": "120.56 KB",
+    "count": 17,
+    "top": [ { "file": "chunks/app/page-abc123.js", "bytes": 34567, "human": "33.77 KB" } ]
 }
 ```
 
 ## Project layout
+
 - `site/` Next.js app (App Router)
 - `logs/` Markdown sources (at repo root)
 - `site/scripts/prebuild.mjs` Prebuild index + RSS feed + graph/tree + RAG
@@ -187,9 +217,9 @@ Example `bundle-report.json` (truncated):
 - `site/scripts/ai-cli.mjs` Local AI CLI (ask/chat/rag/serve)
 - `site/scripts/providers/{gemini,openai}.mjs` Optional provider adapters
 - `site/scripts/tools/{memory,grep,scraper}.mjs` Tools used by CLI/API
-	- `memory`: add/build/list/search JSON capsules in `logs/memory/`
-	- `grep`: safe regex search within allowlisted roots
-	- `scraper`: safe URL/file scraping to Markdown/Text/JSON
+  - `memory`: add/build/list/search JSON capsules in `logs/memory/`
+  - `grep`: safe regex search within allowlisted roots
+  - `scraper`: safe URL/file scraping to Markdown/Text/JSON
 
 ## Scripts
 
@@ -213,9 +243,9 @@ Run from `site/`:
 The AI CLI is local-first: it retrieves relevant context from your logs using the TF‑IDF RAG index, and can optionally call a cloud provider to synthesize an answer.
 
 - Providers: set `AI_PROVIDER=gemini|openai|rag` or pass `--provider=...`.
-	- Gemini: set `GEMINI_API_KEY` (and optional `GEMINI_MODEL`, default `gemini-1.5-flash-latest`).
-	- OpenAI: set `OPENAI_API_KEY` (and optional `OPENAI_MODEL`, default `gpt-4o-mini`).
-	- rag: fully offline; returns top-matching snippets and sources without LLM calls.
+  - Gemini: set `GEMINI_API_KEY` (and optional `GEMINI_MODEL`, default `gemini-1.5-flash-latest`).
+  - OpenAI: set `OPENAI_API_KEY` (and optional `OPENAI_MODEL`, default `gpt-4o-mini`).
+  - rag: fully offline; returns top-matching snippets and sources without LLM calls.
 
 Examples:
 
@@ -246,9 +276,12 @@ Transcripts are saved under `logs/incoming` and can be routed into dated folders
 - Scraper: POST `/tool` with `{ action: "scrape:url"|"scrape:file", ... }` (supports `save` to memory)
 - Streaming demo: GET `/stream` to see chunked JSON events of an answer
 
-### MCP (Model Context Protocol) Server (Experimental)
+## MCP (Model Context Protocol) Server (Experimental)
 
-A minimal MCP-style JSON-RPC 2.0 endpoint exposes repository knowledge (logs, memory, RAG) with controlled write methods, summarization, request logging, and simple daily rate limiting. See `docs/mcp.md` for an authoritative, continually updated method reference. Two convenience REST mirrors exist for quick inspection: `GET /mcp/health` and `GET /mcp/recent` (query params: `limit`, `method`, `ok=true|false`).
+A minimal MCP-style JSON-RPC 2.0 endpoint exposes repository knowledge (logs, memory, RAG) with controlled write
+methods, summarization, request logging, and simple daily rate limiting. See `docs/mcp.md` for an authoritative,
+continually updated method reference. Two convenience REST mirrors exist for quick inspection: `GET /mcp/health`
+and `GET /mcp/recent` (query params: `limit`, `method`, `ok=true|false`).
 
 Start the server:
 
@@ -257,12 +290,14 @@ Start the server:
 ```
 
 Optional auth:
+
 ```bash
 export MCP_API_KEY="mysecret"
 (cd site && MCP_API_KEY=$MCP_API_KEY npm run -s mcp:serve)
 ```
 
 JSON-RPC request format:
+
 ```jsonc
 { "jsonrpc": "2.0", "id": 1, "method": "logs.list", "params": { "limit": 5 } }
 ```
@@ -270,30 +305,35 @@ JSON-RPC request format:
 Implemented (JSON-RPC) methods (abridged): logs.list/get, memory.list/get, rag.search, health.snapshot, token.ledger, agent.summarize, mcp.logs.recent, ingest.add*, memory.add* (*=auth required).
 
 Logging & Rate Limits:
+
 - Per-request JSON log: `logs/memory/mcp/<YYYY-MM-DD>/<timestamp>-<id>.json`
 - Rolling index (last 500): `logs/memory/mcp/index.json`
 - Daily counter: `logs/memory/mcp/rate-limits.json` (`{ date, counts, limit }`)
 Set `MCP_DAILY_REQ_LIMIT` (default 500). On exceed: `{ code: "RATE_LIMIT" }`.
 
 Summarization (`agent.summarize`):
+
 1. Ranks with local TF‑IDF
 2. Attempts OpenAI (preferred) or Gemini if keys exist
 3. Falls back to deterministic local bullet list
 Response includes `{ degraded: true }` when only the local fallback was used.
 
 Example (curl):
+
 ```bash
 curl -s -X POST localhost:12812/mcp \
-	-H 'content-type: application/json' \
-	-d '{"jsonrpc":"2.0","id":1,"method":"rag.search","params":{"query":"memory index"}}'
+    -H 'content-type: application/json' \
+    -d '{"jsonrpc":"2.0","id":1,"method":"rag.search","params":{"query":"memory index"}}'
 ```
 
 If `MCP_API_KEY` is set, include header:
+
 ```bash
-	-H "x-api-key: $MCP_API_KEY"
+    -H "x-api-key: $MCP_API_KEY"
 ```
 
 Environment variables (MCP):
+
 | Variable | Purpose | Default |
 |----------|---------|---------|
 | `MCP_API_KEY` | Enables auth; required for write methods | (unset) |
@@ -305,14 +345,14 @@ Environment variables (MCP):
 JSON-RPC Errors (codes): `INVALID_REQUEST`, `METHOD_NOT_FOUND`, `INVALID_INPUT`, `NOT_FOUND`, `UNAUTHORIZED`, `RATE_LIMIT`, `INTERNAL`.
 
 `agent.summarize` result shape:
+
 ```jsonc
 {
-	"summary": "Summary for \"recent activity\": ...",
-	"items": [ { "href": "logs/2025/09/18/example", "title": "Example", "snippet": "...", "score": 0.42 } ],
-	"model": "local-rag",
-	"degraded": true
+    "summary": "Summary for \"recent activity\": ...",
+    "items": [ { "href": "logs/2025/09/18/example", "title": "Example", "snippet": "...", "score": 0.42 } ],
+    "model": "local-rag",
+    "degraded": true
 }
 ```
 
 `degraded: true` indicates summarization used only local TF-IDF context (no external model). When a provider succeeds, `degraded: false` and `model` reflects the provider.
-

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Agent Zero: prompt-only multi-step graph runner (Gemini-first, works with OpenAI or local fallback)
 // Usage:
-//   node site/scripts/agents/agent-zero.mjs --spec "Short goal" [--provider=gemini|openai|rag] [--model=...] [--route]
+//   node site/scripts/agents/agent-zero.mjs --spec "Short goal" [--provider=openai|rag] [--model=...] [--route]
 //   node site/scripts/agents/agent-zero.mjs --file logs/inbox/spec.md [--graph '{"nodes":[...]}'] [--route]
 
 import fs from 'node:fs';
@@ -25,7 +25,7 @@ function parseArgs(argv){ const out={_:[]}; for(let i=2;i<argv.length;i++){const
 
 async function getProvider(name){
   const prov=(name||'').toLowerCase();
-  if(prov==='gemini'||prov==='google') { const { default: gem } = await import('../providers/gemini.mjs'); return gem; }
+  
   if(prov==='openai'||prov==='gpt'||prov==='chatgpt'){ const { default: oai } = await import('../providers/openai.mjs'); return oai; }
   return { name:'rag', async ask({ prompt }){ return `Local agent (no LLM). Prompt received:\n\n${prompt.slice(0,4000)}`; } };
 }
@@ -71,10 +71,10 @@ async function run(){
   const args = parseArgs(process.argv);
   const spec = args.spec || (args.file ? readSpecFromFile(args.file) : (args._.length ? args._.join(' ') : ''));
   if(!spec){
-    console.log('Usage: node site/scripts/agents/agent-zero.mjs --spec "Short goal" [--provider=gemini|openai|rag] [--graph JSON|file] [--route]');
+    console.log('Usage: node site/scripts/agents/agent-zero.mjs --spec "Short goal" [--provider=openai|rag] [--graph JSON|file] [--route]');
     process.exit(0);
   }
-  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'));
+  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
   const provider = await getProvider(providerName);
   const ask = async (prompt) => provider.ask({ prompt, model: args.model });
   const graph = parseGraph(args.graph);

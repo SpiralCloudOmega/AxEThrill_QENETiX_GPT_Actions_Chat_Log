@@ -25,7 +25,7 @@ Open `site/out/index.html` or run a simple static server to preview.
 | Tools Test (soft-fail) | `npm -C site run tools:test` |
 
 ## MCP Summarization Providers
-If `OPENAI_API_KEY` or `GEMINI_API_KEY` is set, `agent.summarize` will attempt a provider call (OpenAI preferred). Force local mode with param `{ provider: "local" }`.
+If `OPENAI_API_KEY` is set, `agent.summarize` will attempt a provider call (OpenAI). Force local mode with param `{ provider: "local" }`.
 
 ## Rate Limits
 Set `MCP_DAILY_REQ_LIMIT` to cap daily JSON-RPC calls. The server persists counts and configured limit in `logs/memory/mcp/rate-limits.json`.

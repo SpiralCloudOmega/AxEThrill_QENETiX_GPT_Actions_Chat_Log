@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-09-20T18:08:53.810Z",
+  "overallHealth": "healthy",
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "warnings": 0,
+    "critical_failures": 0
+  },
+  "duration_ms": 132,
+  "checks": {
+    "node_version": {
+      "success": true,
+      "duration": 0,
+      "critical": true,
+      "message": "Node.js v22.17.0",
+      "details": {
+        "minimum_required": "v18.0.0",
+        "supported": true
+      }
+    },
+    "dependencies": {
+      "success": true,
+      "duration": 0,
+      "critical": true,
+      "message": "16 packages installed",
+      "details": {
+        "dependencies": 9,
+        "dev_dependencies": 7
+      }
+    },
+    "workspace_structure": {
+      "success": true,
+      "duration": 0,
+      "critical": true,
+      "message": "All required directories present",
+      "details": {
+        "checked_directories": 5
+      }
+    },
+    "logs_content": {
+      "success": true,
+      "duration": 3,
+      "critical": false,
+      "message": "14 total logs found",
+      "details": {
+        "total_logs": 14,
+        "incoming_logs": 4,
+        "processed_logs": 10
+      }
+    },
+    "generated_indexes": {
+      "success": true,
+      "duration": 0,
+      "critical": false,
+      "message": "4/4 indexes present",
+      "details": {
+        "existing_indexes": [
+          "Logs Index",
+          "Health Status",
+          "RAG Index",
+          "RSS Feed"
+        ],
+        "stale_indexes": [],
+        "total_size_bytes": 128937
+      }
+    },
+    "memory_system": {
+      "success": true,
+      "duration": 8,
+      "critical": false,
+      "message": "49 memory capsules",
+      "details": {
+        "memory_capsules": 49,
+        "mcp_requests": 46
+      }
+    },
+    "build_system": {
+      "success": true,
+      "duration": 15,
+      "critical": false,
+      "message": "Build artifacts present",
+      "details": {
+        "production_build": true,
+        "development_cache": true,
+        "build_size_bytes": 2199428,
+        "build_size_mb": 2.1
+      }
+    },
+    "git_repository": {
+      "success": true,
+      "duration": 92,
+      "critical": false,
+      "message": "On branch copilot/vscode1758385021908",
+      "details": {
+        "current_branch": "copilot/vscode1758385021908",
+        "commit_hash": "e146ab5fe6b4",
+        "uncommitted_changes": 18,
+        "clean_working_tree": false
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "2025-09-20_2025-09-20T18-09-56.890Z_59a1f95d",
+  "ts": "2025-09-20T18:09:56.890Z",
+  "method": "memory.list",
+  "ok": true,
+  "ms": 0,
+  "paramBytes": 11,
+  "resultBytes": 2,
+  "params": {
+    "limit": 2
+  }
+}

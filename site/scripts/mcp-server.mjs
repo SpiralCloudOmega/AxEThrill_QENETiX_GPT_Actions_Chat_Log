@@ -96,7 +96,7 @@ const methods = {
     const items = ranked.map(r => ({ href: r.href, title: r.title, snippet: r.snippet, score: r.score }));
     const baseSummary = 'Summary for ' + JSON.stringify(q) + ':\n' + items.map(i=>`- ${i.title} (${i.href})`).join('\n');
     // External provider attempt
-    const useProvider = provider !== 'local' && (process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY);
+    const useProvider = provider !== 'local' && process.env.OPENAI_API_KEY;
     if (!useProvider) return { summary: baseSummary, items, model: 'local-rag', degraded: true };
     try {
       let modelUsed = 'local-rag';
@@ -117,16 +117,6 @@ const methods = {
             finalText = resp.choices?.[0]?.message?.content?.trim() || baseSummary;
             modelUsed = 'openai:gpt-4o-mini';
             return { summary: finalText, items, model: modelUsed, degraded: false };
-        }
-      }
-      if (process.env.GEMINI_API_KEY) {
-        const gemMod = await import('@google/generative-ai').catch(()=>null);
-        if (gemMod?.GoogleGenerativeAI) {
-          const genAI = new gemMod.GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-          const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-          const resp = await model.generateContent(prompt);
-          const text = resp?.response?.text?.() || baseSummary;
-          return { summary: text.trim(), items, model: 'gemini:1.5-flash', degraded: false };
         }
       }
       return { summary: baseSummary, items, model: 'local-rag', degraded: true };

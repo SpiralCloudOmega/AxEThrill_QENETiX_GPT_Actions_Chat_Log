@@ -6,6 +6,7 @@
     "ms-vscode.vscode-typescript-next",
     "github.vscode-github-actions",
     "streetsidesoftware.code-spell-checker",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "genap.copy-to-chat-gpt"
   ]
 }

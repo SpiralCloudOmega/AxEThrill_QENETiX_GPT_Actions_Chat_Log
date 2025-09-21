@@ -248,7 +248,7 @@ async function run() {
     } catch {}
     // Feature flags snapshot for quick capability introspection
     health.featureFlags = {
-      providerSummarize: Boolean(process.env.OPENAI_API_KEY || process.env.GEMINI_API_KEY),
+      providerSummarize: Boolean(process.env.OPENAI_API_KEY),
       rateLimitPersistence: true,
       mcpWriteMethods: true
     };

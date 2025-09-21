@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// A local-first AI CLI with optional cloud providers (Gemini/OpenAI) and offline RAG.
+// A local-first AI CLI with optional cloud providers (OpenAI) and offline RAG.
 // Commands:
 //  - ask: one-shot Q&A
 //  - chat: interactive session
@@ -102,14 +102,6 @@ function cosineRank(rag, q, topK = 6) {
 // --------- Providers (loaded dynamically)
 async function getProvider(name) {
   const prov = (name || '').toLowerCase();
-  if (prov === 'gemini' || prov === 'google') {
-    try {
-      const { default: gem } = await import('./providers/gemini.mjs');
-      return gem;
-    } catch (e) {
-      throw new Error('Gemini provider not available. Install @google/generative-ai and set GEMINI_API_KEY. ' + (e?.message || e));
-    }
-  }
   if (prov === 'openai' || prov === 'gpt' || prov === 'chatgpt') {
     try {
       const { default: oai } = await import('./providers/openai.mjs');
@@ -124,7 +116,7 @@ async function getProvider(name) {
       async ask({ prompt, context }) {
         // Simple summarizer over top contexts
         const ctx = (context || []).map((c, i) => `[[CTX ${i + 1}]] ${c.snippet} …\nSource: ${c.href}`).join('\n\n');
-        const answer = `Local RAG (no LLM):\n\nTop matches for: "${prompt}"\n\n${ctx || '(no matches)'}\n\nTip: run with --provider=gemini or --provider=openai to synthesize an answer using cloud LLMs.`;
+        const answer = `Local RAG (no LLM):\n\nTop matches for: "${prompt}"\n\n${ctx || '(no matches)'}\n\nTip: run with --provider=openai to synthesize an answer using cloud LLMs.`;
         return answer;
       }
     };
@@ -156,7 +148,7 @@ async function handleAsk(args) {
   if (!args['no-memory']) {
     try { memCtx = searchMemory({ query: question, k: Number(args['mem-k'] || 3) }); } catch {}
   }
-  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'));
+  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
   // Optional tool usage
   let toolsNote = '';
   if (args.analyze && args.file) {
@@ -185,7 +177,7 @@ async function handleAsk(args) {
 }
 
 async function handleChat(args) {
-  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'));
+  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
   const provider = await getProvider(providerName);
   let rag = loadRagIndex();
   if (!rag) { try { execSync('node scripts/build-rag.mjs', { cwd: siteDir, stdio: 'inherit' }); rag = loadRagIndex(); } catch {} }
@@ -246,7 +238,7 @@ async function handleRag(args) {
 async function handleServe(args) {
   const port = Number(args.port || 11435);
   let rag = loadRagIndex();
-  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : process.env.OPENAI_API_KEY ? 'openai' : 'rag');
+  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
   const provider = await getProvider(providerName);
   const server = http.createServer(async (req, res) => {
     try {
@@ -256,7 +248,7 @@ async function handleServe(args) {
         const question = u.searchParams.get('q') || u.searchParams.get('question') || '';
         if (!rag) { try { execSync('node scripts/build-rag.mjs', { cwd: siteDir, stdio: 'inherit' }); rag = loadRagIndex(); } catch {} }
         const ctx = rag ? cosineRank(rag, question, 6) : [];
-        const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : process.env.OPENAI_API_KEY ? 'openai' : 'rag');
+        const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
         const provider = await getProvider(providerName);
         const prompt = buildPromptWithContext(question, ctx, '');
         const answer = await provider.ask({ prompt, context: ctx, model: args.model });
@@ -469,7 +461,7 @@ async function handleServe(args) {
         req.on('end', async () => {
           try {
             const { name, spec, provider } = JSON.parse(body || '{}');
-            const out = await generateUIPage({ name: name || 'ui', spec: spec || 'Create a minimal UI.', providerName: provider || (process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'))) });
+            const out = await generateUIPage({ name: name || 'ui', spec: spec || 'Create a minimal UI.', providerName: provider || (process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag')) });
             res.writeHead(200, { 'content-type': 'application/json' });
             res.end(JSON.stringify({ ok: true, out }));
           } catch (e) { res.writeHead(500, { 'content-type': 'application/json' }); res.end(JSON.stringify({ ok: false, error: e?.message || e })); }
@@ -678,14 +670,14 @@ async function main() {
   if (cmd === 'make' && args._[1] === 'ui') {
     const name = args.name || args._[2] || 'ui';
     const spec = args.spec || 'Provide a minimal UI over logs-index.json with search and tags.';
-    const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'));
+    const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
     const out = await generateUIPage({ name, spec, providerName });
     console.log(JSON.stringify(out, null, 2));
     return;
   }
   const help = `AI CLI
 Usage:
-  node scripts/ai-cli.mjs ask "How do I build?" [--provider=gemini|openai|rag] [--k=6] [--model=...] [--route] [--analyze --file <path>] [--code "..."]
+  node scripts/ai-cli.mjs ask "How do I build?" [--provider=openai|rag] [--k=6] [--model=...] [--route] [--analyze --file <path>] [--code "..."]
   node scripts/ai-cli.mjs chat [--provider=...] [--k=6] [--model=...] [--route] [--analyze --file <path>] [--code "..."]
   node scripts/ai-cli.mjs rag "vulkan shader" [--k=8]
   node scripts/ai-cli.mjs serve [--port=11435] [--provider=...] [--model=...]
@@ -700,7 +692,7 @@ Usage:
   node scripts/ai-cli.mjs make ui --name <name> --spec "Short description"
 
 Env:
-  GEMINI_API_KEY, OPENAI_API_KEY, AI_PROVIDER=gemini|openai|rag
+  OPENAI_API_KEY, AI_PROVIDER=openai|rag
 
 HTTP:
   POST /ask { question, k?, analyze?, file?, code? }

@@ -1,0 +1,16 @@
+{
+  "id": "2025-09-20_2025-09-20T18-09-56.895Z_16fa8b36",
+  "ts": "2025-09-20T18:09:56.895Z",
+  "method": "ingest.add",
+  "ok": true,
+  "ms": 1,
+  "paramBytes": 74,
+  "resultBytes": 76,
+  "params": {
+    "title": "Test Ingest",
+    "content": "Some content from test",
+    "tags": [
+      "test"
+    ]
+  }
+}

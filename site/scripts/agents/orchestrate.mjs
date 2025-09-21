@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Multi-agent orchestrator: receptionist -> planner -> frontend/backend/security/networking
 // Usage:
-//   node site/scripts/agents/orchestrate.mjs --spec "Short goal" [--provider=gemini|openai|rag] [--model=...] [--route]
+//   node site/scripts/agents/orchestrate.mjs --spec "Short goal" [--provider=openai|rag] [--model=...] [--route]
 //   node site/scripts/agents/orchestrate.mjs --file path/to/spec.md [--provider=...] [--route]
 
 import fs from 'node:fs';
@@ -22,10 +22,6 @@ const publicDir = path.join(siteDir, 'public');
 // Lightweight providers loader (duplicated to avoid importing ai-cli main)
 async function getProvider(name) {
   const prov = (name || '').toLowerCase();
-  if (prov === 'gemini' || prov === 'google') {
-    const { default: gem } = await import('../providers/gemini.mjs');
-    return gem;
-  }
   if (prov === 'openai' || prov === 'gpt' || prov === 'chatgpt') {
     const { default: oai } = await import('../providers/openai.mjs');
     return oai;
@@ -88,10 +84,10 @@ async function run() {
   if (!spec && args.file) spec = readSpecFromFile(args.file);
   if (!spec) spec = (args._.length ? args._.join(' ') : '').trim();
   if (!spec) {
-    console.log('Usage: node site/scripts/agents/orchestrate.mjs --spec "Short goal" [--provider=gemini|openai|rag] [--route]');
+    console.log('Usage: node site/scripts/agents/orchestrate.mjs --spec "Short goal" [--provider=openai|rag] [--route]');
     process.exit(0);
   }
-  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.GEMINI_API_KEY ? 'gemini' : (process.env.OPENAI_API_KEY ? 'openai' : 'rag'));
+  const providerName = args.provider || process.env.AI_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'rag');
   const provider = await getProvider(providerName);
   const ask = async (prompt) => provider.ask({ prompt, model: args.model });
 

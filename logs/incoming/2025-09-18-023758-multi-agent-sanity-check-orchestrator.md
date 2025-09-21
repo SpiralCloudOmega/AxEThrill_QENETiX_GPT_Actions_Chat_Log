@@ -48,7 +48,7 @@ Sanity check orchestrator
 REPO CONTEXT:
 LOGS: 6 entries
 Sample: Summarize what content is in the repo logs and what tags exist | How to print installed NVIDIA driver version on Linux? | Chat Transcript
-RIG: 
+RIG:
 INPUT SPEC:
 Sanity check orchestrator
 
@@ -75,7 +75,7 @@ Sanity check orchestrator
 REPO CONTEXT:
 LOGS: 6 entries
 Sample: Summarize what content is in the repo logs and what tags exist | How to print installed NVIDIA driver version on Linux? | Chat Transcript
-RIG: 
+RIG:
 INPUT SPEC:
 Sanity check orchestrator
 
@@ -102,7 +102,7 @@ Sanity check orchestrator
 REPO CONTEXT:
 LOGS: 6 entries
 Sample: Summarize what content is in the repo logs and what tags exist | How to print installed NVIDIA driver version on Linux? | Chat Transcript
-RIG: 
+RIG:
 INPUT SPEC:
 Sanity check orchestrator
 
@@ -129,6 +129,6 @@ Sanity check orchestrator
 REPO CONTEXT:
 LOGS: 6 entries
 Sample: Summarize what content is in the repo logs and what tags exist | How to print installed NVIDIA driver version on Linux? | Chat Transcript
-RIG: 
+RIG:
 INPUT SPEC:
 Sanity check orchestrator
