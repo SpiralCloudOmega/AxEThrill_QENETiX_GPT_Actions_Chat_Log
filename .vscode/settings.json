@@ -91,5 +91,17 @@
         "toks",
         "YYYYMMDDTHHMMSS",
         "healthz"
+    ],
+    "dbcode.connections": [
+        {
+            "connectionId": "rmL_rNaBHyQdgJmPMfBzO",
+            "name": "AxeDB",
+            "driver": "duckdb",
+            "color": "#00E3A9",
+            "connectionType": "socket",
+            "socket": "AxEThrill_QENETiX_GPT_Actions_Chat_Log/docs/development.md",
+            "readOnly": false,
+            "role": "development"
+        }
     ]
 }
