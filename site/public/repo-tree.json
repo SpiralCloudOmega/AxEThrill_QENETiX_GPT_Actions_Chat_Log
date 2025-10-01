@@ -13,17 +13,24 @@
             "name": "bug_report.md",
             "type": "file",
             "path": ".github/ISSUE_TEMPLATE/bug_report.md",
-            "size": 516,
+            "size": 551,
             "ext": "md"
           },
           {
             "name": "feature_request.md",
             "type": "file",
             "path": ".github/ISSUE_TEMPLATE/feature_request.md",
-            "size": 386,
+            "size": 426,
             "ext": "md"
           }
         ]
+      },
+      {
+        "name": "copilot-instructions.md",
+        "type": "file",
+        "path": ".github/copilot-instructions.md",
+        "size": 8665,
+        "ext": "md"
       },
       {
         "name": "pull_request_template.md",
@@ -38,6 +45,20 @@
         "path": ".github/workflows",
         "children": [
           {
+            "name": "ci.yml",
+            "type": "file",
+            "path": ".github/workflows/ci.yml",
+            "size": 1275,
+            "ext": "yml"
+          },
+          {
+            "name": "continuous-agents.yml",
+            "type": "file",
+            "path": ".github/workflows/continuous-agents.yml",
+            "size": 5063,
+            "ext": "yml"
+          },
+          {
             "name": "deploy-pages.yml",
             "type": "file",
             "path": ".github/workflows/deploy-pages.yml",
@@ -48,7 +69,7 @@
             "name": "monthly-agents.yml",
             "type": "file",
             "path": ".github/workflows/monthly-agents.yml",
-            "size": 1759,
+            "size": 3042,
             "ext": "yml"
           },
           {
@@ -56,6 +77,27 @@
             "type": "file",
             "path": ".github/workflows/nightly-maintenance.yml",
             "size": 1311,
+            "ext": "yml"
+          },
+          {
+            "name": "release.yml",
+            "type": "file",
+            "path": ".github/workflows/release.yml",
+            "size": 1063,
+            "ext": "yml"
+          },
+          {
+            "name": "secret-scan.yml",
+            "type": "file",
+            "path": ".github/workflows/secret-scan.yml",
+            "size": 662,
+            "ext": "yml"
+          },
+          {
+            "name": "token-metrics.yml",
+            "type": "file",
+            "path": ".github/workflows/token-metrics.yml",
+            "size": 1749,
             "ext": "yml"
           },
           {
@@ -70,10 +112,17 @@
     ]
   },
   {
+    "name": "Dockerfile",
+    "type": "file",
+    "path": "Dockerfile",
+    "size": 768,
+    "ext": ""
+  },
+  {
     "name": "README.md",
     "type": "file",
     "path": "README.md",
-    "size": 7077,
+    "size": 11423,
     "ext": "md"
   },
   {
@@ -82,6 +131,27 @@
     "path": "SECURITY.md",
     "size": 440,
     "ext": "md"
+  },
+  {
+    "name": "docker-compose.yml",
+    "type": "file",
+    "path": "docker-compose.yml",
+    "size": 964,
+    "ext": "yml"
+  },
+  {
+    "name": "docs",
+    "type": "dir",
+    "path": "docs",
+    "children": [
+      {
+        "name": "automation.md",
+        "type": "file",
+        "path": "docs/automation.md",
+        "size": 6069,
+        "ext": "md"
+      }
+    ]
   },
   {
     "name": "logs",
@@ -235,6 +305,20 @@
     "type": "dir",
     "path": "site",
     "children": [
+      {
+        "name": ".eslintignore",
+        "type": "file",
+        "path": "site/.eslintignore",
+        "size": 35,
+        "ext": ""
+      },
+      {
+        "name": ".eslintrc.cjs",
+        "type": "file",
+        "path": "site/.eslintrc.cjs",
+        "size": 768,
+        "ext": "cjs"
+      },
       {
         "name": ".gitignore",
         "type": "file",
@@ -397,6 +481,20 @@
                 "type": "file",
                 "path": "site/app/memory/page.tsx",
                 "size": 3953,
+                "ext": "tsx"
+              }
+            ]
+          },
+          {
+            "name": "metrics",
+            "type": "dir",
+            "path": "site/app/metrics",
+            "children": [
+              {
+                "name": "page.tsx",
+                "type": "file",
+                "path": "site/app/metrics/page.tsx",
+                "size": 4456,
                 "ext": "tsx"
               }
             ]
@@ -771,14 +869,14 @@
         "name": "package-lock.json",
         "type": "file",
         "path": "site/package-lock.json",
-        "size": 40629,
+        "size": 93367,
         "ext": "json"
       },
       {
         "name": "package.json",
         "type": "file",
         "path": "site/package.json",
-        "size": 2035,
+        "size": 2302,
         "ext": "json"
       },
       {
@@ -804,21 +902,21 @@
             "name": "commit-files.json",
             "type": "file",
             "path": "site/public/commit-files.json",
-            "size": 762,
+            "size": 6045,
             "ext": "json"
           },
           {
             "name": "commits.json",
             "type": "file",
             "path": "site/public/commits.json",
-            "size": 2259,
+            "size": 449,
             "ext": "json"
           },
           {
             "name": "feed.xml",
             "type": "file",
             "path": "site/public/feed.xml",
-            "size": 5015,
+            "size": 6211,
             "ext": "xml"
           },
           {
@@ -853,7 +951,7 @@
             "name": "rag-capsule.png",
             "type": "file",
             "path": "site/public/rag-capsule.png",
-            "size": 9117,
+            "size": 9118,
             "ext": "png"
           },
           {
@@ -867,7 +965,7 @@
             "name": "repo-tree.json",
             "type": "file",
             "path": "site/public/repo-tree.json",
-            "size": 40767,
+            "size": 40968,
             "ext": "json"
           },
           {
@@ -898,7 +996,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/actions/feed.xml",
-                    "size": 540,
+                    "size": 696,
                     "ext": "xml"
                   }
                 ]
@@ -912,7 +1010,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/agents/feed.xml",
-                    "size": 2713,
+                    "size": 3285,
                     "ext": "xml"
                   }
                 ]
@@ -926,7 +1024,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ai/feed.xml",
-                    "size": 4388,
+                    "size": 5376,
                     "ext": "xml"
                   }
                 ]
@@ -940,7 +1038,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia/feed.xml",
-                    "size": 552,
+                    "size": 708,
                     "ext": "xml"
                   }
                 ]
@@ -968,7 +1066,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/nvidia code/feed.xml",
-                    "size": 553,
+                    "size": 709,
                     "ext": "xml"
                   }
                 ]
@@ -996,7 +1094,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/rag/feed.xml",
-                    "size": 1615,
+                    "size": 1979,
                     "ext": "xml"
                   }
                 ]
@@ -1010,7 +1108,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/ue5/feed.xml",
-                    "size": 842,
+                    "size": 1102,
                     "ext": "xml"
                   }
                 ]
@@ -1024,7 +1122,7 @@
                     "name": "feed.xml",
                     "type": "file",
                     "path": "site/public/tags/vulkan/feed.xml",
-                    "size": 851,
+                    "size": 1111,
                     "ext": "xml"
                   }
                 ]
@@ -1207,6 +1305,13 @@
             "ext": "mjs"
           },
           {
+            "name": "ingest.mjs",
+            "type": "file",
+            "path": "site/scripts/ingest.mjs",
+            "size": 2698,
+            "ext": "mjs"
+          },
+          {
             "name": "learn.mjs",
             "type": "file",
             "path": "site/scripts/learn.mjs",
@@ -1226,6 +1331,13 @@
                 "ext": "mjs"
               }
             ]
+          },
+          {
+            "name": "mcp-server.mjs",
+            "type": "file",
+            "path": "site/scripts/mcp-server.mjs",
+            "size": 8569,
+            "ext": "mjs"
           },
           {
             "name": "nightly-summarize.mjs",
@@ -1296,6 +1408,20 @@
             "path": "site/scripts/save-chat.mjs",
             "size": 2753,
             "ext": "mjs"
+          },
+          {
+            "name": "tests",
+            "type": "dir",
+            "path": "site/scripts/tests",
+            "children": [
+              {
+                "name": "ledger.test.mjs",
+                "type": "file",
+                "path": "site/scripts/tests/ledger.test.mjs",
+                "size": 1716,
+                "ext": "mjs"
+              }
+            ]
           },
           {
             "name": "tools",
