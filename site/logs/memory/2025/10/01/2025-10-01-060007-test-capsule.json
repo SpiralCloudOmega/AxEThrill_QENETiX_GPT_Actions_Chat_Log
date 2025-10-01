@@ -1,0 +1,14 @@
+{
+  "id": "2025-10-01-060007-test-capsule",
+  "ts": "2025-10-01T06:00:07.388Z",
+  "title": "Test Capsule",
+  "tags": [
+    "test",
+    "ci"
+  ],
+  "source": "tools/test.mjs",
+  "summary": "A test capsule",
+  "content": "This is a test capsule with unique term foobarbazqux.",
+  "data": null,
+  "version": 1
+}
